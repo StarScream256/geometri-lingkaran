@@ -1,13 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package geometri3d;
 
-/**
- *
- * @author devio
- */
-public class Bola {
+public class Bola extends BendaGeometri {
+    private double r;
+    
+    public Bola(double r){
+        this.r = r;
+    }
+    
+    public double getJariJari(){
+        return r;
+    }
+    
+    @Override
+    public double hitungVolume(){
+        return(4.0 / 3.0 )* Math.PI * Math.pow(r,3);
+    }
+    
+    @Override
+    public double hitungLuasPermukaan(){
+        return 4 * Math.PI * Math.pow(r,2);
+    }
     
 }
