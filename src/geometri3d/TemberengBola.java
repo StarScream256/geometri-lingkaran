@@ -8,16 +8,15 @@ package geometri3d;
  *
  * @author LEGION
  */
-public class TemberengBola {
-    private double r;
+public class TemberengBola extends Bola {
     private double tinggi;
 
     public TemberengBola(double r, double tinggi) {
-        this.r = r;
+        super(r);
         this.tinggi = tinggi;
     }
 
     public double getVolume() {
-        return (1.0/3.0) * Math.PI * tinggi * tinggi * (3*r - tinggi);
+        return (1.0/3.0) * Math.PI * tinggi * tinggi * (3 * getJariJari() - tinggi);
     }
 }

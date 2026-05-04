@@ -1,25 +1,22 @@
 
 package geometri3d;
 
-public class Bola extends BendaGeometri {
-    private double r;
+import geometri2d.Lingkaran;
+
+public class Bola extends Lingkaran {
     
     public Bola(double r){
-        this.r = r;
-    }
-    
-    public double getJariJari(){
-        return r;
+        super(r);
     }
     
     @Override
     public double hitungVolume(){
-        return(4.0 / 3.0 )* Math.PI * Math.pow(r,3);
+        return(4.0 / 3.0 )* Math.PI * Math.pow(getJariJari(), 3);
     }
     
     @Override
     public double hitungLuasPermukaan(){
-        return 4 * Math.PI * Math.pow(r,2);
+        return 4 * Math.PI * Math.pow(getJariJari(), 2);
     }
     
 }

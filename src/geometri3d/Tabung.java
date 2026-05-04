@@ -4,20 +4,21 @@
  */
 package geometri3d;
 
+import geometri2d.Lingkaran;
+
 /**
  *
  * @author LEGION
  */
-public class Tabung {
-    private double r;
+public class Tabung extends Lingkaran {
     private double tinggi;
 
     public Tabung(double r, double tinggi) {
-        this.r = r;
+        super(r);
         this.tinggi = tinggi;
     }
 
     public double getVolume() {
-        return Math.PI * r * r * tinggi;
+        return Math.PI * getJariJari() * getJariJari() * tinggi;
     }
 }
