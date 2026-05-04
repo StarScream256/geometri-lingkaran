@@ -4,6 +4,9 @@
  */
 package geometrilingkaran;
 
+import javax.swing.SwingUtilities;
+import ui.MainFrame;
+
 /**
  *
  * @author asus
@@ -14,7 +17,9 @@ public class GeometriLingkaran {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        SwingUtilities.invokeLater(() -> {
+            new MainFrame().setVisible(true);
+        });
     }
     
 }

@@ -4,6 +4,10 @@
  */
 package ui;
 
+import java.awt.Window;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author asus
@@ -53,6 +57,11 @@ public class MainFrame extends javax.swing.JFrame {
         temberengBolaButton.setText("Tembereng Bola");
 
         cincinBolaButton.setText("Cincin Bola");
+        cincinBolaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cincinBolaButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -106,6 +115,14 @@ public class MainFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cincinBolaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincinBolaButtonActionPerformed
+        // TODO add your handling code here:
+        CincinBolaDonutFrame f = new CincinBolaDonutFrame();
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null); 
+        f.setVisible(true);
+    }//GEN-LAST:event_cincinBolaButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
