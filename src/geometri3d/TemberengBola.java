@@ -18,7 +18,7 @@ public class TemberengBola extends Bola {
     
     @Override
     public double hitungLuasPermukaan() {
-        // tambah hitung luas permukaan
+        return 2 * Math.PI * getJariJari() * tinggi;
     }
 
     @Override

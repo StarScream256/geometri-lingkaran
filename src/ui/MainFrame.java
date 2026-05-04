@@ -4,6 +4,8 @@
  */
 package ui;
 
+import ui.GUI_Tabung;
+import ui.GUI_TemberengBola;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -19,6 +21,16 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
+         // Tabung
+    tabungButton.addActionListener(e -> {
+        new GUI_Tabung().setVisible(true);
+    });
+
+    // Tembereng Bola
+    temberengBolaButton.addActionListener(e -> {
+        new GUI_TemberengBola().setVisible(true);
+    });
     }
 
     /**

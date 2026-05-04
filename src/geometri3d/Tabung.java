@@ -20,7 +20,7 @@ public class Tabung extends Lingkaran {
 
     @Override
     public double hitungLuasPermukaan() {
-        // tambah hitung luas permukaan
+        return 2 * Math.PI * getJariJari() * (getJariJari() + tinggi);
     }
 
     @Override
