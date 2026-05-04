@@ -18,7 +18,15 @@ public class Tabung extends Lingkaran {
         this.tinggi = tinggi;
     }
 
-    public double getVolume() {
+    @Override
+    public double hitungLuasPermukaan() {
+        // tambah hitung luas permukaan
+    }
+
+    @Override
+    public double hitungVolume() {
         return Math.PI * getJariJari() * getJariJari() * tinggi;
     }
+    
+    
 }

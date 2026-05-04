@@ -73,7 +73,7 @@ public class GUI_Tabung extends JFrame {
                     thread.start();
 
                     // TAMPILKAN HASIL (format 2 desimal)
-                    lblHasil.setText("Hasil: " + String.format("%.2f", tabung.getVolume()));
+                    lblHasil.setText("Hasil: " + String.format("%.2f", tabung.hitungVolume()));
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");

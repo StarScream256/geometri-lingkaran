@@ -15,8 +15,14 @@ public class TemberengBola extends Bola {
         super(r);
         this.tinggi = tinggi;
     }
+    
+    @Override
+    public double hitungLuasPermukaan() {
+        // tambah hitung luas permukaan
+    }
 
-    public double getVolume() {
+    @Override
+    public double hitungVolume() {
         return (1.0/3.0) * Math.PI * tinggi * tinggi * (3 * getJariJari() - tinggi);
     }
 }

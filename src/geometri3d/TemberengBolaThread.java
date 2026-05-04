@@ -13,6 +13,6 @@ public class TemberengBolaThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Volume Tembereng Bola = " + bola.getVolume());
+        System.out.println("Volume Tembereng Bola = " + bola.hitungVolume());
     }
 }

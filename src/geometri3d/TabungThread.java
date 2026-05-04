@@ -17,6 +17,6 @@ public class TabungThread extends Thread {
 
     @Override
     public void run() {
-        System.out.println(tabung.getVolume());
+        System.out.println(tabung.hitungVolume());
     }
 }
