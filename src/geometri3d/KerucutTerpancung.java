@@ -1,82 +1,33 @@
 package geometri3d;
 
 public class KerucutTerpancung extends Kerucut {
-    protected double jariJariAtas;
-    protected double tinggi;
-    private double volume;
-    private double luasPermukaan;
+    private double jariJariAtas;
 
-    public KerucutTerpancung(double tinggi, double jariJariAtas, double jariJariBawah) {
-        super(jariJariBawah); // jari jari bawah / besar r1
-        this.jariJariAtas = jariJariAtas; // jari - jari alas kecil r2
-        this.tinggi = tinggi;
-    }
-       
-    // overloaded constructor
-    public KerucutTerpancung(int tinggi, int jariJariAtas, int jariJariBawah) {
-        super(jariJariBawah); // jari jari bawah / besar r1
-        this.jariJariAtas = jariJariAtas; // jari - jari alas kecil r2
-        this.tinggi = tinggi;
+    public KerucutTerpancung(double rBawah, double tinggi, double rAtas) {
+        super(rBawah, tinggi); // rBawah dan tinggi dikelola oleh bapaknya (Kerucut)
+        this.jariJariAtas = rAtas;
     }
 
-    public double hitungVolume() throws IllegalArgumentException {
-        try {
-            if (tinggi <= 0 || jariJariAtas <= 0 || super.jariJari <= 0) {
-                throw new IllegalArgumentException("Panjang tinggi, jari-jari bawah, dan jari-jari atas harus lebih besar dari 0");
-            }
-            volume = (1.0 / 3.0) * super.pi * tinggi * (super.jariJari * super.jariJari + jariJariAtas * jariJariAtas + super.jariJari * jariJariAtas);
-            return volume;
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error saat menghitung volume kerucut terpancung: " + e.getMessage());
-            throw e;
-        }
-          
-    }
-       
-    // overloaded method
-    public double hitungVolume(double tinggi, double jariJariAtas, double jariJariBawah) throws IllegalArgumentException {
-        try {
-            if (tinggi <= 0 || jariJariAtas <= 0 || super.jariJari <= 0) {
-                throw new IllegalArgumentException("Panjang tinggi, jari-jari bawah, dan jari-jari atas harus lebih besar dari 0");
-            }
-            volume = (1.0 / 3.0) * super.pi * tinggi * (super.jariJari * super.jariJari + jariJariAtas * jariJariAtas + super.jariJari * jariJariAtas);
-            return volume;
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error saat menghitung volume kerucut terpancung: " + e.getMessage());
-            throw e;
-        }
+    // Overriding Garis Pelukis untuk versi terpancung
+    @Override
+    public double getGarisPelukis() {
+        double selisihR = getJariJari() - jariJariAtas;
+        return Math.sqrt(Math.pow(getTinggi(), 2) + Math.pow(selisihR, 2));
     }
 
-    public double hitungLuasPermukaan() throws IllegalArgumentException {
-        try {
-            if (tinggi <= 0 || jariJariAtas <= 0 || super.jariJari <= 0) {
-                throw new IllegalArgumentException("Panjang tinggi, jari-jari bawah, dan jari-jari atas harus lebih besar dari 0");
-            }
-            double garisPelukis = Math.sqrt(Math.pow(tinggi, 2) + Math.pow((super.jariJari - jariJariAtas), 2));
-
-//             luasPermukaan = (super.pi * super.jariJari * garisPelukis) + (super.pi * (Math.pow(super.jariJari, 2)));
-            luasPermukaan = (super.pi * (super.jariJari + jariJariAtas) * garisPelukis) + (super.pi * Math.pow(super.jariJari, 2));
-            return luasPermukaan;
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error saat menghitung luas permukaan kerucut terpancung: " + e.getMessage());
-            throw e;
-        }
+    @Override
+    public double hitungVolume() {
+        // Rumus: 1/3 * PI * t * (R^2 + r^2 + (R*r))
+        double rBawah = getJariJari();
+        return (1.0 / 3.0) * Math.PI * getTinggi() * (Math.pow(rBawah, 2) + Math.pow(jariJariAtas, 2) + (rBawah * jariJariAtas));
     }
-       
-    // overloaded method
-    public double hitungLuasPermukaan(double tinggi, double jariJariAtas, double jariJariBawah) throws IllegalArgumentException {
-        try {
-            if (tinggi <= 0 || jariJariAtas <= 0 || super.jariJari <= 0) {
-                throw new IllegalArgumentException("Panjang tinggi, jari-jari bawah, dan jari-jari atas harus lebih besar dari 0");
-            }
-            double garisPelukis = Math.sqrt(Math.pow(tinggi, 2) + Math.pow((super.jariJari - jariJariAtas), 2));
 
-//            luasPermukaan = (super.pi * super.jariJari * garisPelukis) + (super.pi * (Math.pow(super.jariJari, 2)));
-            luasPermukaan = (super.pi * (super.jariJari + jariJariAtas) * garisPelukis) + (super.pi * Math.pow(super.jariJari, 2));
-            return luasPermukaan;
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error saat menghitung luas permukaan kerucut terpancung: " + e.getMessage());
-            throw e;
-        }
+    @Override
+    public double hitungLuasPermukaan() {
+        double luasAlasBawah = hitungLuas(); // Memanggil PI * rBawah^2 dari Lingkaran
+        double luasAlasAtas = Math.PI * Math.pow(jariJariAtas, 2);
+        double luasSelimut = Math.PI * getGarisPelukis() * (getJariJari() + jariJariAtas);
+        
+        return luasAlasBawah + luasAlasAtas + luasSelimut;
     }
 }
