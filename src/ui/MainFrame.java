@@ -4,8 +4,8 @@
  */
 package ui;
 
-import ui.GUI_Tabung;
-import ui.GUI_TemberengBola;
+import ui.TabungFrame;
+import ui.TemberengBolaFrame;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -24,12 +24,12 @@ public class MainFrame extends javax.swing.JFrame {
         
          // Tabung
     tabungButton.addActionListener(e -> {
-        new GUI_Tabung().setVisible(true);
+        new TabungFrame().setVisible(true);
     });
 
     // Tembereng Bola
     temberengBolaButton.addActionListener(e -> {
-        new GUI_TemberengBola().setVisible(true);
+        new TemberengBolaFrame().setVisible(true);
     });
     }
 
@@ -61,12 +61,22 @@ public class MainFrame extends javax.swing.JFrame {
         kerucutTerpancungButton.setText("Kerucut Terpancung");
 
         tabungButton.setText("Tabung");
+        tabungButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tabungButtonActionPerformed(evt);
+            }
+        });
 
         bolaButton.setText("Bola");
 
         juringBolaButton.setText("Juring Bola");
 
         temberengBolaButton.setText("Tembereng Bola");
+        temberengBolaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                temberengBolaButtonActionPerformed(evt);
+            }
+        });
 
         cincinBolaButton.setText("Cincin Bola");
         cincinBolaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -129,12 +139,25 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cincinBolaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincinBolaButtonActionPerformed
-        // TODO add your handling code here:
-        CincinBolaDonutFrame f = new CincinBolaDonutFrame();
+        CincinBolaTorusFrame f = new CincinBolaTorusFrame();
         f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         f.setLocationRelativeTo(null); 
         f.setVisible(true);
     }//GEN-LAST:event_cincinBolaButtonActionPerformed
+
+    private void tabungButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabungButtonActionPerformed
+        TabungFrame f = new TabungFrame();
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null); 
+        // f.setVisible(true);
+    }//GEN-LAST:event_tabungButtonActionPerformed
+
+    private void temberengBolaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_temberengBolaButtonActionPerformed
+        TemberengBolaFrame f = new TemberengBolaFrame();
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null); 
+        // f.setVisible(true);
+    }//GEN-LAST:event_temberengBolaButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

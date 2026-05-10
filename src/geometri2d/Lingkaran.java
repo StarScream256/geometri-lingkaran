@@ -14,7 +14,6 @@ public class Lingkaran extends Geometri2D {
     private double jariJari;
 
     public Lingkaran(double jariJari) {
-        super("Lingkaran");
         this.jariJari = jariJari;
     }
 

@@ -11,26 +11,7 @@ import geometri2d.BendaGeometri;
  * @author Lenovo
  */
 public abstract  class Geometri2D implements BendaGeometri{
-    protected String nama;
-    
-    public Geometri2D(String nama){
-        this.nama = nama;
-    }
-    
-    public String getNama(){
-        return nama;
-    }
-
-    @Override
-    public double hitungLuas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public double hitungKeliling() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+   
     @Override
     public double hitungVolume() {
         return 0;
@@ -40,6 +21,4 @@ public abstract  class Geometri2D implements BendaGeometri{
     public double hitungLuasPermukaan() {
         return 0;
     }
-    
-    
 }

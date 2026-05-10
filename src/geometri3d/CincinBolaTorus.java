@@ -8,10 +8,10 @@ package geometri3d;
  *
  * @author asus
  */
-public class CincinBolaDonut extends Bola {
+public class CincinBolaTorus extends Bola {
     private double jariJariMajor;
     
-    public CincinBolaDonut(double jariJariMinor, double jariJariMajor) {
+    public CincinBolaTorus(double jariJariMinor, double jariJariMajor) {
         super(jariJariMinor);
         this.jariJariMajor = jariJariMajor;
     }
@@ -26,6 +26,14 @@ public class CincinBolaDonut extends Bola {
     public double hitungVolume() {
         double volume = (Math.PI * Math.pow(getJariJari(), 2)) * (2 * getJariJari() * this.jariJariMajor);
         return volume;
+    }
+
+    public double getJariJariMajor() {
+        return jariJariMajor;
+    }
+
+    public void setJariJariMajor(double jariJariMajor) {
+        this.jariJariMajor = jariJariMajor;
     }
     
     

@@ -1,0 +1,40 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package geometri3d;
+
+/**
+ *
+ * @author asus
+ */
+public class CincinBola extends Bola {
+    private double tinggi;
+    
+    public CincinBola(double jariJari, double tinggi) {
+        super(jariJari);
+        this.tinggi = tinggi;
+    }
+
+    @Override
+    public double hitungLuasPermukaan() {
+        double luasPermukaan = 2 * Math.PI * getJariJari() * this.tinggi;
+        return luasPermukaan;
+    }
+
+    @Override
+    public double hitungVolume() {
+        double volume = (1.0 / 6.0) * Math.PI * Math.pow(this.tinggi, 3); 
+        return volume;
+    }
+
+    public double getTinggi() {
+        return tinggi;
+    }
+
+    public void setTinggi(double tinggi) {
+        this.tinggi = tinggi;
+    }
+    
+    
+}
