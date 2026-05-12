@@ -159,6 +159,9 @@ public class MainFrame extends javax.swing.JFrame {
         // f.setVisible(true);
     }//GEN-LAST:event_temberengBolaButtonActionPerformed
 
+    public static void main(String args[]) {
+        new MainFrame().setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bolaButton;
