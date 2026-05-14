@@ -50,11 +50,11 @@ public class Kerucut extends javax.swing.JFrame {
 
         jariJariLabel.setText("Jari-jari");
 
-        tinggiLabel.setText("Tinggi Silinder");
+        tinggiLabel.setText("Tinggi Kerucut");
 
         judullLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         judullLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        judullLabel.setText("Cincin Bola (Shperical Ring)");
+        judullLabel.setText("Kerucut");
 
         hitungButton.setBackground(new java.awt.Color(51, 102, 255));
         hitungButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

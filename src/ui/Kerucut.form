@@ -93,7 +93,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="tinggiLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tinggi Silinder"/>
+        <Property name="text" type="java.lang.String" value="Tinggi Kerucut"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tinggiTextField">
@@ -104,7 +104,7 @@
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Cincin Bola (Shperical Ring)"/>
+        <Property name="text" type="java.lang.String" value="Kerucut"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="hitungButton">

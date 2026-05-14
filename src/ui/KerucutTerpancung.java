@@ -39,6 +39,8 @@ public class KerucutTerpancung extends javax.swing.JFrame {
         luasPermukaanTextField = new javax.swing.JTextField();
         volumeLabel = new javax.swing.JLabel();
         luasPermukaanLabel = new javax.swing.JLabel();
+        jariJariLabel1 = new javax.swing.JLabel();
+        jariJariTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,13 +50,13 @@ public class KerucutTerpancung extends javax.swing.JFrame {
             }
         });
 
-        jariJariLabel.setText("Jari-jari");
+        jariJariLabel.setText("Jari-jari Bawah");
 
-        tinggiLabel.setText("Tinggi Silinder");
+        tinggiLabel.setText("Tinggi Kerucut Terpancung");
 
         judullLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         judullLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        judullLabel.setText("Cincin Bola (Shperical Ring)");
+        judullLabel.setText("Kerucut Terpancung");
 
         hitungButton.setBackground(new java.awt.Color(51, 102, 255));
         hitungButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -66,6 +68,12 @@ public class KerucutTerpancung extends javax.swing.JFrame {
             }
         });
 
+        volumeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volumeTextFieldActionPerformed(evt);
+            }
+        });
+
         volumeLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         volumeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         volumeLabel.setText("Volume");
@@ -74,30 +82,49 @@ public class KerucutTerpancung extends javax.swing.JFrame {
         luasPermukaanLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         luasPermukaanLabel.setText("Luas Permukaan");
 
+        jariJariLabel1.setText("Jari-jari Atas");
+
+        jariJariTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jariJariTextField2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(hitungButton)
-                    .addComponent(tinggiTextField)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(luasPermukaanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(luasPermukaanTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(volumeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(volumeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jariJariLabel, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(judullLabel, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tinggiTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tinggiLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jariJariTextField)
-                    .addComponent(jariJariLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(judullLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jariJariLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jariJariTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jariJariTextField2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(luasPermukaanTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                    .addComponent(luasPermukaanLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(volumeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                    .addComponent(volumeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(6, 6, 6))
+                .addGap(163, 163, 163)
+                .addComponent(hitungButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,22 +134,26 @@ public class KerucutTerpancung extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jariJariLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jariJariTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jariJariLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jariJariTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tinggiLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tinggiTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(hitungButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(luasPermukaanLabel)
                     .addComponent(volumeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(luasPermukaanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(volumeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -149,6 +180,14 @@ public class KerucutTerpancung extends javax.swing.JFrame {
     private void jariJariTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jariJariTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jariJariTextFieldActionPerformed
+
+    private void jariJariTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jariJariTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jariJariTextField2ActionPerformed
+
+    private void volumeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volumeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_volumeTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,7 +242,9 @@ public class KerucutTerpancung extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton hitungButton;
     private javax.swing.JLabel jariJariLabel;
+    private javax.swing.JLabel jariJariLabel1;
     private javax.swing.JTextField jariJariTextField;
+    private javax.swing.JTextField jariJariTextField2;
     private javax.swing.JLabel judullLabel;
     private javax.swing.JLabel luasPermukaanLabel;
     private javax.swing.JTextField luasPermukaanTextField;
