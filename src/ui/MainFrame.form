@@ -84,11 +84,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Kerucut"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kerucutButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="kerucutTerpancungButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kerucut Terpancung"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kerucutTerpancungButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="tabungButton">
       <Properties>

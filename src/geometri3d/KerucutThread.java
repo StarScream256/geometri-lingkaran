@@ -1,28 +1,43 @@
 package geometri3d;
 
 public class KerucutThread implements Runnable {
-    private double jariJari;
-    private double tinggi;
+    private int nomor;
     
-    public KerucutThread(double jariJari, double tinggi) {
-        this.jariJari = jariJari;
-        this.tinggi = tinggi;
+    public KerucutThread(int nomor) {
+        this.nomor = nomor;
     }
 
     @Override
     public void run() {
-        // Memanggil class logic Kerucut
-        Kerucut kerucut = new Kerucut(this.jariJari, this.tinggi);
+        try {
+            // Delay random antara 0 - 300 ms agar output tidak berurutan rapi
+            Thread.sleep((long)(Math.random() * 300));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String threadName = Thread.currentThread().getName();
+        
+        // rentang: (Math.random() * (Max - Min)) + Min
+        double jariJari = (Math.random() * (12 - 2)) + 2; 
+        double tinggi = (Math.random() * (12 - 2)) + 2;
+        
+        Kerucut kerucut = new Kerucut(jariJari, tinggi);
         double luasPermukaan = kerucut.hitungLuasPermukaan();
         double volume = kerucut.hitungVolume();
         
-        // Menampilkan hasil di Console (untuk bukti Thread berjalan)
-        System.out.println(
-            "Thread Kerucut ID: " + Thread.currentThread().getId() +
-            " | r: " + this.jariJari +
-            " | t: " + this.tinggi +
-            " | Luas: " + String.format("%.2f", luasPermukaan) + 
-            " | Volume: " + String.format("%.2f", volume)
+        // Output Text Block
+        String output = String.format(
+            """
+            Thread Kerucut #%d (%s)
+            Jari-jari: %.2f; Tinggi: %.2f 
+            Luas permukaan\t: %.2f 
+            Volume\t\t: %.2f 
+            ---------------------------------
+            """,
+            this.nomor, threadName, jariJari, tinggi, luasPermukaan, volume
         );
+        
+        System.out.print(output);
     }
 }

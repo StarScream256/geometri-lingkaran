@@ -3,20 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
-import geometri3d.CincinBola;
+import geometri3d.Kerucut;
 import java.awt.TextField;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author asus
- */
-public class Kerucut extends javax.swing.JFrame {
+public class KerucutFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form CincinBolaDonutFrame
      */
-    public Kerucut() {
+    public KerucutFrame() {
         initComponents();
     }
 
@@ -129,20 +125,22 @@ public class Kerucut extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hitungButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungButtonActionPerformed
-        double jariJariValue = Double.parseDouble(jariJariTextField.getText());
-        double tinggiValue = Double.parseDouble(tinggiTextField.getText());
-        
-        if (jariJariValue <= 0 || tinggiValue <= 0) {
-            JOptionPane.showMessageDialog(
-                null, 
-                "Jari-jari atau tinggi silinder harus lebih besar dari 0.",
-                "Warning",
-                JOptionPane.WARNING_MESSAGE
-            );
-        } else {
-            CincinBola cincinBola = new CincinBola(jariJariValue, tinggiValue);
-            luasPermukaanTextField.setText(String.format("%.2f", cincinBola.hitungLuasPermukaan()));
-            volumeTextField.setText(String.format("%.2f", cincinBola.hitungVolume()));
+        try {
+            double jariJariValue = Double.parseDouble(jariJariTextField.getText()); 
+            double tinggiValue = Double.parseDouble(tinggiTextField.getText());
+                
+            if (jariJariValue <= 0 || tinggiValue <= 0) {
+                JOptionPane.showMessageDialog(this, "Jari-jari dan Tinggi harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Kerucut kerucut = new Kerucut(jariJariValue, tinggiValue);
+
+            luasPermukaanTextField.setText(String.format("%.2f", kerucut.hitungLuasPermukaan()));
+            volumeTextField.setText(String.format("%.2f", kerucut.hitungVolume()));
+
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Input harus berupa angka, King!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_hitungButtonActionPerformed
 

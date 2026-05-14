@@ -3,31 +3,48 @@ package geometri3d;
 public class KerucutTerpancung extends Kerucut {
     private double jariJariAtas;
 
-    public KerucutTerpancung(double rBawah, double tinggi, double rAtas) {
-        super(rBawah, tinggi); // rBawah dan tinggi dikelola oleh bapaknya (Kerucut)
-        this.jariJariAtas = rAtas;
+    public KerucutTerpancung(double jariJariBawah, double tinggi, double jariJariAtas) {
+        super(jariJariBawah, tinggi); 
+        this.jariJariAtas = jariJariAtas;
     }
-
-    // Overriding Garis Pelukis untuk versi terpancung
+ 
     @Override
     public double getGarisPelukis() {
-        double selisihR = getJariJari() - jariJariAtas;
-        return Math.sqrt(Math.pow(getTinggi(), 2) + Math.pow(selisihR, 2));
-    }
-
-    @Override
-    public double hitungVolume() {
-        // Rumus: 1/3 * PI * t * (R^2 + r^2 + (R*r))
-        double rBawah = getJariJari();
-        return (1.0 / 3.0) * Math.PI * getTinggi() * (Math.pow(rBawah, 2) + Math.pow(jariJariAtas, 2) + (rBawah * jariJariAtas));
+        double jariJariBawah = getJariJari();
+        double selisihJariJari = jariJariBawah - jariJariAtas;
+        
+        return Math.sqrt(Math.pow(getTinggi(), 2) + Math.pow(selisihJariJari, 2));
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        double luasAlasBawah = hitungLuas(); // Memanggil PI * rBawah^2 dari Lingkaran
+        double jariJariBawah = getJariJari();
+        double garisPelukis = getGarisPelukis();
+        
+        double luasAlasBawah = hitungLuas(); 
         double luasAlasAtas = Math.PI * Math.pow(jariJariAtas, 2);
-        double luasSelimut = Math.PI * getGarisPelukis() * (getJariJari() + jariJariAtas);
+        double luasSelimut = Math.PI * garisPelukis * (jariJariBawah + jariJariAtas);
         
         return luasAlasBawah + luasAlasAtas + luasSelimut;
+    }
+    
+    @Override
+    public double hitungVolume() {
+        double jariJariBawah = getJariJari();
+        double tinggi = getTinggi();
+        
+        return (1.0 / 3.0) * Math.PI * tinggi * (Math.pow(jariJariBawah, 2) + Math.pow(jariJariAtas, 2) + (jariJariBawah * jariJariAtas));
+    }
+    
+    public double getJariJariAtas() {
+        return jariJariAtas;
+    }
+
+    public void setJariJariAtas(double jariJariAtas) {
+        this.jariJariAtas = jariJariAtas;
+    }
+    
+    public double getJariJariBawah() {
+        return getJariJari(); 
     }
 }

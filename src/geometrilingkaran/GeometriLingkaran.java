@@ -6,6 +6,10 @@ package geometrilingkaran;
 
 import geometri3d.CincinBola;
 import geometri3d.CincinBolaThread;
+import geometri3d.Kerucut;
+import geometri3d.KerucutThread;
+import geometri3d.KerucutTerpancung;
+import geometri3d.KerucutTerpancungThread;
 import java.util.Locale;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
@@ -71,20 +75,59 @@ public class GeometriLingkaran {
                 System.out.print("\n --- Kerucut ");
                 if (metodeTerpilih == 1) { // Single-thread
                     System.out.print("(Single-thread) ---\n");
-                    // TODO: isi kode
+                    double jariJari = inputDouble(scanner, "Jari-jari\t: ");
+                    double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+
+                    Kerucut kerucut = new Kerucut(jariJari, tinggi);
+                    double luasPermukaan = kerucut.hitungLuasPermukaan();
+                    double volume = kerucut.hitungVolume();
+
+                    String output = String.format(
+                        """
+                        Luas permukaan\t: %.2f 
+                        Volume\t\t: %.2f 
+                        ---------------------------
+                        """,
+                        luasPermukaan, volume
+                    );
+                    System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    // TODO: isi kode
+                    for (int i = 0; i < jumlahThread; i++) {
+                        KerucutThread runnable = new KerucutThread(i + 1); 
+                        Thread thread = new Thread(runnable);
+                        thread.start();
+                    }
                 }
             }
             case 3 -> { // Kerucut Terpancung
                 System.out.print("\n --- Kerucut Terpancung ");
                 if (metodeTerpilih == 1) { // Single-thread
                     System.out.print("(Single-thread) ---\n");
-                    // TODO: isi kode
+                    double jariJariBawah = inputDouble(scanner, "Jari-jari Bawah\t: ");
+                    double jariJariAtas = inputDouble(scanner, "Jari-jari Atas\t: ");
+                    double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+
+                    KerucutTerpancung kt = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
+                    double luasPermukaan = kt.hitungLuasPermukaan();
+                    double volume = kt.hitungVolume();
+
+                    String output = String.format(
+                        """
+                        Luas permukaan\t: %.2f 
+                        Volume\t\t: %.2f 
+                        ---------------------------
+                        """,
+                        luasPermukaan, volume
+                    );
+                    System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    // TODO: isi kode
+                    for (int i = 0; i < jumlahThread; i++) {
+                        KerucutTerpancungThread runnable = new KerucutTerpancungThread(i + 1); 
+                        Thread thread = new Thread(runnable);
+                        thread.start();
+                    }
                 }
             }
             case 4 -> { // Tabung

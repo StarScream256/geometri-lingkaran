@@ -3,20 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ui;
-import geometri3d.CincinBola;
+import geometri3d.KerucutTerpancung;
 import java.awt.TextField;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author asus
- */
-public class KerucutTerpancung extends javax.swing.JFrame {
+public class KerucutTerpancungFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form CincinBolaDonutFrame
      */
-    public KerucutTerpancung() {
+    public KerucutTerpancungFrame() {
         initComponents();
     }
 
@@ -160,20 +156,28 @@ public class KerucutTerpancung extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hitungButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungButtonActionPerformed
-        double jariJariValue = Double.parseDouble(jariJariTextField.getText());
-        double tinggiValue = Double.parseDouble(tinggiTextField.getText());
-        
-        if (jariJariValue <= 0 || tinggiValue <= 0) {
-            JOptionPane.showMessageDialog(
-                null, 
-                "Jari-jari atau tinggi silinder harus lebih besar dari 0.",
-                "Warning",
-                JOptionPane.WARNING_MESSAGE
-            );
-        } else {
-            CincinBola cincinBola = new CincinBola(jariJariValue, tinggiValue);
-            luasPermukaanTextField.setText(String.format("%.2f", cincinBola.hitungLuasPermukaan()));
-            volumeTextField.setText(String.format("%.2f", cincinBola.hitungVolume()));
+        try {
+            double jariJariBawahValue = Double.parseDouble(jariJariTextField2.getText()); 
+            double jariJariAtasValue = Double.parseDouble(jariJariTextField.getText());
+            double tinggiValue = Double.parseDouble(tinggiTextField.getText());
+
+            if (jariJariBawahValue <= 0 || jariJariAtasValue <= 0 || tinggiValue <= 0) {
+                JOptionPane.showMessageDialog(this, "Semua nilai harus lebih besar dari 0!", "Input Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (jariJariBawahValue <= jariJariAtasValue) {
+                JOptionPane.showMessageDialog(this, "Jari-jari bawah harus lebih besar dari jari-jari atas!", "Logika Salah", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            geometri3d.KerucutTerpancung kt = new geometri3d.KerucutTerpancung(jariJariBawahValue, tinggiValue, jariJariAtasValue);
+
+            luasPermukaanTextField.setText(String.format("%.2f", kt.hitungLuasPermukaan()));
+            volumeTextField.setText(String.format("%.2f", kt.hitungVolume()));
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Masukin angka yang bener dong, King!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_hitungButtonActionPerformed
 

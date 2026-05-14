@@ -6,6 +6,8 @@ package ui;
 
 import ui.TabungFrame;
 import ui.TemberengBolaFrame;
+import ui.KerucutFrame;
+import ui.KerucutTerpancungFrame;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -57,8 +59,18 @@ public class MainFrame extends javax.swing.JFrame {
         lingkaranButton.setText("Lingkaran");
 
         kerucutButton.setText("Kerucut");
+        kerucutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kerucutButtonActionPerformed(evt);
+            }
+        });
 
         kerucutTerpancungButton.setText("Kerucut Terpancung");
+        kerucutTerpancungButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kerucutTerpancungButtonActionPerformed(evt);
+            }
+        });
 
         tabungButton.setText("Tabung");
         tabungButton.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +170,20 @@ public class MainFrame extends javax.swing.JFrame {
         f.setLocationRelativeTo(null); 
         // f.setVisible(true);
     }//GEN-LAST:event_temberengBolaButtonActionPerformed
+
+    private void kerucutTerpancungButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kerucutTerpancungButtonActionPerformed
+        KerucutTerpancungFrame f = new KerucutTerpancungFrame(); 
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null); 
+        f.setVisible(true);
+    }//GEN-LAST:event_kerucutTerpancungButtonActionPerformed
+
+    private void kerucutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kerucutButtonActionPerformed
+        KerucutFrame f = new KerucutFrame(); 
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null); 
+        f.setVisible(true);
+    }//GEN-LAST:event_kerucutButtonActionPerformed
 
     public static void main(String args[]) {
         new MainFrame().setVisible(true);
