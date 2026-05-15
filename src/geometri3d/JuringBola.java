@@ -25,4 +25,11 @@ public class JuringBola extends Bola {
         double r = getJariJari();
         return (2* Math.PI *r * tinggiJuring) + (Math.PI * r * a);
     }
+    
+       public double getTinggiJuring() {
+        return tinggiJuring;
+    }
+    public void setTinggiJuring(double tinggiJuring) {
+        this.tinggiJuring = tinggiJuring;
+    }
 }
