@@ -10,7 +10,7 @@ import geometri2d.Geometri2D;
  *
  * @author Lenovo
  */
-public class Lingkaran extends Geometri2D {
+public class Lingkaran implements Geometri2D {
     private double jariJari;
 
     public Lingkaran(double jariJari) {
