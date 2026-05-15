@@ -49,13 +49,13 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jariJariLabel" alignment="2" max="32767" attributes="0"/>
+                  <Component id="jariJariBawahLabel" alignment="2" max="32767" attributes="0"/>
                   <Component id="judullLabel" alignment="2" max="32767" attributes="0"/>
                   <Component id="tinggiTextField" alignment="1" max="32767" attributes="0"/>
                   <Component id="tinggiLabel" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jariJariLabel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jariJariTextField" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jariJariTextField2" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jariJariAtasLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jariJariAtasTextField" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jariJariBawahTextField" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -72,13 +72,13 @@
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Component id="judullLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jariJariLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="jariJariBawahLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jariJariTextField2" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jariJariBawahTextField" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jariJariLabel1" min="-2" max="-2" attributes="0"/>
+              <Component id="jariJariAtasLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jariJariTextField" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="jariJariAtasTextField" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tinggiLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -101,12 +101,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="jariJariTextField">
+    <Component class="javax.swing.JTextField" name="jariJariAtasTextField">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jariJariTextFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jariJariAtasTextFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jariJariLabel">
+    <Component class="javax.swing.JLabel" name="jariJariBawahLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jari-jari Bawah"/>
       </Properties>
@@ -169,14 +169,14 @@
         <Property name="text" type="java.lang.String" value="Luas Permukaan"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jariJariLabel1">
+    <Component class="javax.swing.JLabel" name="jariJariAtasLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Jari-jari Atas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jariJariTextField2">
+    <Component class="javax.swing.JTextField" name="jariJariBawahTextField">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jariJariTextField2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jariJariBawahTextFieldActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

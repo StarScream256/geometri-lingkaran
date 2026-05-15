@@ -25,8 +25,8 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jariJariTextField = new javax.swing.JTextField();
-        jariJariLabel = new javax.swing.JLabel();
+        jariJariAtasTextField = new javax.swing.JTextField();
+        jariJariBawahLabel = new javax.swing.JLabel();
         tinggiLabel = new javax.swing.JLabel();
         tinggiTextField = new javax.swing.JTextField();
         judullLabel = new javax.swing.JLabel();
@@ -35,18 +35,18 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
         luasPermukaanTextField = new javax.swing.JTextField();
         volumeLabel = new javax.swing.JLabel();
         luasPermukaanLabel = new javax.swing.JLabel();
-        jariJariLabel1 = new javax.swing.JLabel();
-        jariJariTextField2 = new javax.swing.JTextField();
+        jariJariAtasLabel = new javax.swing.JLabel();
+        jariJariBawahTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jariJariTextField.addActionListener(new java.awt.event.ActionListener() {
+        jariJariAtasTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jariJariTextFieldActionPerformed(evt);
+                jariJariAtasTextFieldActionPerformed(evt);
             }
         });
 
-        jariJariLabel.setText("Jari-jari Bawah");
+        jariJariBawahLabel.setText("Jari-jari Bawah");
 
         tinggiLabel.setText("Tinggi Kerucut Terpancung");
 
@@ -78,11 +78,11 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
         luasPermukaanLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         luasPermukaanLabel.setText("Luas Permukaan");
 
-        jariJariLabel1.setText("Jari-jari Atas");
+        jariJariAtasLabel.setText("Jari-jari Atas");
 
-        jariJariTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jariJariBawahTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jariJariTextField2ActionPerformed(evt);
+                jariJariBawahTextFieldActionPerformed(evt);
             }
         });
 
@@ -109,13 +109,13 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jariJariLabel, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jariJariBawahLabel, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(judullLabel, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tinggiTextField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tinggiLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jariJariLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jariJariTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jariJariTextField2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jariJariAtasLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jariJariAtasTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jariJariBawahTextField, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(163, 163, 163)
@@ -128,13 +128,13 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(judullLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jariJariLabel)
+                .addComponent(jariJariBawahLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jariJariTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jariJariBawahTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jariJariLabel1)
+                .addComponent(jariJariAtasLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jariJariTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jariJariAtasTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tinggiLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,8 +157,8 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
 
     private void hitungButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hitungButtonActionPerformed
         try {
-            double jariJariBawahValue = Double.parseDouble(jariJariTextField2.getText()); 
-            double jariJariAtasValue = Double.parseDouble(jariJariTextField.getText());
+            double jariJariBawahValue = Double.parseDouble(jariJariBawahTextField.getText()); 
+            double jariJariAtasValue = Double.parseDouble(jariJariAtasTextField.getText());
             double tinggiValue = Double.parseDouble(tinggiTextField.getText());
 
             if (jariJariBawahValue <= 0 || jariJariAtasValue <= 0 || tinggiValue <= 0) {
@@ -181,13 +181,13 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_hitungButtonActionPerformed
 
-    private void jariJariTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jariJariTextFieldActionPerformed
+    private void jariJariAtasTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jariJariAtasTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jariJariTextFieldActionPerformed
+    }//GEN-LAST:event_jariJariAtasTextFieldActionPerformed
 
-    private void jariJariTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jariJariTextField2ActionPerformed
+    private void jariJariBawahTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jariJariBawahTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jariJariTextField2ActionPerformed
+    }//GEN-LAST:event_jariJariBawahTextFieldActionPerformed
 
     private void volumeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volumeTextFieldActionPerformed
         // TODO add your handling code here:
@@ -238,17 +238,17 @@ public class KerucutTerpancungFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KerucutTerpancung().setVisible(true);
+                new KerucutTerpancungFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton hitungButton;
-    private javax.swing.JLabel jariJariLabel;
-    private javax.swing.JLabel jariJariLabel1;
-    private javax.swing.JTextField jariJariTextField;
-    private javax.swing.JTextField jariJariTextField2;
+    private javax.swing.JLabel jariJariAtasLabel;
+    private javax.swing.JTextField jariJariAtasTextField;
+    private javax.swing.JLabel jariJariBawahLabel;
+    private javax.swing.JTextField jariJariBawahTextField;
     private javax.swing.JLabel judullLabel;
     private javax.swing.JLabel luasPermukaanLabel;
     private javax.swing.JTextField luasPermukaanTextField;
