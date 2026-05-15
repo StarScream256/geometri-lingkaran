@@ -4,21 +4,7 @@
  */
 package geometri2d;
 
-import geometri2d.BendaGeometri;
-
-/**
- *
- * @author Lenovo
- */
-public abstract  class Geometri2D implements BendaGeometri{
-   
-    @Override
-    public double hitungVolume() {
-        return 0;
-    }
-
-    @Override
-    public double hitungLuasPermukaan() {
-        return 0;
-    }
+public interface Geometri2D {
+    double hitungLuas();
+    double hitungKeliling();
 }
