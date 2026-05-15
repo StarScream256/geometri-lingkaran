@@ -2,7 +2,7 @@ package geometri3d;
 
 import geometri2d.Lingkaran;
 
-public class Kerucut extends Lingkaran {
+public class Kerucut extends Lingkaran implements Geometri3D {
     private double tinggi;
 
     public Kerucut(double jariJari, double tinggi) {
