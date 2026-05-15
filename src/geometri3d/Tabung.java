@@ -10,7 +10,7 @@ import geometri2d.Lingkaran;
  *
  * @author LEGION
  */
-public class Tabung extends Lingkaran {
+public class Tabung extends Lingkaran implements Geometri3D{
     private double tinggi;
 
     public Tabung(double r, double tinggi) {
