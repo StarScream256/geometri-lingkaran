@@ -3,7 +3,7 @@ package geometri3d;
 
 import geometri2d.Lingkaran;
 
-public class Bola extends Lingkaran {
+public class Bola extends Lingkaran implements Geometri3D {
     
     public Bola(double r){
         super(r);
