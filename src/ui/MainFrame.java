@@ -8,6 +8,7 @@ import ui.TabungFrame;
 import ui.TemberengBolaFrame;
 import ui.KerucutFrame;
 import ui.KerucutTerpancungFrame;
+import ui.BolaFrame;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -80,8 +81,18 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         bolaButton.setText("Bola");
+        bolaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bolaButtonActionPerformed(evt);
+            }
+        });
 
         juringBolaButton.setText("Juring Bola");
+        juringBolaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                juringBolaButtonActionPerformed(evt);
+            }
+        });
 
         temberengBolaButton.setText("Tembereng Bola");
         temberengBolaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -184,6 +195,20 @@ public class MainFrame extends javax.swing.JFrame {
         f.setLocationRelativeTo(null); 
         f.setVisible(true);
     }//GEN-LAST:event_kerucutButtonActionPerformed
+
+    private void bolaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bolaButtonActionPerformed
+        BolaFrame bola = new BolaFrame(); 
+        bola.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        bola.setLocationRelativeTo(null); 
+        bola.setVisible(true);
+    }//GEN-LAST:event_bolaButtonActionPerformed
+
+    private void juringBolaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juringBolaButtonActionPerformed
+        JuringBolaFrame juringBola = new JuringBolaFrame(); 
+        juringBola.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        juringBola.setLocationRelativeTo(null); 
+        juringBola.setVisible(true);
+    }//GEN-LAST:event_juringBolaButtonActionPerformed
 
     public static void main(String args[]) {
         new MainFrame().setVisible(true);

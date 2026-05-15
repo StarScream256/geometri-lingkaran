@@ -108,11 +108,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Bola"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bolaButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="juringBolaButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Juring Bola"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="juringBolaButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="temberengBolaButton">
       <Properties>
