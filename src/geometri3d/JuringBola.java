@@ -23,7 +23,7 @@ public class JuringBola extends Bola {
     public double hitungLuasPermukaan(){
         double a = hitungA();
         double r = getJariJari();
-        return (2* Math.PI *r * tinggiJuring) + (Math.PI * r * a);
+        return (2* Math.PI *r * tinggiJuring) + (Math.PI * a * a);
     }
     
        public double getTinggiJuring() {
