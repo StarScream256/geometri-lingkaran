@@ -25,4 +25,12 @@ public class TemberengBola extends Bola {
     public double hitungVolume() {
         return (1.0/3.0) * Math.PI * tinggi * tinggi * (3 * getJariJari() - tinggi);
     }
+
+    public double getTinggi() {
+        return tinggi;
+    }
+
+    public void setTinggi(double tinggi) {
+        this.tinggi = tinggi;
+    }
 }

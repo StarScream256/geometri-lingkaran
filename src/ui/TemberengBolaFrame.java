@@ -55,11 +55,7 @@ public class TemberengBolaFrame extends JFrame {
                     double t = Double.parseDouble(txtTinggi.getText().replace(",", "."));
 
                     TemberengBola tb = new TemberengBola(r, t);
-
-                    // thread
-                    TemberengBolaThread thread = new TemberengBolaThread(tb);
-                    thread.start();
-
+                    
                     lblHasil.setText("Hasil: " + String.format("%.2f", tb.hitungVolume()));
 
                 } catch (Exception ex) {

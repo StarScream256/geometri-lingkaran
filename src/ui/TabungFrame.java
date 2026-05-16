@@ -69,10 +69,6 @@ public class TabungFrame extends JFrame {
                     // OBJECT TABUNG
                     Tabung tabung = new Tabung(r, t);
 
-                    // THREAD (sesuai materi)
-                    TabungThread thread = new TabungThread(tabung);
-                    thread.start();
-
                     // TAMPILKAN HASIL (format 2 desimal)
                     lblHasil.setText("Hasil: " + String.format("%.2f", tabung.hitungVolume()));
 

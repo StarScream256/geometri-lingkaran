@@ -27,6 +27,13 @@ public class Tabung extends Lingkaran implements Geometri3D{
     public double hitungVolume() {
         return Math.PI * getJariJari() * getJariJari() * tinggi;
     }
-    
-    
+
+    // TAMBAHKAN DI SINI
+    public double getTinggi() {
+        return tinggi;
+    }
+
+    public void setTinggi(double tinggi) {
+        this.tinggi = tinggi;
+    }
 }

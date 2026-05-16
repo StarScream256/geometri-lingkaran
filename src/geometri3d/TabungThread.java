@@ -4,19 +4,48 @@
  */
 package geometri3d;
 
-/**
- *
- * @author LEGION
- */
-public class TabungThread extends Thread {
-    private Tabung tabung;
+public class TabungThread implements Runnable {
 
-    public TabungThread(Tabung t) {
-        this.tabung = t;
+    private int nomor;
+
+    public TabungThread(int nomor) {
+        this.nomor = nomor;
     }
 
     @Override
     public void run() {
-        System.out.println(tabung.hitungVolume());
+
+        try {
+            Thread.sleep((long)(Math.random() * 300));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        double r = (Math.random() * (12 - 2)) + 2;
+        double t = (Math.random() * (12 - 2)) + 2;
+
+        Tabung tabung = new Tabung(r, t);
+
+        double luasPermukaan = tabung.hitungLuasPermukaan();
+        double volume = tabung.hitungVolume();
+
+        String output = String.format(
+            """
+            Thread Tabung #%d (%s)
+            Jari-jari : %.2f
+            Tinggi    : %.2f
+            Luas Permukaan : %.2f
+            Volume    : %.2f
+            -----------------------------
+            """,
+            nomor,
+            Thread.currentThread().getName(),
+            r,
+            t,
+            luasPermukaan,
+            volume
+        );
+
+        System.out.print(output);
     }
 }
