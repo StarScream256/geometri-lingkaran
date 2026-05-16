@@ -16,6 +16,8 @@ import geometri3d.JuringBola;
 import geometri3d.JuringBolaThread;
 import java.util.Locale;
 import java.util.Scanner;
+import geometri2d.Lingkaran;
+import geometri2d.LingkaranThread;
 import javax.swing.SwingUtilities;
 import ui.MainFrame;
 
@@ -69,10 +71,28 @@ public class GeometriLingkaran {
                 System.out.print("\n --- Lingkaran ");
                 if (metodeTerpilih == 1) { // Single-thread
                     System.out.print("(Single-thread) ---\n");
-                    // TODO: isi kode
+                    double jariJari = inputDouble(scanner, "Jari-jari\t: ");
+                    
+                    Lingkaran lingkaran = new Lingkaran(jariJari); 
+                    double luasLingkaran = lingkaran.hitungLuas();
+                    double KelilingLingkaran = lingkaran.hitungKeliling();
+
+                    String output = String.format(
+                        """
+                        Luas Lingkaran\t: %.2f 
+                        Keliling \t\t: %.2f 
+                        ---------------------------
+                        """,
+                        luasLingkaran, KelilingLingkaran
+                    );
+                    System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    // TODO: isi kode
+                     for (int i = 0; i < jumlahThread; i++) {
+                    LingkaranThread runnable = new LingkaranThread(i +1);
+                    Thread thread = new Thread(runnable);
+                    thread.start();
+                     }
                 }
             }
             case 2 -> { // Kerucut
