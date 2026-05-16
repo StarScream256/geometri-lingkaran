@@ -10,26 +10,55 @@ import geometri2d.Lingkaran;
  *
  * @author Lenovo
  */
-public class LingkaranThread extends Thread {
-    private Lingkaran lingkaran;
-    private double hasil;
-    private String tipe; // "luas" atau "keliling"
+public class LingkaranThread implements Runnable {
 
-    public LingkaranThread(Lingkaran lingkaran, String tipe) {
-        this.lingkaran = lingkaran;
-        this.tipe = tipe;
+    private int nomor;
+
+    public LingkaranThread(int nomor) {
+        this.nomor = nomor;
     }
 
     @Override
     public void run() {
-        if (tipe.equals("luas")) {
-            hasil = lingkaran.hitungLuas();
-        } else {
-            hasil = lingkaran.hitungKeliling();
-        }
-    }
 
-    public double getHasil() {
-        return hasil;
+        try {
+
+            // Delay random 0 - 300 ms
+            Thread.sleep((long)(Math.random() * 300));
+
+        } catch (InterruptedException e) {
+
+            e.printStackTrace();
+        }
+
+        // Random jari-jari 2 - 12
+        double jariJari = (Math.random() * (12 - 2)) + 2;
+
+        // Object lingkaran
+        Lingkaran lingkaran = new Lingkaran(jariJari);
+
+        // Hitung
+        double luas = lingkaran.hitungLuas();
+        double keliling = lingkaran.hitungKeliling();
+
+        // Output
+        String output = String.format(
+            """
+            Thread Lingkaran #%d (%s)
+            Jari-jari : %.2f
+            Luas      : %.2f
+            Keliling  : %.2f
+            -----------------------------
+
+            """,
+
+            this.nomor,
+            Thread.currentThread().getName(),
+            jariJari,
+            luas,
+            keliling
+        );
+
+        System.out.print(output);
     }
 }
