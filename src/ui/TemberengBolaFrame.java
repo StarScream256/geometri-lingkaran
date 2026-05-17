@@ -65,7 +65,7 @@ public class TemberengBolaFrame extends JFrame {
         });
     }
 
-//    public static void main(String[] args) {
-//        new TemberengBolaFrame().setVisible(true);
-//    }
+    public static void main(String[] args) {
+        new TemberengBolaFrame().setVisible(true);
+    }
 }

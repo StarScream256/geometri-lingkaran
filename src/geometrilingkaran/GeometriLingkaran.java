@@ -18,8 +18,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import geometri2d.Lingkaran;
 import geometri2d.LingkaranThread;
-import javax.swing.SwingUtilities;
-import uiold.MainFrame;
+import ui.MainFrame;
 
 /**
  *
@@ -41,6 +40,7 @@ public class GeometriLingkaran {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        new MainFrame().setVisible(true);
         Scanner scanner = new Scanner(System.in);
         // locale diatur ke US, input double pakai titik (.) Contoh: 8.3
         scanner.useLocale(Locale.US);
