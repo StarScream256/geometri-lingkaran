@@ -8,7 +8,7 @@ package geometri3d;
  *
  * @author asus
  */
-public class CincinBolaTorus extends Bola {
+public class CincinBolaTorus extends Bola implements Geometri3D {
     private double jariJariMajor;
     
     public CincinBolaTorus(int jariJariMinor, int jariJariMajor) {

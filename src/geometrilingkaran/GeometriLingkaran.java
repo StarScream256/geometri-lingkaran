@@ -19,7 +19,7 @@ import java.util.Scanner;
 import geometri2d.Lingkaran;
 import geometri2d.LingkaranThread;
 import javax.swing.SwingUtilities;
-import ui.MainFrame;
+import uiold.MainFrame;
 
 /**
  *
@@ -263,5 +263,4 @@ public class GeometriLingkaran {
             default -> System.out.println("Pilihan anda tidak valid");
         }
     }
-    
 }
