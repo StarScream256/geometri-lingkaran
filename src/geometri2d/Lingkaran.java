@@ -12,6 +12,14 @@ import geometri2d.Geometri2D;
  */
 public class Lingkaran implements Geometri2D {
     private double jariJari;
+    
+    public Lingkaran() {
+        this.jariJari = 0;
+    }
+    
+    public Lingkaran(int jariJari) {
+        this.jariJari = jariJari;
+    }
 
     public Lingkaran(double jariJari) {
         this.jariJari = jariJari;

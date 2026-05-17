@@ -5,6 +5,10 @@ import geometri2d.Lingkaran;
 
 public class Bola extends Lingkaran implements Geometri3D {
     
+    public Bola(int r) {
+        super(r);
+    }
+    
     public Bola(double r){
         super(r);
     }

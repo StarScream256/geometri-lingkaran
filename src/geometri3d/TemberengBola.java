@@ -10,6 +10,11 @@ package geometri3d;
  */
 public class TemberengBola extends Bola {
     private double tinggi;
+    
+    public TemberengBola(int r, int tinggi) {
+        super(r);
+        this.tinggi = tinggi;
+    }
 
     public TemberengBola(double r, double tinggi) {
         super(r);

@@ -4,6 +4,11 @@ package geometri3d;
 public class JuringBola extends Bola {
     private double tinggiJuring;
     
+    public JuringBola(int r, int tinggiJuring){
+        super(r);
+        this.tinggiJuring = tinggiJuring;
+    }
+    
     public JuringBola(double r, double tinggiJuring){
         super(r);
         this.tinggiJuring = tinggiJuring;

@@ -4,15 +4,6 @@
  */
 package ui;
 
-import ui.TabungFrame;
-import ui.TemberengBolaFrame;
-import ui.KerucutFrame;
-import ui.KerucutTerpancungFrame;
-import ui.BolaFrame;
-import java.awt.Window;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
 /**
  *
  * @author asus
@@ -58,6 +49,11 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lingkaranButton.setText("Lingkaran");
+        lingkaranButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lingkaranButtonActionPerformed(evt);
+            }
+        });
 
         kerucutButton.setText("Kerucut");
         kerucutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +205,13 @@ public class MainFrame extends javax.swing.JFrame {
         juringBola.setLocationRelativeTo(null); 
         juringBola.setVisible(true);
     }//GEN-LAST:event_juringBolaButtonActionPerformed
+
+    private void lingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lingkaranButtonActionPerformed
+        LingkaranFrame f = new LingkaranFrame();
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null); 
+        f.setVisible(true);
+    }//GEN-LAST:event_lingkaranButtonActionPerformed
 
     public static void main(String args[]) {
         new MainFrame().setVisible(true);

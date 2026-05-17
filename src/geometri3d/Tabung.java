@@ -12,6 +12,11 @@ import geometri2d.Lingkaran;
  */
 public class Tabung extends Lingkaran implements Geometri3D{
     private double tinggi;
+    
+    public Tabung(int r, int tinggi) {
+        super(r);
+        this.tinggi = tinggi;
+    }
 
     public Tabung(double r, double tinggi) {
         super(r);

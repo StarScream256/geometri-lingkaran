@@ -3,6 +3,11 @@ package geometri3d;
 public class KerucutTerpancung extends Kerucut {
     private double jariJariAtas;
 
+    public KerucutTerpancung(int jariJariBawah, int tinggi, int jariJariAtas) {
+        super(jariJariBawah, tinggi); 
+        this.jariJariAtas = jariJariAtas;
+    }
+    
     public KerucutTerpancung(double jariJariBawah, double tinggi, double jariJariAtas) {
         super(jariJariBawah, tinggi); 
         this.jariJariAtas = jariJariAtas;
