@@ -17,8 +17,9 @@ public class KerucutTerpancung extends Kerucut {
     public double getGarisPelukis() {
         double jariJariBawah = getJariJari();
         double selisihJariJari = jariJariBawah - jariJariAtas;
+        double tinggi = getTinggi();
         
-        return Math.sqrt(Math.pow(getTinggi(), 2) + Math.pow(selisihJariJari, 2));
+        return Math.sqrt(Math.pow(tinggi, 2) + Math.pow(selisihJariJari, 2));
     }
 
     @Override
