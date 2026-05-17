@@ -245,7 +245,7 @@ public class GeometriLingkaran {
                 }
             }
             case 7 -> { // Tembereng Bola
-                System.out.print("\n --- Cincin Bola ");
+                System.out.print("\n --- Tembereng Bola ");
                 if (metodeTerpilih == 1) { // Single-thread
                     System.out.print("(Single-thread) ---\n");
                     double jariJari = inputDouble(scanner, "Jari-jari\t: ");
