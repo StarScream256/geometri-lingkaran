@@ -10,10 +10,14 @@ import geometri3d.Kerucut;
 import geometri3d.KerucutThread;
 import geometri3d.KerucutTerpancung;
 import geometri3d.KerucutTerpancungThread;
+import geometri3d.Tabung;
+import geometri3d.TabungThread;
 import geometri3d.Bola;
 import geometri3d.BolaThread;
 import geometri3d.JuringBola;
 import geometri3d.JuringBolaThread;
+import geometri3d.TemberengBola;
+import geometri3d.TemberengBolaThread;
 import java.util.Locale;
 import java.util.Scanner;
 import geometri2d.Lingkaran;
@@ -158,10 +162,29 @@ public class GeometriLingkaran {
                 System.out.print("\n --- Tabung ");
                 if (metodeTerpilih == 1) { // Single-thread
                     System.out.print("(Single-thread) ---\n");
-                    // TODO: isi kode
+                    double jariJari = inputDouble(scanner, "Jari-jari\t: ");
+                    double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+
+                    Tabung tabung = new Tabung(jariJari, tinggi);
+                    double luasPermukaan = tabung.hitungLuasPermukaan();
+                    double volume = tabung.hitungVolume();
+
+                    String output = String.format(
+                        """
+                        Luas permukaan\t: %.2f 
+                        Volume\t\t: %.2f 
+                        ---------------------------
+                        """,
+                        luasPermukaan, volume
+                    );
+                    System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    // TODO: isi kode
+                    for (int i = 0; i < jumlahThread; i++) {
+                        TabungThread runnable = new TabungThread(i + 1); 
+                        Thread thread = new Thread(runnable);
+                        thread.start();
+                    }
                 }
             }
             case 5 -> { // Bola
@@ -225,10 +248,29 @@ public class GeometriLingkaran {
                 System.out.print("\n --- Cincin Bola ");
                 if (metodeTerpilih == 1) { // Single-thread
                     System.out.print("(Single-thread) ---\n");
-                    // TODO: isi kode
+                    double jariJari = inputDouble(scanner, "Jari-jari\t: ");
+                    double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+                    
+                    TemberengBola tembereng = new TemberengBola(jariJari, tinggi);
+                    double luasPermukaan = tembereng.hitungLuasPermukaan();
+                    double volume = tembereng.hitungVolume();
+                    
+                    String output = String.format(
+                        """
+                        Luas permukaan\t: %.2f 
+                        Volume\t\t: %.2f 
+                        ---------------------------
+                        """,
+                        luasPermukaan, volume
+                    );
+                    System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    // TODO: isi kode
+                    for (int i = 0; i < jumlahThread; i++) {
+                        TemberengBolaThread runnable = new TemberengBolaThread(i + 1); 
+                        Thread thread = new Thread(runnable);
+                        thread.start();
+                    }
                 }
             }
             case 8 -> { // Cincin Bola

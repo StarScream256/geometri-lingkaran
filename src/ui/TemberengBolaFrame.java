@@ -1,65 +1,101 @@
 package ui;
 
+import geometri3d.TemberengBola;
 import javax.swing.*;
 import java.awt.event.*;
-import geometri3d.TemberengBola;
-import geometri3d.TemberengBolaThread;
 
 public class TemberengBolaFrame extends JFrame {
 
-    private JTextField txtR, txtTinggi;
+    private JTextField txtJariJari, txtTinggi;
     private JButton btnHitung;
-    private JLabel lblHasil;
+    private JLabel lblLuasPermukaan, lblVolume;
 
     public TemberengBolaFrame() {
 
-        setTitle("Hitung Volume Tembereng Bola");
-        setSize(300, 220);
+        setTitle("Tembereng Bola (Spherical Cap)");
+        setSize(380, 300);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        JLabel l1 = new JLabel("Jari-jari:");
-        l1.setBounds(10, 10, 100, 20);
-        add(l1);
+        JLabel lblJudul = new JLabel("Tembereng Bola (Spherical Cap)");
+        lblJudul.setBounds(75, 15, 230, 25);
+        lblJudul.setFont(new java.awt.Font("Segoe UI", 1, 14));
+        add(lblJudul);
 
-        txtR = new JTextField();
-        txtR.setBounds(120, 10, 120, 20);
-        add(txtR);
+        JLabel lblJariJari = new JLabel("Jari-jari Bola:");
+        lblJariJari.setBounds(10, 50, 100, 20);
+        add(lblJariJari);
 
-        JLabel l2 = new JLabel("Tinggi:");
-        l2.setBounds(10, 40, 100, 20);
-        add(l2);
+        txtJariJari = new JTextField();
+        txtJariJari.setBounds(120, 50, 120, 20);
+        add(txtJariJari);
+
+        JLabel lblTinggi = new JLabel("Tinggi Tembereng:");
+        lblTinggi.setBounds(10, 80, 110, 20);
+        add(lblTinggi);
 
         txtTinggi = new JTextField();
-        txtTinggi.setBounds(120, 40, 120, 20);
+        txtTinggi.setBounds(120, 80, 120, 20);
         add(txtTinggi);
 
         btnHitung = new JButton("Hitung");
-        btnHitung.setBounds(80, 80, 120, 30);
+        btnHitung.setBounds(115, 120, 120, 30);
+        btnHitung.setBackground(new java.awt.Color(51, 102, 255));
+        btnHitung.setForeground(new java.awt.Color(255, 255, 255));
         add(btnHitung);
 
-        lblHasil = new JLabel("Hasil: ");
-        lblHasil.setBounds(10, 130, 260, 20);
-        add(lblHasil);
+        lblLuasPermukaan = new JLabel("Luas Permukaan");
+        lblLuasPermukaan.setBounds(10, 170, 100, 20);
+        lblLuasPermukaan.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        add(lblLuasPermukaan);
+
+        JTextField txtLuasPermukaan = new JTextField();
+        txtLuasPermukaan.setBounds(10, 195, 150, 30);
+        txtLuasPermukaan.setEditable(false);
+        add(txtLuasPermukaan);
+
+        lblVolume = new JLabel("Volume");
+        lblVolume.setBounds(200, 170, 100, 20);
+        lblVolume.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        add(lblVolume);
+
+        JTextField txtVolume = new JTextField();
+        txtVolume.setBounds(200, 195, 150, 30);
+        txtVolume.setEditable(false);
+        add(txtVolume);
 
         btnHitung.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 try {
 
-                    if (txtR.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
+                    if (txtJariJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Semua input harus diisi!");
                         return;
                     }
 
-                    double r = Double.parseDouble(txtR.getText().replace(",", "."));
-                    double t = Double.parseDouble(txtTinggi.getText().replace(",", "."));
+                    double jariJariValue = Double.parseDouble(txtJariJari.getText().replace(",", "."));
+                    double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
 
-                    TemberengBola tb = new TemberengBola(r, t);
-                    
-                    lblHasil.setText("Hasil: " + String.format("%.2f", tb.hitungVolume()));
+                    if (jariJariValue <= 0 || tinggiValue <= 0) {
+                        JOptionPane.showMessageDialog(null, "Jari-jari atau tinggi tembereng harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
 
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, "Input harus angka!");
+                    // VALIDASI TAMBAHAN LOGIKA MATEMATIKA: 
+                    // Tinggi tembereng tidak boleh melebihi diameter bola (2 * jari-jari)
+                    if (tinggiValue > (2 * jariJariValue)) {
+                        JOptionPane.showMessageDialog(null, "Tinggi tembereng tidak boleh melebihi diameter bola (2 * Jari-jari)!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    // Instansiasi objek TemberengBola milikmu
+                    TemberengBola temberengBola = new TemberengBola(jariJariValue, tinggiValue);
+                    txtLuasPermukaan.setText(String.format("%.2f", temberengBola.hitungLuasPermukaan()));
+                    txtVolume.setText(String.format("%.2f", temberengBola.hitungVolume()));
+
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
