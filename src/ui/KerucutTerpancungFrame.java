@@ -39,7 +39,7 @@ public class KerucutTerpancungFrame extends JFrame {
         txtJariJariAtas.setBounds(120, 85, 250, 25);
         add(txtJariJariAtas);
 
-        JLabel lblTinggi = new JLabel("Tinggi Kerucut Terpancung");
+        JLabel lblTinggi = new JLabel("Tinggi Terpancung");
         lblTinggi.setBounds(10, 120, 150, 20);
         add(lblTinggi);
 
