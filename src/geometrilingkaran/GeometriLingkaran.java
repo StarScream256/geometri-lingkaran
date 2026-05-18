@@ -40,9 +40,6 @@ public class GeometriLingkaran {
         return sc.nextInt();
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         new MainFrame().setVisible(true);
         Scanner scanner = new Scanner(System.in);
@@ -77,7 +74,7 @@ public class GeometriLingkaran {
                     System.out.print("(Single-thread) ---\n");
                     double jariJari = inputDouble(scanner, "Jari-jari\t: ");
                     
-                    Lingkaran lingkaran = new Lingkaran(jariJari); 
+                    Lingkaran lingkaran = new Lingkaran();
                     double luasLingkaran = lingkaran.hitungLuas();
                     double KelilingLingkaran = lingkaran.hitungKeliling();
 
@@ -136,7 +133,7 @@ public class GeometriLingkaran {
                     double jariJariAtas = inputDouble(scanner, "Jari-jari Atas\t: ");
                     double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
 
-                    KerucutTerpancung kt = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
+                    Kerucut kt = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
                     double luasPermukaan = kt.hitungLuasPermukaan();
                     double volume = kt.hitungVolume();
 
@@ -222,7 +219,7 @@ public class GeometriLingkaran {
                     double jariJari = inputDouble(scanner, "Jari-jari\t: ");
                     double tinggi = inputDouble(scanner, "Tinggi\t: ");
 
-                    JuringBola juringBola = new JuringBola(jariJari,tinggi);
+                    Bola juringBola = new JuringBola(jariJari,tinggi);
                     double luasPermukaan = juringBola.hitungLuasPermukaan();
                     double volume = juringBola.hitungVolume();
 
@@ -251,7 +248,7 @@ public class GeometriLingkaran {
                     double jariJari = inputDouble(scanner, "Jari-jari\t: ");
                     double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
                     
-                    TemberengBola tembereng = new TemberengBola(jariJari, tinggi);
+                    Bola tembereng = new TemberengBola(jariJari, tinggi);
                     double luasPermukaan = tembereng.hitungLuasPermukaan();
                     double volume = tembereng.hitungVolume();
                     
@@ -280,7 +277,7 @@ public class GeometriLingkaran {
                     double jariJari = inputDouble(scanner, "Jari-jari\t: ");
                     double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
                     
-                    CincinBola cincinBola = new CincinBola(jariJari, tinggi);
+                    Bola cincinBola = new CincinBola(jariJari, tinggi);
                     double luasPermukaan = cincinBola.hitungLuasPermukaan();
                     double volume = cincinBola.hitungVolume();
                     

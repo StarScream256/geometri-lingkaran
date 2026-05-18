@@ -4,6 +4,7 @@ import geometri2d.Lingkaran;
 
 public class Kerucut extends Lingkaran implements Geometri3D {
     private double tinggi;
+    public Kerucut() {}
 
     public Kerucut(int jariJari, int tinggi) {
         super(jariJari); 
