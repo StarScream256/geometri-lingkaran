@@ -2,11 +2,8 @@ package geometri3d;
 
 public class KerucutTerpancung extends Kerucut {
     private double jariJariAtas;
-
-    public KerucutTerpancung(int jariJariBawah, int tinggi, int jariJariAtas) {
-        super(jariJariBawah, tinggi); 
-        this.jariJariAtas = jariJariAtas;
-    }
+    private double luasPermukaanKerucutTerpancung;
+    private double volumeKerucutTerpancung;
     
     public KerucutTerpancung(double jariJariBawah, double tinggi, double jariJariAtas) {
         super(jariJariBawah, tinggi); 
@@ -16,30 +13,26 @@ public class KerucutTerpancung extends Kerucut {
     @Override
     public double getGarisPelukis() {
         double jariJariBawah = getJariJari();
-        double selisihJariJari = jariJariBawah - jariJariAtas;
-        double tinggi = getTinggi();
-        
-        return Math.sqrt(Math.pow(tinggi, 2) + Math.pow(selisihJariJari, 2));
+        return Math.sqrt(Math.pow(getTinggiKerucut(), 2) + Math.pow((jariJariBawah - jariJariAtas), 2));
     }
 
     @Override
     public double hitungLuasPermukaan() {
         double jariJariBawah = getJariJari();
-        double garisPelukis = getGarisPelukis();
         
         double luasAlasBawah = hitungLuas(); 
-        double luasAlasAtas = Math.PI * Math.pow(jariJariAtas, 2);
-        double luasSelimut = Math.PI * garisPelukis * (jariJariBawah + jariJariAtas);
+        double luasAlasAtas = getPHI() * Math.pow(jariJariAtas, 2);
+        double luasSelimut = getPHI() * getGarisPelukis() * (jariJariBawah + jariJariAtas);
         
-        return luasAlasBawah + luasAlasAtas + luasSelimut;
+        return this.luasPermukaanKerucutTerpancung = luasAlasBawah + luasAlasAtas + luasSelimut;
     }
     
     @Override
     public double hitungVolume() {
         double jariJariBawah = getJariJari();
-        double tinggi = getTinggi();
         
-        return (1.0 / 3.0) * Math.PI * tinggi * (Math.pow(jariJariBawah, 2) + Math.pow(jariJariAtas, 2) + (jariJariBawah * jariJariAtas));
+        return this.volumeKerucutTerpancung = (1.0 / 3.0) * getPHI() * getTinggiKerucut() * 
+                (Math.pow(jariJariBawah, 2) + Math.pow(jariJariAtas, 2) + (jariJariBawah * jariJariAtas));
     }
     
     public double getJariJariAtas() {
@@ -52,5 +45,13 @@ public class KerucutTerpancung extends Kerucut {
     
     public double getJariJariBawah() {
         return getJariJari(); 
+    }
+    
+    public double getLuasPermukaanKerucutTerpancung() {
+        return luasPermukaanKerucutTerpancung;
+    }
+
+    public double getVolumeKerucutTerpancung() {
+        return volumeKerucutTerpancung;
     }
 }

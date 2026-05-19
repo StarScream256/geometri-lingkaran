@@ -3,16 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package geometri2d;
-
-import geometri2d.Geometri2D;
-
 /**
  *
  * @author Lenovo
  */
 public class Lingkaran implements Geometri2D {
     private double jariJari;
-    
+    private static final double PHI = Math.PI;
+
     public Lingkaran() {
         this.jariJari = 0;
     }
@@ -32,14 +30,18 @@ public class Lingkaran implements Geometri2D {
     public void setJariJari(double jariJari) {
         this.jariJari = jariJari;
     }
+    
+    public static double getPHI() {
+        return PHI;
+    }
 
     @Override
     public double hitungLuas() {
-        return Math.PI * jariJari * jariJari;
+        return PHI * jariJari * jariJari;
     }
 
     @Override
     public double hitungKeliling() {
-        return 2 * Math.PI * jariJari;
+        return 2 * PHI * jariJari;
     }
 }
