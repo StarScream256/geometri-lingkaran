@@ -78,22 +78,18 @@ public class TemberengBolaFrame extends JFrame {
                     double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
 
                     if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari atau tinggi tembereng harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Jari-jari dan tinggi tembereng harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
-                    // VALIDASI TAMBAHAN LOGIKA MATEMATIKA: 
-                    // Tinggi tembereng tidak boleh melebihi diameter bola (2 * jari-jari)
                     if (tinggiValue > (2 * jariJariValue)) {
                         JOptionPane.showMessageDialog(null, "Tinggi tembereng tidak boleh melebihi diameter bola (2 * Jari-jari)!", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
-                    // Instansiasi objek TemberengBola milikmu
                     TemberengBola temberengBola = new TemberengBola(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", temberengBola.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", temberengBola.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
                 }

@@ -10,6 +10,8 @@ package geometri3d;
  */
 public class CincinBolaTorus extends Bola implements Geometri3D {
     private double jariJariMajor;
+    private double luasPermukaan;
+    private double volume;
     
     public CincinBolaTorus(int jariJariMinor, int jariJariMajor) {
         super(jariJariMinor);
@@ -23,13 +25,13 @@ public class CincinBolaTorus extends Bola implements Geometri3D {
 
     @Override
     public double hitungLuasPermukaan() {
-        double luasPermukaan = (2 * Math.PI * getJariJari()) * (2 * Math.PI * this.jariJariMajor);
+        luasPermukaan = (2 * super.getPHI() * super.getJariJari()) * (2 * Math.PI * this.jariJariMajor);
         return luasPermukaan;
     }
 
     @Override
     public double hitungVolume() {
-        double volume = (Math.PI * Math.pow(getJariJari(), 2)) * (2 * getJariJari() * this.jariJariMajor);
+        volume = (super.getPHI() * Math.pow(super.getJariJari(), 2)) * (2 * super.getJariJari() * this.jariJariMajor);
         return volume;
     }
 
@@ -40,6 +42,4 @@ public class CincinBolaTorus extends Bola implements Geometri3D {
     public void setJariJariMajor(double jariJariMajor) {
         this.jariJariMajor = jariJariMajor;
     }
-    
-    
 }

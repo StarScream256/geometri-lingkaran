@@ -4,15 +4,15 @@ import geometri3d.JuringBola;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class JuringBolaFrame extends JFrame {
+public class JuringLingkaranFrame extends JFrame {
 
-    private JTextField txtJari, txtTinggi;
+    private JTextField txtJari, txtSudutPusat;
     private JButton btnHitung;
     private JLabel lblLuasPermukaan, lblVolume;
     private JTextField txtLuasPermukaan, txtVolume;
 
-    public JuringBolaFrame() {
-        setTitle("Juring Bola");
+    public JuringLingkaranFrame() {
+        setTitle("Juring Lingkaran");
         setSize(400, 350);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -30,13 +30,13 @@ public class JuringBolaFrame extends JFrame {
         txtJari.setBounds(120, 50, 250, 25);
         add(txtJari);
 
-        JLabel lblTinggi = new JLabel("Tinggi");
+        JLabel lblTinggi = new JLabel("Sudut pusat");
         lblTinggi.setBounds(10, 85, 100, 20);
         add(lblTinggi);
 
-        txtTinggi = new JTextField();
-        txtTinggi.setBounds(120, 85, 250, 25);
-        add(txtTinggi);
+        txtSudutPusat = new JTextField();
+        txtSudutPusat.setBounds(120, 85, 250, 25);
+        add(txtSudutPusat);
 
         btnHitung = new JButton("Hitung");
         btnHitung.setBounds(140, 125, 120, 35);
@@ -67,23 +67,22 @@ public class JuringBolaFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (txtJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
+                    if (txtJari.getText().isEmpty() || txtSudutPusat.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Semua input harus diisi!");
                         return;
                     }
 
                     double jariJariValue = Double.parseDouble(txtJari.getText().replace(",", "."));
-                    double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
+                    double tinggiValue = Double.parseDouble(txtSudutPusat.getText().replace(",", "."));
 
                     if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari dan tinggi harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Jari-jari dan sudut pusat harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
                     JuringBola juringBola = new JuringBola(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", juringBola.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", juringBola.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
                 }

@@ -18,19 +18,18 @@ public class Kerucut extends Lingkaran implements Geometri3D {
     }
 
     public double getGarisPelukis() {
-        return Math.sqrt(Math.pow(getJariJari(), 2) + Math.pow(tinggiKerucut, 2));
+        return Math.sqrt(Math.pow(super.getJariJari(), 2) + Math.pow(tinggiKerucut, 2));
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        double luasSelimutKerucut = getPHI() * getJariJari() * getGarisPelukis();
-        
-        return this.luasPermukaanKerucut = hitungLuas() + luasSelimutKerucut;
+        double luasSelimutKerucut = super.getPHI() * super.getJariJari() * getGarisPelukis();
+        return this.luasPermukaanKerucut = super.hitungLuas() + luasSelimutKerucut;
     }
 
     @Override
     public double hitungVolume() {
-        return this.volumeKerucut = (1.0 / 3.0) * Math.pow(getJariJari(), 2) * getPHI();
+        return this.volumeKerucut = (1.0 / 3.0) * Math.pow(super.getJariJari(), 2) * super.getPHI();
     }
     
     public double getTinggiKerucut() {

@@ -12,27 +12,27 @@ public class KerucutTerpancung extends Kerucut {
  
     @Override
     public double getGarisPelukis() {
-        double jariJariBawah = getJariJari();
-        return Math.sqrt(Math.pow(getTinggiKerucut(), 2) + Math.pow((jariJariBawah - jariJariAtas), 2));
+        double jariJariBawah = super.getJariJari();
+        return Math.sqrt(Math.pow(super.getTinggiKerucut(), 2) + Math.pow((jariJariBawah - jariJariAtas), 2));
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        double jariJariBawah = getJariJari();
+        double jariJariBawah = super.getJariJari();
         
         double luasAlasBawah = hitungLuas(); 
-        double luasAlasAtas = getPHI() * Math.pow(jariJariAtas, 2);
-        double luasSelimut = getPHI() * getGarisPelukis() * (jariJariBawah + jariJariAtas);
+        double luasAlasAtas = super.getPHI() * Math.pow(jariJariAtas, 2);
+        double luasSelimut = super.getPHI() * getGarisPelukis() * (jariJariBawah + jariJariAtas);
         
         return this.luasPermukaanKerucutTerpancung = luasAlasBawah + luasAlasAtas + luasSelimut;
     }
     
     @Override
     public double hitungVolume() {
-        double jariJariBawah = getJariJari();
+        double jariJariBawah = super.getJariJari();
         
-        return this.volumeKerucutTerpancung = (1.0 / 3.0) * getPHI() * getTinggiKerucut() * 
-                (Math.pow(jariJariBawah, 2) + Math.pow(jariJariAtas, 2) + (jariJariBawah * jariJariAtas));
+        return this.volumeKerucutTerpancung = (1.0 / 3.0) * super.getPHI() * super.getTinggiKerucut() * 
+            (Math.pow(jariJariBawah, 2) + Math.pow(jariJariAtas, 2) + (jariJariBawah * jariJariAtas));
     }
     
     public double getJariJariAtas() {
@@ -44,7 +44,7 @@ public class KerucutTerpancung extends Kerucut {
     }
     
     public double getJariJariBawah() {
-        return getJariJari(); 
+        return super.getJariJari(); 
     }
     
     public double getLuasPermukaanKerucutTerpancung() {

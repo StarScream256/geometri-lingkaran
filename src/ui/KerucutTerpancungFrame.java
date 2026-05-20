@@ -100,7 +100,6 @@ public class KerucutTerpancungFrame extends JFrame {
                     KerucutTerpancung kt = new KerucutTerpancung(jariJariBawahValue, tinggiValue, jariJariAtasValue);
                     txtLuasPermukaan.setText(String.format("%.2f", kt.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", kt.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
                 }

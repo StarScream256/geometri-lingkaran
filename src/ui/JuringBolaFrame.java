@@ -83,7 +83,6 @@ public class JuringBolaFrame extends JFrame {
                     JuringBola juringBola = new JuringBola(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", juringBola.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", juringBola.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
                 }

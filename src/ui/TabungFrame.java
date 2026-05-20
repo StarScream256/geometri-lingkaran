@@ -76,14 +76,13 @@ public class TabungFrame extends JFrame {
                     double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
 
                     if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari atau tinggi harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Jari-jari dan tinggi harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
                     Tabung tabung = new Tabung(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", tabung.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", tabung.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
                 }

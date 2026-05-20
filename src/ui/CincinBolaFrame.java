@@ -85,7 +85,6 @@ public class CincinBolaFrame extends JFrame {
                     CincinBola cincinBola = new CincinBola(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", cincinBola.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", cincinBola.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
                 }

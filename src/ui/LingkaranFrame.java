@@ -79,7 +79,6 @@ public class LingkaranFrame extends JFrame {
                     Lingkaran lingkaran = new Lingkaran(jariJariValue);
                     txtLuas.setText(String.format("%.2f", lingkaran.hitungLuas()));
                     txtKeliling.setText(String.format("%.2f", lingkaran.hitungKeliling()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
                 }
