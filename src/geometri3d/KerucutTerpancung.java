@@ -10,6 +10,11 @@ public class KerucutTerpancung extends Kerucut {
         this.jariJariAtas = jariJariAtas;
     }
  
+    public KerucutTerpancung(Kerucut kerucutDasar, double jariJariAtas) {
+        super(kerucutDasar.getJariJari(), kerucutDasar.getTinggiKerucut());
+        this.jariJariAtas = jariJariAtas;
+    }
+    
     @Override
     public double getGarisPelukis() {
         double jariJariBawah = super.getJariJari();
@@ -45,6 +50,16 @@ public class KerucutTerpancung extends Kerucut {
     
     public double getJariJariBawah() {
         return super.getJariJari(); 
+    }
+    
+    @Override
+    public void setTinggiKerucut(double tinggi) {
+        super.setTinggiKerucut(tinggi);
+    }
+
+    @Override
+    public void setJariJari(double jariJariBawah) {
+        super.setJariJari(jariJariBawah);
     }
     
     public double getLuasPermukaanKerucutTerpancung() {

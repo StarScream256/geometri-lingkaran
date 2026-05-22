@@ -4,13 +4,16 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
 
-    private JButton lingkaranButton, kerucutButton, kerucutTerpancungButton, tabungButton;
+    private JButton lingkaranButton, juringLingkaranButton, temberengLingkaranButton;
+    private JButton kerucutButton, kerucutTerpancungButton, tabungButton;
     private JButton bolaButton, juringBolaButton, temberengBolaButton, cincinBolaButton;
 
     public MainFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         lingkaranButton = new JButton();
+        juringLingkaranButton = new JButton();
+        temberengLingkaranButton = new JButton();
         kerucutButton = new JButton();
         kerucutTerpancungButton = new JButton();
         tabungButton = new JButton();
@@ -23,6 +26,12 @@ public class MainFrame extends JFrame {
         lingkaranButton.setText("Lingkaran");
         lingkaranButton.addActionListener(evt -> lingkaranButtonActionPerformed(evt));
 
+        juringLingkaranButton.setText("Juring Lingkaran");
+        juringLingkaranButton.addActionListener(evt -> juringLingkaranButtonActionPerformed(evt));
+
+        temberengLingkaranButton.setText("Tembereng Lingkaran");
+        temberengLingkaranButton.addActionListener(evt -> temberengLingkaranButtonActionPerformed(evt));
+        
         kerucutButton.setText("Kerucut");
         kerucutButton.addActionListener(evt -> kerucutButtonActionPerformed(evt));
 
@@ -53,50 +62,78 @@ public class MainFrame extends JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 22, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    // Baris 1
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lingkaranButton)
+                        .addGap(5, 5, 5)
+                        .addComponent(juringLingkaranButton)
+                        .addGap(5, 5, 5)
+                        .addComponent(temberengLingkaranButton)) // Sudah masuk sini sekarang!
+                    // Baris 2
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tabungButton)
+                        .addGap(5, 5, 5)
+                        .addComponent(kerucutButton)
+                        .addGap(5, 5, 5)
+                        .addComponent(kerucutTerpancungButton))
+                    // Baris 3
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bolaButton)
                         .addGap(5, 5, 5)
                         .addComponent(juringBolaButton)
-                        .addGap(4, 4, 4)
-                        .addComponent(temberengBolaButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cincinBolaButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lingkaranButton)
                         .addGap(5, 5, 5)
-                        .addComponent(kerucutTerpancungButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(kerucutButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tabungButton))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(temberengBolaButton)
+                        .addGap(5, 5, 5)
+                        .addComponent(cincinBolaButton)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
+        
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lingkaranButton)
-                    .addComponent(kerucutTerpancungButton)
-                    .addComponent(tabungButton)
-                    .addComponent(kerucutButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                // Baris 1
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(temberengBolaButton)
-                    .addComponent(cincinBolaButton)
+                    .addComponent(lingkaranButton)
+                    .addComponent(juringLingkaranButton)
+                    .addComponent(temberengLingkaranButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                // Baris 2
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tabungButton)
+                    .addComponent(kerucutButton)
+                    .addComponent(kerucutTerpancungButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                // Baris 3
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bolaButton)
-                    .addComponent(juringBolaButton))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(juringBolaButton)
+                    .addComponent(temberengBolaButton)
+                    .addComponent(cincinBolaButton))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-
         pack();
     }
 
+    private void juringLingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        JuringLingkaranFrame f = new JuringLingkaranFrame();
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+    }
+
+    private void temberengLingkaranButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        TemberengLingkaranFrame f = new TemberengLingkaranFrame();
+        f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+    }
+    
     private void cincinBolaButtonActionPerformed(java.awt.event.ActionEvent evt) {
         CincinBolaTorusFrame f = new CincinBolaTorusFrame();
         f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);

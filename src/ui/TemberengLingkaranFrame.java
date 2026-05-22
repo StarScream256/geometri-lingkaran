@@ -1,89 +1,104 @@
 package ui;
 
-import geometri3d.TemberengBola;
+import geometri2d.TemberengLingkaran;
 import javax.swing.*;
 import java.awt.event.*;
 
 public class TemberengLingkaranFrame extends JFrame {
 
-    private JTextField txtJariJari, txtSudutPusat;
+    private JTextField txtJariJari;
+    private JTextField txtSudut;
     private JButton btnHitung;
-    private JLabel lblLuasPermukaan, lblVolume;
+    private JLabel lblLuas, lblKeliling;
+    private JTextField txtLuas, txtKeliling;
 
     public TemberengLingkaranFrame() {
         setTitle("Tembereng Lingkaran");
-        setSize(380, 300);
+        setSize(400, 360);
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        JLabel lblJudul = new JLabel("Tembereng Lingkaran");
-        lblJudul.setBounds(75, 15, 230, 25);
-        lblJudul.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        add(lblJudul);
+        JLabel lblTitle = new JLabel("Tembereng Lingkaran");
+        lblTitle.setBounds(80, 15, 240, 30);
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18));
+        add(lblTitle);
 
         JLabel lblJariJari = new JLabel("Jari-jari");
-        lblJariJari.setBounds(10, 50, 100, 20);
+        lblJariJari.setBounds(10, 60, 100, 20);
+        lblJariJari.setFont(new java.awt.Font("Segoe UI", 1, 12));
         add(lblJariJari);
 
         txtJariJari = new JTextField();
-        txtJariJari.setBounds(120, 50, 120, 20);
+        txtJariJari.setBounds(120, 60, 250, 25);
         add(txtJariJari);
 
-        JLabel lblTinggi = new JLabel("Sudut pusat");
-        lblTinggi.setBounds(10, 80, 110, 20);
-        add(lblTinggi);
+        JLabel lblSudut = new JLabel("Sudut (Derajat)");
+        lblSudut.setBounds(10, 100, 100, 20);
+        lblSudut.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        add(lblSudut);
 
-        txtSudutPusat = new JTextField();
-        txtSudutPusat.setBounds(120, 80, 120, 20);
-        add(txtSudutPusat);
+        txtSudut = new JTextField();
+        txtSudut.setBounds(120, 100, 250, 25);
+        add(txtSudut);
 
         btnHitung = new JButton("Hitung");
-        btnHitung.setBounds(115, 120, 120, 30);
-        btnHitung.setBackground(new java.awt.Color(51, 102, 255));
+        btnHitung.setBounds(140, 145, 120, 30);
+        btnHitung.setBackground(new java.awt.Color(51, 51, 255));
         btnHitung.setForeground(new java.awt.Color(255, 255, 255));
+        btnHitung.setFont(new java.awt.Font("Segoe UI", 1, 12));
         add(btnHitung);
 
-        lblLuasPermukaan = new JLabel("Luas Permukaan");
-        lblLuasPermukaan.setBounds(10, 170, 100, 20);
-        lblLuasPermukaan.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        add(lblLuasPermukaan);
+        lblLuas = new JLabel("Luas Tembereng");
+        lblLuas.setBounds(10, 200, 170, 20);
+        lblLuas.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        lblLuas.setHorizontalAlignment(SwingConstants.CENTER);
+        add(lblLuas);
 
-        JTextField txtLuasPermukaan = new JTextField();
-        txtLuasPermukaan.setBounds(10, 195, 150, 30);
-        txtLuasPermukaan.setEditable(false);
-        add(txtLuasPermukaan);
+        txtLuas = new JTextField();
+        txtLuas.setBounds(10, 225, 170, 25);
+        txtLuas.setEditable(false);
+        add(txtLuas);
 
-        lblVolume = new JLabel("Volume");
-        lblVolume.setBounds(200, 170, 100, 20);
-        lblVolume.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        add(lblVolume);
+        lblKeliling = new JLabel("Keliling Tembereng");
+        lblKeliling.setBounds(200, 200, 170, 20);
+        lblKeliling.setFont(new java.awt.Font("Segoe UI", 1, 12));
+        lblKeliling.setHorizontalAlignment(SwingConstants.CENTER);
+        add(lblKeliling);
 
-        JTextField txtVolume = new JTextField();
-        txtVolume.setBounds(200, 195, 150, 30);
-        txtVolume.setEditable(false);
-        add(txtVolume);
+        txtKeliling = new JTextField();
+        txtKeliling.setBounds(200, 225, 170, 25);
+        txtKeliling.setEditable(false);
+        add(txtKeliling);
 
         btnHitung.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
-                    if (txtJariJari.getText().isEmpty() || txtSudutPusat.getText().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Semua input harus diisi!");
+                    if (txtJariJari.getText().isEmpty() || txtSudut.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Semua input harus diisi!", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
                     double jariJariValue = Double.parseDouble(txtJariJari.getText().replace(",", "."));
-                    double tinggiValue = Double.parseDouble(txtSudutPusat.getText().replace(",", "."));
+                    double sudutValue = Double.parseDouble(txtSudut.getText().replace(",", "."));
 
-                    if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari atau sudut pusat tembereng harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    if (jariJariValue <= 0) {
+                        JOptionPane.showMessageDialog(null, "Jari-jari harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+                    if (sudutValue <= 0 || sudutValue >= 360) {
+                        JOptionPane.showMessageDialog(null, "Sudut harus berada di antara 0 sampai sebelum 360 derajat!", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
-                    TemberengBola temberengBola = new TemberengBola(jariJariValue, tinggiValue);
-                    txtLuasPermukaan.setText(String.format("%.2f", temberengBola.hitungLuasPermukaan()));
-                    txtVolume.setText(String.format("%.2f", temberengBola.hitungVolume()));
+                    TemberengLingkaran tembereng = new TemberengLingkaran(jariJariValue, sudutValue);
+
+                    tembereng.hitungLuas();
+                    tembereng.hitungKeliling();
+
+                    txtLuas.setText(String.format("%.2f", tembereng.getLuasTemberengLingkaran()));
+                    txtKeliling.setText(String.format("%.2f", tembereng.getKelilingTemberengLingkaran()));
+
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -92,6 +107,6 @@ public class TemberengLingkaranFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        new TemberengBolaFrame().setVisible(true);
+        new TemberengLingkaranFrame().setVisible(true);
     }
 }

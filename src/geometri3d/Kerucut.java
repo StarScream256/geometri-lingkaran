@@ -7,11 +7,6 @@ public class Kerucut extends Lingkaran implements Geometri3D {
     private double luasPermukaanKerucut;
     private double volumeKerucut;
     
-    public Kerucut(int jariJari, int tinggi) {
-        super(jariJari); 
-        this.tinggiKerucut = tinggi;
-    }
-    
     public Kerucut(double jariJari, double tinggi) {
         super(jariJari); 
         this.tinggiKerucut = tinggi;
@@ -29,7 +24,7 @@ public class Kerucut extends Lingkaran implements Geometri3D {
 
     @Override
     public double hitungVolume() {
-        return this.volumeKerucut = (1.0 / 3.0) * Math.pow(super.getJariJari(), 2) * super.getPHI();
+        return this.volumeKerucut = (1.0 / 3.0) * super.getPHI() * Math.pow(super.getJariJari(), 2) * tinggiKerucut;
     }
     
     public double getTinggiKerucut() {

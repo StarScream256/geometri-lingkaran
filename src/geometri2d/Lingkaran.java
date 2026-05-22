@@ -9,7 +9,7 @@ package geometri2d;
  */
 public class Lingkaran implements Geometri2D {
     private double jariJari;
-    private static final double PHI = Math.PI;
+    private final double PHI = Math.PI;
 
     public Lingkaran() {
         this.jariJari = 0;
@@ -31,7 +31,7 @@ public class Lingkaran implements Geometri2D {
         this.jariJari = jariJari;
     }
     
-    public static double getPHI() {
+    public double getPHI() {
         return PHI;
     }
 

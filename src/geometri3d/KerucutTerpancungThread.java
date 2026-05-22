@@ -33,10 +33,12 @@ public class KerucutTerpancungThread implements Runnable {
         String output = String.format(
             """
             Thread Kerucut Terpancung #%d (%s)
-            Jari Bawah: %.2f; Jari Atas: %.2f; Tinggi: %.2f
-            Luas permukaan\t: %.2f
-            Volume\t\t: %.2f
-            ---------------------------------
+            Jari Bawah     : %.2f; 
+            Jari Atas      : %.2f; 
+            Tinggi         : %.2f
+            Luas Permukaan : %.2f
+            Volume         : %.2f
+            -----------------------------------
             """,
             this.nomor, threadName, jariJariBawah, jariJariAtas, tinggi, luasPermukaan, volume
         );

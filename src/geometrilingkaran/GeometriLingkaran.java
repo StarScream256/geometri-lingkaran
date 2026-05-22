@@ -21,6 +21,10 @@ import geometri3d.TemberengBolaThread;
 import java.util.Locale;
 import java.util.Scanner;
 import geometri2d.Lingkaran;
+import geometri2d.JuringLingkaranThread;
+import geometri2d.JuringLingkaran;
+import geometri2d.TemberengLingkaranThread;
+import geometri2d.TemberengLingkaran;
 import geometri2d.LingkaranThread;
 import ui.MainFrame;
 
@@ -47,14 +51,16 @@ public class GeometriLingkaran {
         scanner.useLocale(Locale.US);
         
         System.out.println("Geometri Lingkaran");
-        System.out.println("[1] Lingkaran");
-        System.out.println("[2] Kerucut");
-        System.out.println("[3] Kerucut Terpancung");
-        System.out.println("[4] Tabung");
-        System.out.println("[5] Bola");
-        System.out.println("[6] Juring Bola");
-        System.out.println("[7] Tembereng Bola");
-        System.out.println("[8] Cincin Bola");
+        System.out.println(" [1] Lingkaran");
+        System.out.println(" [2] Kerucut");
+        System.out.println(" [3] Kerucut Terpancung");
+        System.out.println(" [4] Tabung");
+        System.out.println(" [5] Bola");
+        System.out.println(" [6] Juring Bola");
+        System.out.println(" [7] Tembereng Bola");
+        System.out.println(" [8] Cincin Bola");
+        System.out.println(" [9] Juring Lingkaran");
+        System.out.println("[10] Tembereng Lingkaran");
         int bangunTerpilih = inputInt(scanner, "Piih bangun: ");
         
         System.out.println("Metode output");
@@ -294,6 +300,64 @@ public class GeometriLingkaran {
                     System.out.print("(Multi-thread) ---\n");
                     for (int i = 0; i < jumlahThread; i++) {
                         CincinBolaThread runnable = new CincinBolaThread(i);
+                        Thread thread = new Thread(runnable);
+                        thread.start();
+                    }
+                }
+            }
+            case 9 -> { // Juring Lingkaran
+                System.out.print("\n --- Juring Lingkaran "); 
+                if (metodeTerpilih == 1) { // Single-thread
+                    System.out.print("(Single-thread) ---\n");
+                    double jariJari = inputDouble(scanner, "Jari-jari\t: ");
+                    double sudut = inputDouble(scanner, "Sudut (Derajat)\t: ");
+
+                    JuringLingkaran juringLingkaran = new JuringLingkaran(jariJari, sudut);
+                    double luas = juringLingkaran.hitungLuas();
+                    double keliling = juringLingkaran.hitungKeliling();
+
+                    String output = String.format(
+                        """
+                        Luas Juring\t: %.2f 
+                        Keliling Juring\t: %.2f 
+                        ---------------------------
+                        """,
+                        luas, keliling
+                    );
+                    System.out.print(output);
+                } else { // Multi-thread
+                    System.out.print("(Multi-thread) ---\n");
+                    for (int i = 0; i < jumlahThread; i++) {
+                        JuringLingkaranThread runnable = new JuringLingkaranThread(i);
+                        Thread thread = new Thread(runnable);
+                        thread.start();
+                    }
+                }
+            }
+            case 10 -> { // Tembereng Lingkaran
+                System.out.print("\n --- Tembereng Lingkaran "); 
+                if (metodeTerpilih == 1) { // Single-thread
+                    System.out.print("(Single-thread) ---\n");
+                    double jariJari = inputDouble(scanner, "Jari-jari          : ");
+                    double sudut = inputDouble(scanner,    "Sudut (Derajat)    : ");
+
+                    TemberengLingkaran temberengLingkaran = new TemberengLingkaran(jariJari, sudut);
+                    double luas = temberengLingkaran.hitungLuas();
+                    double keliling = temberengLingkaran.hitungKeliling();
+
+                    String output = String.format(
+                        """
+                        Luas Tembereng     : %.2f 
+                        Keliling Tembereng : %.2f 
+                        --------------------------------------------
+                        """,
+                        luas, keliling
+                    );
+                    System.out.print(output);
+                } else { // Multi-thread
+                    System.out.print("(Multi-thread) ---\n");
+                    for (int i = 0; i < jumlahThread; i++) {
+                        TemberengLingkaranThread runnable = new TemberengLingkaranThread(i);
                         Thread thread = new Thread(runnable);
                         thread.start();
                     }
