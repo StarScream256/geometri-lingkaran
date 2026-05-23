@@ -1,6 +1,8 @@
 package geometri2d;
 
 public class JuringLingkaran extends Lingkaran {
+    private double jariJari;
+    private double phi;
     private double sudutJuring; 
     private double luasJuringLingkaran;
     private double kelilingJuringLingkaran;
@@ -8,6 +10,8 @@ public class JuringLingkaran extends Lingkaran {
     public JuringLingkaran(double jariJari, double sudut) {
         super(jariJari);
         this.sudutJuring = sudut;
+        this.jariJari = super.getJariJari();
+        this.phi = super.getPHI();
     }
 
     @Override
@@ -17,8 +21,8 @@ public class JuringLingkaran extends Lingkaran {
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = (sudutJuring / 360.0) * (2 * super.getPHI() * super.getJariJari());
-        return this.kelilingJuringLingkaran = panjangBusur + (2 * super.getJariJari());
+        double panjangBusur = (sudutJuring / 360.0) * (2 * phi * jariJari);
+        return this.kelilingJuringLingkaran = panjangBusur + (2 * jariJari);
     }
 
     public double getSudut() {
