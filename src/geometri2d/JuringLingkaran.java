@@ -27,7 +27,7 @@ public class JuringLingkaran extends Lingkaran {
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = (sudutJuring / 360.0) * (2 * pi * jariJari);
+        double panjangBusur = (sudutJuring / 360.0) * super.hitungKeliling();
         kelilingJuringLingkaran = panjangBusur + (2 * jariJari);
         return kelilingJuringLingkaran;
     }
