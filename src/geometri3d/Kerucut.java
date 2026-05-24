@@ -22,7 +22,8 @@ public class Kerucut extends Lingkaran implements Geometri3D {
     }
 
     public double getGarisPelukis() {
-        return Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggiKerucut, 2));
+        double garisPelukis = Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggiKerucut, 2));
+        return garisPelukis;
     }
 
     @Override

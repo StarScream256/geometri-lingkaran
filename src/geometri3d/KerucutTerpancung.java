@@ -26,7 +26,8 @@ public class KerucutTerpancung extends Kerucut {
     
     @Override
     public double getGarisPelukis() {
-        return Math.sqrt(Math.pow(tinggiKerucutTerpancung, 2) + Math.pow((jariJariBawah - jariJariAtas), 2));
+        double garisPelukis = Math.sqrt(Math.pow(tinggiKerucutTerpancung, 2) + Math.pow((jariJariBawah - jariJariAtas), 2));
+        return garisPelukis;
     }
 
     @Override
@@ -35,7 +36,6 @@ public class KerucutTerpancung extends Kerucut {
         double luasAlasAtas = pi * Math.pow(jariJariAtas, 2);
         double luasSelimut = pi * getGarisPelukis() * (jariJariBawah + jariJariAtas);
         luasPermukaanKerucutTerpancung = luasAlasBawah + luasAlasAtas + luasSelimut;
-
         return luasPermukaanKerucutTerpancung;
     }
     
