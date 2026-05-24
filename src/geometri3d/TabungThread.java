@@ -4,48 +4,28 @@
  */
 package geometri3d;
 
+// multithreading
+// implements Runnable sesuai materi PBO
 public class TabungThread implements Runnable {
 
-    private int nomor;
+    // encapsulation
+    private Tabung tabung;
 
-    public TabungThread(int nomor) {
-        this.nomor = nomor;
+    // constructor
+    public TabungThread(Tabung tabung) {
+        this.tabung = tabung;
     }
 
+    // overriding method run()
     @Override
     public void run() {
 
-        try {
-            Thread.sleep((long)(Math.random() * 300));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        double r = (Math.random() * (12 - 2)) + 2;
-        double t = (Math.random() * (12 - 2)) + 2;
-
-        Tabung tabung = new Tabung(r, t);
-
-        double luasPermukaan = tabung.hitungLuasPermukaan();
+        // proses thread
         double volume = tabung.hitungVolume();
 
-        String output = String.format(
-            """
-            Thread Tabung #%d (%s)
-            Jari-jari : %.2f
-            Tinggi    : %.2f
-            Luas Permukaan : %.2f
-            Volume    : %.2f
-            -----------------------------
-            """,
-            nomor,
-            Thread.currentThread().getName(),
-            r,
-            t,
-            luasPermukaan,
-            volume
+        // output console
+        System.out.println(
+                "Volume Tabung : " + volume
         );
-
-        System.out.print(output);
     }
 }

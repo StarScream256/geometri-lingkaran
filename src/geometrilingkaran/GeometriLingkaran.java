@@ -184,10 +184,21 @@ public class GeometriLingkaran {
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
                     for (int i = 0; i < jumlahThread; i++) {
-                        TabungThread runnable = new TabungThread(i + 1); 
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+
+    double r = (Math.random() * 10) + 1;
+    double t = (Math.random() * 10) + 1;
+
+    Tabung tabung =
+            new Tabung(r, t);
+
+    TabungThread runnable =
+            new TabungThread(tabung);
+
+    Thread thread =
+            new Thread(runnable);
+
+    thread.start();
+}
                 }
             }
             case 5 -> { // Bola
@@ -270,10 +281,20 @@ public class GeometriLingkaran {
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
                     for (int i = 0; i < jumlahThread; i++) {
-                        TemberengBolaThread runnable = new TemberengBolaThread(i + 1); 
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+
+    double r = (Math.random() * 10) + 1;
+    double t = (Math.random() * 10) + 1;
+
+    TemberengBola tembereng =
+            new TemberengBola(r, t);
+
+    TemberengBolaThread runnable =
+            new TemberengBolaThread(tembereng);
+
+    Thread thread = new Thread(runnable);
+
+    thread.start();
+}
                 }
             }
             case 8 -> { // Cincin Bola

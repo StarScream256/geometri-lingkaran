@@ -1,96 +1,130 @@
 package ui;
 
 import geometri3d.Tabung;
+import geometri3d.TabungThread;
+
 import javax.swing.*;
 import java.awt.event.*;
 
 public class TabungFrame extends JFrame {
 
-    private JTextField txtJariJari, txtTinggi;
+    // component GUI
+    private JTextField txtR;
+    private JTextField txtTinggi;
+
     private JButton btnHitung;
-    private JLabel lblLuasPermukaan, lblVolume;
+
+    private JLabel lblHasil;
 
     public TabungFrame() {
-        setTitle("Tabung (Cylinder)");
-        setSize(380, 300);
+
+        setTitle("Hitung Volume Tabung");
+
+        setSize(320, 230);
+
         setLayout(null);
+
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        JLabel lblJudul = new JLabel("Tabung (Cylinder)");
-        lblJudul.setBounds(120, 15, 200, 25);
-        lblJudul.setFont(new java.awt.Font("Segoe UI", 1, 14));
-        add(lblJudul);
+        // label jari-jari
+        JLabel lblR = new JLabel("Jari-jari:");
+        lblR.setBounds(20, 20, 100, 20);
+        add(lblR);
 
-        JLabel lblJariJari = new JLabel("Jari-jari Alas:");
-        lblJariJari.setBounds(10, 50, 100, 20);
-        add(lblJariJari);
+        // textfield jari-jari
+        txtR = new JTextField();
+        txtR.setBounds(120, 20, 150, 25);
+        add(txtR);
 
-        txtJariJari = new JTextField();
-        txtJariJari.setBounds(120, 50, 120, 20);
-        add(txtJariJari);
-
-        JLabel lblTinggi = new JLabel("Tinggi Tabung:");
-        lblTinggi.setBounds(10, 80, 100, 20);
+        // label tinggi
+        JLabel lblTinggi = new JLabel("Tinggi:");
+        lblTinggi.setBounds(20, 60, 100, 20);
         add(lblTinggi);
 
+        // textfield tinggi
         txtTinggi = new JTextField();
-        txtTinggi.setBounds(120, 80, 120, 20);
+        txtTinggi.setBounds(120, 60, 150, 25);
         add(txtTinggi);
 
+        // tombol hitung
         btnHitung = new JButton("Hitung");
-        btnHitung.setBounds(115, 120, 120, 30);
-        btnHitung.setBackground(new java.awt.Color(51, 102, 255));
-        btnHitung.setForeground(new java.awt.Color(255, 255, 255));
+        btnHitung.setBounds(90, 100, 120, 30);
         add(btnHitung);
 
-        lblLuasPermukaan = new JLabel("Luas Permukaan");
-        lblLuasPermukaan.setBounds(10, 170, 100, 20);
-        lblLuasPermukaan.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        add(lblLuasPermukaan);
+        // label hasil
+        lblHasil = new JLabel("Hasil : ");
+        lblHasil.setBounds(20, 150, 250, 20);
+        add(lblHasil);
 
-        JTextField txtLuasPermukaan = new JTextField();
-        txtLuasPermukaan.setBounds(10, 195, 150, 30);
-        txtLuasPermukaan.setEditable(false);
-        add(txtLuasPermukaan);
-
-        lblVolume = new JLabel("Volume");
-        lblVolume.setBounds(200, 170, 100, 20);
-        lblVolume.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        add(lblVolume);
-
-        JTextField txtVolume = new JTextField();
-        txtVolume.setBounds(200, 195, 150, 30);
-        txtVolume.setEditable(false);
-        add(txtVolume);
-
+        // event handling
         btnHitung.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try {
-                    if (txtJariJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Semua input harus diisi!");
+
+                    // validasi input kosong
+                    if (txtR.getText().isEmpty()
+                            || txtTinggi.getText().isEmpty()) {
+
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Input tidak boleh kosong!"
+                        );
+
                         return;
                     }
 
-                    double jariJariValue = Double.parseDouble(txtJariJari.getText().replace(",", "."));
-                    double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
+                    // parsing input
+                    double r =
+                            Double.parseDouble(
+                                    txtR.getText().replace(",", ".")
+                            );
 
-                    if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari dan tinggi harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
+                    double t =
+                            Double.parseDouble(
+                                    txtTinggi.getText().replace(",", ".")
+                            );
 
-                    Tabung tabung = new Tabung(jariJariValue, tinggiValue);
-                    txtLuasPermukaan.setText(String.format("%.2f", tabung.hitungLuasPermukaan()));
-                    txtVolume.setText(String.format("%.2f", tabung.hitungVolume()));
+                    // object tabung
+                    Tabung tabung =
+                            new Tabung(r, t);
+
+                    // multithreading
+                    Thread thread =
+                            new Thread(
+                                    new TabungThread(tabung)
+                            );
+
+                    thread.start();
+
+                    // tampilkan hasil
+                    lblHasil.setText(
+                            "Hasil : "
+                            + String.format(
+                                    "%.2f",
+                                    tabung.hitungVolume()
+                            )
+                    );
+
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    // exception handling
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Input harus angka!"
+                    );
                 }
             }
         });
+
+        setLocationRelativeTo(null);
     }
 
+    // main untuk testing
     public static void main(String[] args) {
+
         new TabungFrame().setVisible(true);
     }
 }
