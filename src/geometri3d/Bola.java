@@ -15,14 +15,14 @@ public class Bola extends Lingkaran implements Geometri3D {
     
     @Override
     public double hitungVolume(){
-    volume = (4.0 / 3.0 ) * Math.PI * Math.pow(getJariJari(), 3);
-    return volume;
+        volume = (4.0 / 3.0 ) * Math.PI * Math.pow(getJariJari(), 3);
+        return volume;
     }
     
     @Override
     public double hitungLuasPermukaan(){
-    luasPermukaan =  4 * super.hitungLuas();
-    return luasPermukaan;
+        luasPermukaan =  4 * super.hitungLuas();
+        return luasPermukaan;
     }
     
 }
