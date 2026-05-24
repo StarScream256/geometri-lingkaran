@@ -8,7 +8,6 @@ import java.awt.event.*;
 
 public class TabungFrame extends JFrame {
 
-    // component GUI
     private JTextField txtR;
     private JTextField txtTinggi;
 
@@ -26,32 +25,26 @@ public class TabungFrame extends JFrame {
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // label jari-jari
         JLabel lblR = new JLabel("Jari-jari:");
         lblR.setBounds(20, 20, 100, 20);
         add(lblR);
 
-        // textfield jari-jari
         txtR = new JTextField();
         txtR.setBounds(120, 20, 150, 25);
         add(txtR);
 
-        // label tinggi
         JLabel lblTinggi = new JLabel("Tinggi:");
         lblTinggi.setBounds(20, 60, 100, 20);
         add(lblTinggi);
 
-        // textfield tinggi
         txtTinggi = new JTextField();
         txtTinggi.setBounds(120, 60, 150, 25);
         add(txtTinggi);
 
-        // tombol hitung
         btnHitung = new JButton("Hitung");
         btnHitung.setBounds(90, 100, 120, 30);
         add(btnHitung);
 
-        // label hasil
         lblHasil = new JLabel("Hasil : ");
         lblHasil.setBounds(20, 150, 250, 20);
         add(lblHasil);

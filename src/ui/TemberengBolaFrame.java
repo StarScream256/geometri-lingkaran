@@ -8,7 +8,6 @@ import geometri3d.TemberengBolaThread;
 
 public class TemberengBolaFrame extends JFrame {
 
-    // component GUI
     private JTextField txtR;
     private JTextField txtTinggi;
 
@@ -25,13 +24,11 @@ public class TemberengBolaFrame extends JFrame {
         setLayout(null);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        // label jari-jari
+       
         JLabel lblR = new JLabel("Jari-jari:");
         lblR.setBounds(20, 20, 100, 20);
         add(lblR);
 
-        // textfield jari-jari
         txtR = new JTextField();
         txtR.setBounds(120, 20, 150, 25);
         add(txtR);

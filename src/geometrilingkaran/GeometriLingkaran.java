@@ -47,7 +47,6 @@ public class GeometriLingkaran {
     public static void main(String[] args) {
         new MainFrame().setVisible(true);
         Scanner scanner = new Scanner(System.in);
-        // locale diatur ke US, input double pakai titik (.) Contoh: 8.3
         scanner.useLocale(Locale.US);
         
         System.out.println("Geometri Lingkaran");

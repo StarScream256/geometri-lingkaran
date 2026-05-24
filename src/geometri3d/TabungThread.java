@@ -5,7 +5,7 @@
 package geometri3d;
 
 // multithreading
-// implements Runnable sesuai materi PBO
+// implements Runnable
 public class TabungThread implements Runnable {
 
     // encapsulation
