@@ -5,9 +5,14 @@ import geometri2d.Lingkaran;
 public class Kerucut extends Lingkaran implements Geometri3D {
     private double jariJari;
     private double pi;
-    private double tinggiKerucut;
+    private double tinggiKerucut = 10;
     private double luasPermukaanKerucut;
     private double volumeKerucut;
+    
+    public Kerucut() {
+        this.jariJari = super.getJariJari();
+        this.pi = super.getPI();
+    }
     
     public Kerucut(double jariJari, double tinggi) {
         super(jariJari);

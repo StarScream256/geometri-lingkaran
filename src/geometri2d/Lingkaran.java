@@ -2,14 +2,12 @@
 package geometri2d;
 
 public class Lingkaran implements Geometri2D {
-    private double jariJari;
+    private double jariJari = 5;
     private double luas;
     private double keliling;
     private final double PI = Math.PI;
     
-    public Lingkaran() {
-        this.jariJari = 0;
-    }
+    public Lingkaran() {}
     
     public Lingkaran(int jariJari) {
         this.jariJari = jariJari;

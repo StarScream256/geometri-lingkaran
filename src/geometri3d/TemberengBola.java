@@ -11,15 +11,13 @@ package geometri3d;
 public class TemberengBola extends Bola {
     private double pi;
     private double jariJari;
-    private double tinggi;
+    private double tinggi = 10;
     private double luasPermukaan;
     private double volume;
     
-    public TemberengBola(int jariJari, int tinggi) {
-        super(jariJari);
+    public TemberengBola() {
         this.jariJari = super.getJariJari();
         this.pi = super.getPI();
-        this.tinggi = tinggi;
     }
 
     public TemberengBola(double jariJari, double tinggi) {

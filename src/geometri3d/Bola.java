@@ -8,8 +8,7 @@ public class Bola extends Lingkaran implements Geometri3D {
     private double volume;
     private double luasPermukaan;
     
-    public Bola(int r) {
-        super(r);
+    public Bola() {
         this.jariJari = super.getJariJari();
         this.pi = super.getPI();
     }

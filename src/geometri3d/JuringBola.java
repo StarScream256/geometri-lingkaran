@@ -3,15 +3,13 @@ package geometri3d;
 public class JuringBola extends Bola {
     private double pi;
     private double jariJari;
-    private double tinggiJuring;
+    private double tinggiJuring = 10;
     private double volume;
     private double luasPermukaan;
         
-    public JuringBola(int r, int tinggiJuring){
-        super(r);
+    public JuringBola(){
         this.jariJari = super.getJariJari();
         this.pi = super.getPI();
-        this.tinggiJuring = tinggiJuring;
     }
     
     public JuringBola(double r, double tinggiJuring){

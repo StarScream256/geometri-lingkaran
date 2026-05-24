@@ -11,15 +11,13 @@ package geometri3d;
 public class CincinBola extends Bola implements Geometri3D {
     private double pi;
     private double jariJari;
-    private double tinggi;
+    private double tinggi = 5;
     private double volume;
     private double luasPermukaan;
     
-    public CincinBola(int jariJari, int tinggi) {
-        super(jariJari);
+    public CincinBola() {
         this.jariJari = super.getJariJari();
         this.pi = super.getPI();
-        this.tinggi = tinggi;
     }
     
     public CincinBola(double jariJari, double tinggi) {

@@ -13,15 +13,13 @@ import geometri2d.Lingkaran;
 public class Tabung extends Lingkaran implements Geometri3D {
     private double pi;
     private double jariJari;
-    private double tinggi;
+    private double tinggi = 10;
     private double luasPermukaan;
     private double volume;
     
-    public Tabung(int r, int tinggi) {
-        super(r);
+    public Tabung() {
         this.jariJari = super.getJariJari();
         this.pi = super.getPI();
-        this.tinggi = tinggi;
     }
 
     public Tabung(double r, double tinggi) {

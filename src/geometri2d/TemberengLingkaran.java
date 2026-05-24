@@ -2,23 +2,28 @@ package geometri2d;
 
 public class TemberengLingkaran extends JuringLingkaran {
     private double jariJari;
-    private double phi;
+    private double pi;
     private double sudutTembereng;
     private double luasTemberengLingkaran;
     private double kelilingTemberengLingkaran;
+    
+    public TemberengLingkaran() {
+        this.jariJari = super.getJariJari();
+        this.pi = super.getPI();
+    }
     
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut);
         this.sudutTembereng = sudut;
         this.jariJari = super.getJariJari();
-        this.phi = super.getPI();
+        this.pi = super.getPI();
     }
 
     public TemberengLingkaran(JuringLingkaran juringDasar) {
         super(juringDasar.getJariJari(), juringDasar.getSudut());
         this.sudutTembereng = juringDasar.getSudut();
         this.jariJari = super.getJariJari();
-        this.phi = super.getPI();
+        this.pi = super.getPI();
     }
     
     @Override

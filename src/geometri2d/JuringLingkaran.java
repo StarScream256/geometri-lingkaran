@@ -2,16 +2,21 @@ package geometri2d;
 
 public class JuringLingkaran extends Lingkaran {
     private double jariJari;
-    private double phi;
-    private double sudutJuring; 
+    private double pi;
+    private double sudutJuring = 45; 
     private double luasJuringLingkaran;
     private double kelilingJuringLingkaran;
+    
+    public JuringLingkaran() {
+        this.jariJari = super.getJariJari();
+        this.pi = super.getPI();
+    }
     
     public JuringLingkaran(double jariJari, double sudut) {
         super(jariJari);
         this.sudutJuring = sudut;
         this.jariJari = super.getJariJari();
-        this.phi = super.getPI();
+        this.pi = super.getPI();
     }
 
     @Override
@@ -22,7 +27,7 @@ public class JuringLingkaran extends Lingkaran {
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = (sudutJuring / 360.0) * (2 * phi * jariJari);
+        double panjangBusur = (sudutJuring / 360.0) * (2 * pi * jariJari);
         kelilingJuringLingkaran = panjangBusur + (2 * jariJari);
         return kelilingJuringLingkaran;
     }
