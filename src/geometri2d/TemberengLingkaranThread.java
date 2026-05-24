@@ -28,8 +28,8 @@ public class TemberengLingkaranThread implements Runnable {
         String output = String.format(
             """
             Thread Tembereng Lingkaran #%d (%s)
-            Jari-jari          : %.2f; 
-            Sudut Tembereng    : %.2f°;
+            Jari-jari          : %.2f
+            Sudut Tembereng    : %.2f
             Luas Tembereng     : %.2f 
             Keliling Tembereng : %.2f 
             ------------------------------------

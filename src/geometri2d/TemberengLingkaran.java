@@ -24,16 +24,16 @@ public class TemberengLingkaran extends JuringLingkaran {
     @Override
     public double hitungLuas() {
         double luasSegitiga = 0.5 * Math.pow(jariJari, 2) * Math.sin(Math.toRadians(sudutTembereng));
-        
-        return this.luasTemberengLingkaran = super.hitungLuas() - luasSegitiga;
+        luasTemberengLingkaran = super.hitungLuas() - luasSegitiga;
+        return luasTemberengLingkaran;
     }
 
     @Override
     public double hitungKeliling() {
         double panjangBusur = super.hitungKeliling() - (2 * jariJari);
         double panjangTaliBusur = 2 * jariJari * Math.sin(sudutTembereng / 2.0);
-
-        return this.kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
+        kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
+        return kelilingTemberengLingkaran;
     }
     
     @Override

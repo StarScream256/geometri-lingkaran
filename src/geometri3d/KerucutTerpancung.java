@@ -31,15 +31,16 @@ public class KerucutTerpancung extends Kerucut {
         double luasAlasBawah = hitungLuas(); 
         double luasAlasAtas = phi * Math.pow(jariJariAtas, 2);
         double luasSelimut = phi * getGarisPelukis() * (jariJariBawah + jariJariAtas);
-        
-        return this.luasPermukaanKerucutTerpancung = luasAlasBawah + luasAlasAtas + luasSelimut;
+        luasPermukaanKerucutTerpancung = luasAlasBawah + luasAlasAtas + luasSelimut;
+       
+        return luasPermukaanKerucutTerpancung;
     }
     
     @Override
     public double hitungVolume() {
-        
-        return this.volumeKerucutTerpancung = (1.0 / 3.0) * phi * super.getTinggiKerucut() * 
+        volumeKerucutTerpancung = (1.0 / 3.0) * phi * super.getTinggiKerucut() * 
             (Math.pow(jariJariBawah, 2) + Math.pow(jariJariAtas, 2) + (jariJariBawah * jariJariAtas));
+        return volumeKerucutTerpancung;
     }
     
     public double getJariJariAtas() {
