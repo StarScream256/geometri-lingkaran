@@ -1,16 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package geometri2d;
-/**
- *
- * @author Lenovo
- */
+
 public class Lingkaran implements Geometri2D {
     private double jariJari;
+    private double luas;
+    private double keliling;
     private final double PHI = Math.PI;
-
+    
     public Lingkaran() {
         this.jariJari = 0;
     }
@@ -37,11 +33,13 @@ public class Lingkaran implements Geometri2D {
 
     @Override
     public double hitungLuas() {
-        return PHI * jariJari * jariJari;
+        luas = PHI * jariJari * jariJari;
+        return luas;
     }
 
     @Override
     public double hitungKeliling() {
-        return 2 * PHI * jariJari;
+        keliling = 2 * PHI * jariJari;
+        return keliling;
     }
 }
