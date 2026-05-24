@@ -9,6 +9,8 @@ import geometri2d.Lingkaran;
 public class Tabung extends Lingkaran implements Geometri3D {
 
     private double tinggi;
+    private double luasPermukaan;
+    private double volume;
 
     public Tabung(double r, double tinggi) {
         super(r);
@@ -17,12 +19,23 @@ public class Tabung extends Lingkaran implements Geometri3D {
 
     @Override
     public double hitungLuasPermukaan() {
-        return 2 * Math.PI * getJariJari() * (getJariJari() + tinggi);
+
+        luasPermukaan =
+                2 * Math.PI * getJariJari()
+                * (getJariJari() + tinggi);
+
+        return luasPermukaan;
     }
 
     @Override
     public double hitungVolume() {
-        return Math.PI * getJariJari() * getJariJari() * tinggi;
+
+        volume =
+                Math.PI * getJariJari()
+                * getJariJari()
+                * tinggi;
+
+        return volume;
     }
 
     // OVERLOADING
@@ -37,5 +50,13 @@ public class Tabung extends Lingkaran implements Geometri3D {
 
     public void setTinggi(double tinggi) {
         this.tinggi = tinggi;
+    }
+
+    public double getLuasPermukaan() {
+        return luasPermukaan;
+    }
+
+    public double getVolume() {
+        return volume;
     }
 }
