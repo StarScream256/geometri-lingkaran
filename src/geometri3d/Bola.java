@@ -1,10 +1,10 @@
-
 package geometri3d;
 
 import geometri2d.Lingkaran;
 
 public class Bola extends Lingkaran implements Geometri3D {
-    
+    private double volume;
+    private double luasPermukaan;
     public Bola(int r) {
         super(r);
     }
@@ -15,12 +15,14 @@ public class Bola extends Lingkaran implements Geometri3D {
     
     @Override
     public double hitungVolume(){
-        return(4.0 / 3.0 )* Math.PI * Math.pow(getJariJari(), 3);
+    volume = (4.0 / 3.0 ) * Math.PI * Math.pow(getJariJari(), 3);
+    return volume;
     }
     
     @Override
     public double hitungLuasPermukaan(){
-        return 4 * Math.PI * Math.pow(getJariJari(), 2);
+    luasPermukaan =  4 * super.hitungLuas();
+    return luasPermukaan;
     }
     
 }
