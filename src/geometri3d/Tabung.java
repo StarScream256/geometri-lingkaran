@@ -10,30 +10,39 @@ import geometri2d.Lingkaran;
  *
  * @author LEGION
  */
-public class Tabung extends Lingkaran implements Geometri3D{
+public class Tabung extends Lingkaran implements Geometri3D {
+    private double pi;
+    private double jariJari;
     private double tinggi;
+    private double luasPermukaan;
+    private double volume;
     
     public Tabung(int r, int tinggi) {
         super(r);
+        this.jariJari = super.getJariJari();
+        this.pi = super.getPI();
         this.tinggi = tinggi;
     }
 
     public Tabung(double r, double tinggi) {
         super(r);
+        this.jariJari = super.getJariJari();
+        this.pi = super.getPI();
         this.tinggi = tinggi;
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        return 2 * Math.PI * getJariJari() * (getJariJari() + tinggi);
+        luasPermukaan = 2 * this.pi * this.jariJari * (this.jariJari + tinggi);
+        return luasPermukaan;
     }
 
     @Override
     public double hitungVolume() {
-        return Math.PI * getJariJari() * getJariJari() * tinggi;
+        volume = this.pi * this.jariJari * this.jariJari * tinggi;
+        return volume;
     }
 
-    // TAMBAHKAN DI SINI
     public double getTinggi() {
         return tinggi;
     }

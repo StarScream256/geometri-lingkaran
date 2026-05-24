@@ -11,14 +11,14 @@ public class TemberengLingkaran extends JuringLingkaran {
         super(jariJari, sudut);
         this.sudutTembereng = sudut;
         this.jariJari = super.getJariJari();
-        this.phi = super.getPHI();
+        this.phi = super.getPI();
     }
 
     public TemberengLingkaran(JuringLingkaran juringDasar) {
         super(juringDasar.getJariJari(), juringDasar.getSudut());
         this.sudutTembereng = juringDasar.getSudut();
         this.jariJari = super.getJariJari();
-        this.phi = super.getPHI();
+        this.phi = super.getPI();
     }
     
     @Override

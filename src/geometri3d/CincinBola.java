@@ -9,12 +9,16 @@ package geometri3d;
  * @author asus
  */
 public class CincinBola extends Bola implements Geometri3D {
+    private double pi;
+    private double jariJari;
     private double tinggi;
     private double volume;
     private double luasPermukaan;
     
     public CincinBola(int jariJari, int tinggi) {
         super(jariJari);
+        this.jariJari = super.getJariJari();
+        this.pi = super.getPI();
         this.tinggi = tinggi;
     }
     
@@ -25,13 +29,13 @@ public class CincinBola extends Bola implements Geometri3D {
 
     @Override
     public double hitungLuasPermukaan() {
-        luasPermukaan = 2 * super.getPHI() * super.getJariJari() * this.tinggi;
+        luasPermukaan = 2 * this.pi * this.jariJari * this.tinggi;
         return luasPermukaan;
     }
 
     @Override
     public double hitungVolume() {
-        volume = (1.0 / 6.0) * Math.PI * Math.pow(this.tinggi, 3); 
+        volume = (1.0 / 6.0) * this.pi * Math.pow(this.tinggi, 3); 
         return volume;
     }
 

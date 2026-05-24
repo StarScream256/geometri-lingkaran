@@ -10,14 +10,14 @@ public class KerucutTerpancung extends Kerucut {
     public KerucutTerpancung(double jariJariBawah, double tinggi, double jariJariAtas) {
         super(jariJariBawah, tinggi); 
         this.jariJariBawah = super.getJariJari();
-        this.phi = super.getPHI();
+        this.phi = super.getPI();
         this.jariJariAtas = jariJariAtas;
     }
  
     public KerucutTerpancung(Kerucut kerucutDasar, double jariJariAtas) {
         super(kerucutDasar.getJariJari(), kerucutDasar.getTinggiKerucut());
         this.jariJariBawah = kerucutDasar.getJariJari(); 
-        this.phi = super.getPHI();                       
+        this.phi = super.getPI();                       
         this.jariJariAtas = jariJariAtas;               
     }
     
@@ -32,7 +32,7 @@ public class KerucutTerpancung extends Kerucut {
         double luasAlasAtas = phi * Math.pow(jariJariAtas, 2);
         double luasSelimut = phi * getGarisPelukis() * (jariJariBawah + jariJariAtas);
         luasPermukaanKerucutTerpancung = luasAlasBawah + luasAlasAtas + luasSelimut;
-       
+
         return luasPermukaanKerucutTerpancung;
     }
     

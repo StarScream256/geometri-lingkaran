@@ -5,7 +5,7 @@ public class Lingkaran implements Geometri2D {
     private double jariJari;
     private double luas;
     private double keliling;
-    private final double PHI = Math.PI;
+    private final double PI = Math.PI;
     
     public Lingkaran() {
         this.jariJari = 0;
@@ -27,19 +27,19 @@ public class Lingkaran implements Geometri2D {
         this.jariJari = jariJari;
     }
     
-    public double getPHI() {
-        return PHI;
+    public double getPI() {
+        return PI;
     }
 
     @Override
     public double hitungLuas() {
-        luas = PHI * jariJari * jariJari;
+        luas = PI * jariJari * jariJari;
         return luas;
     }
 
     @Override
     public double hitungKeliling() {
-        keliling = 2 * PHI * jariJari;
+        keliling = 2 * PI * jariJari;
         return keliling;
     }
 }

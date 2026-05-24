@@ -11,7 +11,7 @@ public class JuringLingkaran extends Lingkaran {
         super(jariJari);
         this.sudutJuring = sudut;
         this.jariJari = super.getJariJari();
-        this.phi = super.getPHI();
+        this.phi = super.getPI();
     }
 
     @Override
