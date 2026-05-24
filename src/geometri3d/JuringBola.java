@@ -1,9 +1,10 @@
-
 package geometri3d;
 
 public class JuringBola extends Bola {
     private double tinggiJuring;
-    
+    private double volume;
+    private double luasPermukaan;
+        
     public JuringBola(int r, int tinggiJuring){
         super(r);
         this.tinggiJuring = tinggiJuring;
@@ -21,17 +22,19 @@ public class JuringBola extends Bola {
     @Override
     public double hitungVolume(){
         double r = getJariJari();
-        return (2.0/3.0) * Math.PI * Math.pow(r,2) * tinggiJuring;
+        volume = (2.0/3.0) * Math.PI * super.hitungLuas() * tinggiJuring;
+        return volume;
     }
     
     @Override
     public double hitungLuasPermukaan(){
         double a = hitungA();
         double r = getJariJari();
-        return (2* Math.PI *r * tinggiJuring) + (Math.PI * a * a);
+        luasPermukaan = (2* Math.PI *r * tinggiJuring) + (Math.PI * a * a);
+        return luasPermukaan;
     }
     
-       public double getTinggiJuring() {
+    public double getTinggiJuring() {
         return tinggiJuring;
     }
     public void setTinggiJuring(double tinggiJuring) {
