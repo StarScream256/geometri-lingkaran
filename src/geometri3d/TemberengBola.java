@@ -4,41 +4,32 @@
  */
 package geometri3d;
 
-/**
- *
- * @author LEGION
- */
 public class TemberengBola extends Bola {
-    private double pi;
-    private double jariJari;
-    private double tinggi = 10;
-    private double luasPermukaan;
-    private double volume;
-    
-    public TemberengBola() {
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
-    }
 
-    public TemberengBola(double jariJari, double tinggi) {
-        super(jariJari);
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
+    private double tinggi;
+
+    public TemberengBola(double r, double tinggi) {
+        super(r);
         this.tinggi = tinggi;
     }
-    
+
     @Override
     public double hitungLuasPermukaan() {
-        luasPermukaan = 2 * this.pi * this.jariJari * tinggi;
-        return luasPermukaan;
+        return 2 * Math.PI * getJariJari() * tinggi;
     }
 
     @Override
     public double hitungVolume() {
-        volume = (1.0/3.0) * this.pi * tinggi * tinggi * (3 * this.jariJari - tinggi);
-        return volume;
+        return (1.0 / 3.0) * Math.PI * tinggi * tinggi
+                * (3 * getJariJari() - tinggi);
     }
 
+    // OVERLOADING
+    public double hitungVolume(double r, double t) {
+        return (1.0 / 3.0) * Math.PI * t * t * (3 * r - t);
+    }
+
+    // Getter Setter
     public double getTinggi() {
         return tinggi;
     }
