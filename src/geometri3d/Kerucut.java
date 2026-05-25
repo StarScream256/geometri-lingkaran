@@ -2,12 +2,13 @@ package geometri3d;
 
 import geometri2d.Lingkaran;
 
-public class Kerucut extends Lingkaran implements Geometri3D {
-    private double jariJari;
-    private double pi;
-    private double tinggiKerucut = 10;
-    private double luasPermukaanKerucut;
-    private double volumeKerucut;
+public class Kerucut extends Lingkaran implements Geometri3D, Runnable  {
+    public Thread t; 
+    public double jariJari;
+    public double pi;
+    public double tinggiKerucut = 10;
+    public double luasPermukaanKerucut;
+    public double volumeKerucut;
     
     public Kerucut() {
         this.jariJari = super.getJariJari();

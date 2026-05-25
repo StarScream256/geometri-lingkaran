@@ -2,10 +2,10 @@
 package geometri2d;
 
 public class Lingkaran implements Geometri2D {
-    private double jariJari = 5;
-    private double luas;
-    private double keliling;
-    private final double PI = Math.PI;
+    public double jariJari = 5;
+    public double luas;
+    public double keliling;
+    public final double PI = Math.PI;
     
     public Lingkaran() {}
     
@@ -31,12 +31,22 @@ public class Lingkaran implements Geometri2D {
 
     @Override
     public double hitungLuas() {
+        
+        luas = PI * this.jariJari * this.jariJari;
+        return luas;
+    }
+    
+    public double hitungLuas(double jariJari) {
         luas = PI * jariJari * jariJari;
         return luas;
     }
-
     @Override
     public double hitungKeliling() {
+        keliling = 2 * PI * this.jariJari;
+        return keliling;
+    }
+    
+    public double hitungKeliling(double jariJari) {
         keliling = 2 * PI * jariJari;
         return keliling;
     }

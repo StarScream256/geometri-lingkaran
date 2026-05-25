@@ -32,38 +32,52 @@ public class Tabung extends Lingkaran implements Geometri3D {
         // whole-part
         // tabung terdiri dari alas dan selimut
 
-        double luasAlas =
-                Math.PI * getJariJari() * getJariJari();
+//        double luasAlas =
+//                Math.PI * getJariJari() * getJariJari();
 
         double luasSelimut =
-                2 * Math.PI * getJariJari() * tinggi;
+                2 * Math.PI * super.jariJari * tinggi;
 
         luasPermukaan =
-                (2 * luasAlas) + luasSelimut;
+                (2 * super.luas) + luasSelimut;
 
         return luasPermukaan;
     }
 
+    public double hitungLuasPermukaan(double tinggi) { //
+
+        // whole-part
+        // tabung terdiri dari alas dan selimut
+
+//        double luasAlas =
+//                Math.PI * getJariJari() * getJariJari();
+
+        double luasSelimut =
+                2 * Math.PI * super.jariJari * tinggi;
+
+        luasPermukaan =
+                (2 * super.hitungLuas(5)) + luasSelimut;
+
+        return luasPermukaan;
+    }
+    
     // overriding
     @Override
     public double hitungVolume() {
 
-        double luasAlas =
-                Math.PI * getJariJari() * getJariJari();
+//        double luasAlas =
+//                Math.PI * getJariJari() * getJariJari();
 
-        volume = luasAlas * tinggi;
+        volume = super.luas * tinggi;
 
         return volume;
     }
 
     // overloading
     // nama method sama tetapi parameter berbeda
-    public double hitungVolume(double r, double t) {
+    public double hitungVolume(double t) {
 
-        double luasAlas =
-                Math.PI * r * r;
-
-        volume = luasAlas * t;
+        volume = super.hitungLuas(5) * t;
 
         return volume;
     }

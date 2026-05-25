@@ -23,10 +23,14 @@ public class KerucutThread implements Runnable {
         double tinggi = (Math.random() * (12 - 2)) + 2;
         
         Kerucut kerucut = new Kerucut(jariJari, tinggi);
-        double luasPermukaan = kerucut.hitungLuasPermukaan();
-        double volume = kerucut.hitungVolume();
+        double luasPermukaan = kerucut.luasPermukaanKerucut;
+        double volume = kerucut.volumeKerucut;
         
-        // Output Text Block
+        
+        32
+        
+        /3
+                2/ Output Text Block
         String output = String.format(
             """
             Thread Kerucut #%d (%s)
