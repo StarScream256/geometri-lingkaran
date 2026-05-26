@@ -5,7 +5,10 @@ package geometri3d;
  * @author devio
  */
 public class BolaThread implements Runnable {
-    private int nomor;
+    public  int nomor;
+    
+    public BolaThread() {}
+    
     public BolaThread(int nomor){
         this.nomor = nomor;
     }
@@ -20,7 +23,7 @@ public class BolaThread implements Runnable {
             e.printStackTrace();
         }
         
-        double jariJari = (Math.random() * (12-2))+2;
+        double jariJari = (Math.random() * (12 - 2)) + 2;
         Bola bola = new Bola(jariJari);
         double luasPermukaan = bola.hitungLuasPermukaan();
         double volume = bola.hitungVolume();

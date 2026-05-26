@@ -1,7 +1,9 @@
 package geometri3d;
 
 public class KerucutThread implements Runnable {
-    private int nomor;
+    public int nomor;
+    
+    public KerucutThread() {}
     
     public KerucutThread(int nomor) {
         this.nomor = nomor;

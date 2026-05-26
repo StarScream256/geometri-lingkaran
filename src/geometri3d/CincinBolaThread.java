@@ -9,7 +9,9 @@ package geometri3d;
  * @author asus
  */
 public class CincinBolaThread implements Runnable {
-    private int nomor;
+    public int nomor;
+    
+    public CincinBolaThread() {}
     
     public CincinBolaThread(int nomor) {
         this.nomor = nomor;
@@ -36,12 +38,13 @@ public class CincinBolaThread implements Runnable {
         String output = String.format(
             """
             Thread Cincin Bola #%d (%s)
-            Jari-jari: %.2f; Tinggi: %.2f 
-            Luas permukaan\t: %.2f 
-            Volume\t\t: %.2f 
+            Jari-jari       : %.2f
+            Tinggi          : %.2f 
+            Luas permukaan  : %.2f 
+            Volume          : %.2f 
             ---------------------------------
             """,
-            this.nomor, Thread.currentThread().getName(), jariJari, tinggi, luasPermukaan, volume
+            this.nomor, threadName, jariJari, tinggi, luasPermukaan, volume
         );
         
         System.out.print(output);

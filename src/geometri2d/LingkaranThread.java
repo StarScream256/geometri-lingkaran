@@ -11,54 +11,43 @@ import geometri2d.Lingkaran;
  * @author Lenovo
  */
 public class LingkaranThread implements Runnable {
+    public int count;
+    public int delay = 1000;
+    
+    public LingkaranThread() {}
 
-    private int nomor;
-
-    public LingkaranThread(int nomor) {
-        this.nomor = nomor;
+    public LingkaranThread(int count) {
+        this.count = count;
+    }
+    
+    public LingkaranThread(int count, int delay) {
+        this.count = count;
+        this.delay = delay;
     }
 
     @Override
     public void run() {
-
         try {
+            for (int i = 1; i <= count; i++) {
+                String threadName = Thread.currentThread().getName();
+                double jariJari = (Math.random() * (12 - 2)) + 2;
+                Lingkaran lingkaran = new Lingkaran(jariJari);
+                double luas = lingkaran.hitungLuas();
+                double keliling = lingkaran.hitungKeliling();
 
-            // Delay random 0 - 300 ms
-            Thread.sleep((long)(Math.random() * 300));
-
-        } catch (InterruptedException e) {
-
-            e.printStackTrace();
-        }
-
-        // Random jari-jari 2 - 12
-        double jariJari = (Math.random() * (12 - 2)) + 2;
-
-        // Object lingkaran
-        Lingkaran lingkaran = new Lingkaran(jariJari);
-
-        // Hitung
-        double luas = lingkaran.hitungLuas();
-        double keliling = lingkaran.hitungKeliling();
-
-        // Output
-        String output = String.format(
-            """
-            Thread Lingkaran #%d (%s)
-            Jari-jari : %.2f
-            Luas      : %.2f
-            Keliling  : %.2f
-            -----------------------------
-
-            """,
-
-            this.nomor,
-            Thread.currentThread().getName(),
-            jariJari,
-            luas,
-            keliling
-        );
-
-        System.out.print(output);
+                String output = String.format(
+                    """
+                    Thread Lingkaran #%d (%s)
+                    Jari-jari : %.2f
+                    Luas      : %.2f
+                    Keliling  : %.2f
+                    -----------------------------
+                    """,
+                    i, threadName, jariJari, luas, keliling
+                );
+                System.out.print(output);
+                Thread.sleep(delay);
+            }
+        } catch (InterruptedException e) {}
     }
 }

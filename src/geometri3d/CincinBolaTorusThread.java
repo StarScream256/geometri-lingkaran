@@ -9,28 +9,42 @@ package geometri3d;
  * @author asus
  */
 public class CincinBolaTorusThread implements Runnable {
-    private double jariJariMinor;
-    private double jariJariMajor;
+    public int nomor;
     
-    public CincinBolaTorusThread(double jariJariMinor, double jariJariMajor) {
-        this.jariJariMinor = jariJariMinor;
-        this.jariJariMajor = jariJariMajor;
+    public CincinBolaTorusThread(int nomor) {
+        this.nomor = nomor;
     }
 
     @Override
     public void run() {
-        CincinBola cincinBola = new CincinBola(this.jariJariMinor, this.jariJariMajor);
-        double luasPermukaan = cincinBola.hitungLuasPermukaan();
-        double volume = cincinBola.hitungVolume();
+        try {
+            // Delay random antara 0 - 300 ms agar output tidak berurutan rapi
+            Thread.sleep((long)(Math.random() * 300));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         
-        System.out.println(
-            "Thread + " + Thread.currentThread().getId() +
-            " ;jari-jari minor = " + this.jariJariMinor +
-            " ;jari-jari major = " + this.jariJariMajor +
-            " ;luas permukaan = " + luasPermukaan + 
-            " ;volume = " + volume
+        String threadName = Thread.currentThread().getName();
+        
+        // rentang: (Math.random() * (Max - Min)) + Min
+        double jariJariMinor = (Math.random() * (12 - 2)) + 2;
+        double jariJariMajor = (Math.random() * (12 - 2)) + 2;
+        CincinBolaTorus cincinBolaTorus = new CincinBolaTorus(jariJariMinor, jariJariMajor);
+        double luasPermukaan = cincinBolaTorus.hitungLuasPermukaan();
+        double volume = cincinBolaTorus.hitungVolume();
+        
+        String output = String.format(
+            """
+            Thread Cincin Bola Torus #%d (%s)
+            Jari-jari minor : %.2f
+            Jari-jari major : %.2f 
+            Luas permukaan  : %.2f 
+            Volume          : %.2f 
+            ---------------------------------
+            """,
+            this.nomor, threadName, jariJariMinor, jariJariMajor, luasPermukaan, volume
         );
-    }
-    
-    
+        
+        System.out.print(output);
+    }   
 }

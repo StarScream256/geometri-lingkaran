@@ -5,7 +5,10 @@ package geometri3d;
  * @author devio
  */
 public class JuringBolaThread implements Runnable{
-   private int nomor;
+    public int nomor;
+    
+    public JuringBolaThread() {}
+    
     public JuringBolaThread(int nomor){
         this.nomor = nomor;
     }
@@ -20,8 +23,10 @@ public class JuringBolaThread implements Runnable{
             e.printStackTrace();
         }
         
-        double jariJari = (Math.random() * (12-2))+2;
-        double tinggi = (Math.random() * (12-2))+2;
+        String threadName = Thread.currentThread().getName();
+        
+        double jariJari = (Math.random() * (12 - 2))+2;
+        double tinggi = (Math.random() * (12 - 2)) + 2;
         JuringBola juringBola = new JuringBola(jariJari,tinggi);
         double luasPermukaan = juringBola.hitungLuasPermukaan();
         double volume = juringBola.hitungVolume();
@@ -29,14 +34,14 @@ public class JuringBolaThread implements Runnable{
         String output = String.format(
             """
             Thread juring bola #%d (%s)
-            Jari-jari : %.2f
-            Tinggi : %.2f
-            Luas Permukaan\t: %.2f
-            Volume \t\t: %.2f
+            Jari-jari       : %.2f
+            Tinggi          : %.2f
+            Luas Permukaan  : %.2f
+            Volume          : %.2f
             -----------------------------
 
             """,
-            this.nomor, Thread.currentThread().getName(),jariJari,tinggi,luasPermukaan,volume
+            this.nomor, threadName, jariJari, tinggi, luasPermukaan, volume
         
         );
         System.out.print(output);
