@@ -1,91 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package geometri3d;
 
-// inheritance / generalization
-// TemberengBola adalah turunan dari Bola
 public class TemberengBola extends Bola {
+    public double jariJari = 7;
+    public double tinggiTembereng = 10;
+    public double pi; 
+    public double luasPermukaanTemberengBola;
+    public double volumeTemberengBola;
 
-    // encapsulation
-    private double tinggi;
-    private double luasPermukaan;
-    private double volume;
-
-    // constructor
-    public TemberengBola(double r, double tinggi) {
-
-        // inheritance
-        // memanggil constructor superclass
-        super(r);
-
-        this.tinggi = tinggi;
+    public TemberengBola(double jariJari, double tinggi) {
+        super(jariJari); 
+        this.jariJari = jariJari;
+        this.tinggiTembereng = tinggi;
+        this.pi = super.pi; 
     }
 
-    // overriding
+    private double hitungJariJariAlas(double jariJari, double tinggi) {
+        return Math.sqrt(Math.pow(jariJari, 2) - Math.pow(jariJari - tinggi, 2));
+    }
+
     @Override
     public double hitungLuasPermukaan() {
-
-        luasPermukaan =
-                2 * Math.PI * getJariJari() * tinggi;
-
-        return luasPermukaan;
+        double jariJariAlas = hitungJariJariAlas(this.jariJari, this.tinggiTembereng);
+        double luasAlasTembereng = super.hitungLuas(jariJariAlas);
+        double luasKubahMelengkung = super.hitungKeliling() * this.tinggiTembereng;   
+        luasPermukaanTemberengBola = luasAlasTembereng + luasKubahMelengkung;
+        return luasPermukaanTemberengBola;
     }
 
-    // overriding
+    public double hitungLuasPermukaan(double jariJari, double tinggi) {
+        double jariJariAlas = hitungJariJariAlas(jariJari, tinggi);
+        double luasAlasTembereng = super.hitungLuas(jariJariAlas);
+        double luasKubahMelengkung = super.hitungKeliling(jariJari) * tinggi;
+        this.luasPermukaanTemberengBola = luasAlasTembereng + luasKubahMelengkung;
+        return this.luasPermukaanTemberengBola;
+    }
+
     @Override
     public double hitungVolume() {
-
-        double bagian1 =
-                tinggi * tinggi;
-
-        double bagian2 =
-                (3 * getJariJari() - tinggi);
-
-        volume =
-                (1.0 / 3.0)
-                * Math.PI
-                * bagian1
-                * bagian2;
-
-        return volume;
+        volumeTemberengBola = (1.0 / 3.0) * this.pi * Math.pow(this.tinggiTembereng, 2) * 
+                ((3 * this.jariJari) - this.tinggiTembereng);
+        return volumeTemberengBola;
     }
 
-    // overloading
-    // method sama tetapi parameter berbeda
-    public double hitungVolume(double r, double t) {
-
-        double bagian1 =
-                t * t;
-
-        double bagian2 =
-                (3 * r - t);
-
-        volume =
-                (1.0 / 3.0)
-                * Math.PI
-                * bagian1
-                * bagian2;
-
-        return volume;
-    }
-
-    // getter setter
-    // encapsulation
-    public double getTinggi() {
-        return tinggi;
-    }
-
-    public void setTinggi(double tinggi) {
-        this.tinggi = tinggi;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
-    }
-
-    public double getVolume() {
-        return volume;
+    public double hitungVolume(double jariJari, double tinggi) {
+        volumeTemberengBola = (1.0 / 3.0) * super.pi * Math.pow(tinggi, 2) * ((3 * jariJari) - tinggi);
+        return volumeTemberengBola;
     }
 }

@@ -11,7 +11,7 @@ public class TemberengLingkaran extends JuringLingkaran {
         super(jariJari, sudut); 
         this.jariJari = jariJari;
         this.sudutTembereng = sudut;
-        this.pi = super.PI;
+        this.pi = super.pi;
     }
 
     @Override

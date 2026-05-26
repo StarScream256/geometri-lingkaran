@@ -1,49 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package geometri3d;
 
-/**
- *
- * @author asus
- */
 public class CincinBolaTorus extends Bola implements Geometri3D {
-    private double pi;
-    private double jariJariMinor;
-    private double jariJariMajor = 10;
-    private double luasPermukaan;
-    private double volume;
-    
-    public CincinBolaTorus() {
-        this.jariJariMinor = super.getJariJari();
-        this.pi = super.getPI();
-    }
-    
+    public double jariJariMinor = 7; 
+    public double jariJariMajor = 14; 
+    public double pi; 
+    public double luasPermukaanCincinBolaTorus;
+    public double volumeCincinBolaTorus;
+
     public CincinBolaTorus(double jariJariMinor, double jariJariMajor) {
-        super(jariJariMinor);
-        this.jariJariMinor = super.getJariJari();
-        this.pi = super.getPI();
+        super(jariJariMinor); 
+        this.jariJariMinor = jariJariMinor;
         this.jariJariMajor = jariJariMajor;
+        this.pi = super.pi; 
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        luasPermukaan = (2 * this.pi * this.jariJariMinor) * (2 * this.pi * this.jariJariMajor);
-        return luasPermukaan;
+        luasPermukaanCincinBolaTorus = 4 * Math.pow(this.pi, 2) * this.jariJariMajor * this.jariJariMinor;
+        return luasPermukaanCincinBolaTorus;
+    }
+
+    public double hitungLuasPermukaan(double jariJariMinor, double jariJariMajor) {
+        luasPermukaanCincinBolaTorus = 4 * Math.pow(super.pi, 2) * jariJariMajor * jariJariMinor;
+        return luasPermukaanCincinBolaTorus;
     }
 
     @Override
     public double hitungVolume() {
-        volume = (this.pi * Math.pow(this.jariJariMinor, 2)) * (2 * this.jariJariMinor * this.jariJariMajor);
-        return volume;
+        volumeCincinBolaTorus = 2 * Math.pow(this.pi, 2) * this.jariJariMajor * Math.pow(this.jariJariMinor, 2);
+        return volumeCincinBolaTorus;
     }
 
-    public double getJariJariMajor() {
-        return jariJariMajor;
-    }
-
-    public void setJariJariMajor(double jariJariMajor) {
-        this.jariJariMajor = jariJariMajor;
+    public double hitungVolume(double jariJariMinor, double jariJariMajor) {
+        volumeCincinBolaTorus = 2 * Math.pow(super.pi, 2) * jariJariMajor * Math.pow(jariJariMinor, 2);
+        return volumeCincinBolaTorus;
     }
 }

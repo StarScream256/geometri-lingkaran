@@ -1,102 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package geometri3d;
 
 import geometri2d.Lingkaran;
 
-// inheritance / generalization
-// Tabung adalah turunan dari Lingkaran
 public class Tabung extends Lingkaran implements Geometri3D {
+    public double jariJari = 7;
+    public double tinggi = 10;
+    public double pi; 
+    public double luasPermukaanTabung;
+    public double volumeTabung;
 
-    // encapsulation
-    private double tinggi;
-    private double luasPermukaan;
-    private double volume;
-
-    // constructor
-    public Tabung(double r, double tinggi) {
-
-        // inheritance
-        // memanggil constructor superclass
-        super(r);
-
+    public Tabung(double jariJari, double tinggi) {
+        super(jariJari); 
+        this.jariJari = jariJari;
         this.tinggi = tinggi;
+        this.pi = super.PI;
     }
 
-    // overriding
     @Override
     public double hitungLuasPermukaan() {
-
-        // whole-part
-        // tabung terdiri dari alas dan selimut
-
-//        double luasAlas =
-//                Math.PI * getJariJari() * getJariJari();
-
-        double luasSelimut =
-                2 * Math.PI * super.jariJari * tinggi;
-
-        luasPermukaan =
-                (2 * super.luas) + luasSelimut;
-
-        return luasPermukaan;
+        double luasAlas = super.hitungLuas(); 
+        double luasSelimut = 2 * this.pi * this.jariJari * this.tinggi;
+        luasPermukaanTabung = (2 * luasAlas) + luasSelimut;
+        return luasPermukaanTabung;
     }
 
-    public double hitungLuasPermukaan(double tinggi) { //
-
-        // whole-part
-        // tabung terdiri dari alas dan selimut
-
-//        double luasAlas =
-//                Math.PI * getJariJari() * getJariJari();
-
-        double luasSelimut =
-                2 * Math.PI * super.jariJari * tinggi;
-
-        luasPermukaan =
-                (2 * super.hitungLuas(5)) + luasSelimut;
-
-        return luasPermukaan;
+    public double hitungLuasPermukaan(double jariJari, double tinggi) {
+        double luasAlas = super.hitungLuas(jariJari); 
+        double luasSelimut = 2 * super.PI * jariJari * tinggi;
+        luasPermukaanTabung = (2 * luasAlas) + luasSelimut;
+        return luasPermukaanTabung;
     }
-    
-    // overriding
+
     @Override
     public double hitungVolume() {
-
-//        double luasAlas =
-//                Math.PI * getJariJari() * getJariJari();
-
-        volume = super.luas * tinggi;
-
-        return volume;
+        volumeTabung = super.hitungLuas() * this.tinggi;
+        return volumeTabung;
     }
 
-    // overloading
-    // nama method sama tetapi parameter berbeda
-    public double hitungVolume(double t) {
-
-        volume = super.hitungLuas(5) * t;
-
-        return volume;
-    }
-
-    // getter setter
-    // encapsulation
-    public double getTinggi() {
-        return tinggi;
-    }
-
-    public void setTinggi(double tinggi) {
-        this.tinggi = tinggi;
-    }
-
-    public double getLuasPermukaan() {
-        return luasPermukaan;
-    }
-
-    public double getVolume() {
-        return volume;
+    public double hitungVolume(double jariJari, double tinggi) {
+        volumeTabung = super.hitungLuas(jariJari) * tinggi;
+        return volumeTabung;
     }
 }

@@ -3,30 +3,36 @@ package geometri3d;
 import geometri2d.Lingkaran;
 
 public class Bola extends Lingkaran implements Geometri3D {
-    private double jariJari;
-    private double pi;
-    private double volume;
-    private double luasPermukaan;
+    public double jariJari = 7;
+    public double pi; 
+    public double volumeBola;
+    public double luasPermukaanBola;
     
-    public Bola() {
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
-    }
-    
-    public Bola(double r){
-        super(r);
+    public Bola(double jariJari) {
+        super(jariJari); 
+        this.jariJari = jariJari;
+        this.pi = super.PI; 
     }
     
     @Override
-    public double hitungVolume(){
-        volume = (4.0 / 3.0 ) * this.pi * Math.pow(this.jariJari, 3);
-        return volume;
+    public double hitungVolume() {
+        volumeBola = (4.0 / 3.0) * this.pi * Math.pow(this.jariJari, 3);
+        return volumeBola;
+    }
+    
+    public double hitungVolume(double jariJari) {
+        volumeBola = (4.0 / 3.0) * super.PI * Math.pow(jariJari, 3);
+        return volumeBola;
     }
     
     @Override
-    public double hitungLuasPermukaan(){
-        luasPermukaan =  4 * super.hitungLuas();
-        return luasPermukaan;
+    public double hitungLuasPermukaan() {
+       luasPermukaanBola = 4 * super.hitungLuas();
+        return luasPermukaanBola;
     }
     
+    public double hitungLuasPermukaan(double jariJari) {
+        luasPermukaanBola = 4 * super.hitungLuas(jariJari);
+        return luasPermukaanBola;
+    }
 }
