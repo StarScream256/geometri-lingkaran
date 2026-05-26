@@ -1,56 +1,48 @@
 package geometri2d;
 
 public class TemberengLingkaran extends JuringLingkaran {
-    private double jariJari;
-    private double pi;
-    private double sudutTembereng;
-    private double luasTemberengLingkaran;
-    private double kelilingTemberengLingkaran;
-    
-    public TemberengLingkaran() {
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
-    }
-    
+    public double jariJari = 7;
+    public double sudutTembereng = 90;
+    public double pi;
+    public double luasTemberengLingkaran;
+    public double kelilingTemberengLingkaran;
+ 
     public TemberengLingkaran(double jariJari, double sudut) {
-        super(jariJari, sudut);
+        super(jariJari, sudut); 
+        this.jariJari = jariJari;
         this.sudutTembereng = sudut;
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
+        this.pi = super.PI;
     }
 
-    public TemberengLingkaran(JuringLingkaran juringDasar) {
-        super(juringDasar.getJariJari(), juringDasar.getSudut());
-        this.sudutTembereng = juringDasar.getSudut();
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
-    }
-    
     @Override
     public double hitungLuas() {
-        double luasSegitiga = 0.5 * Math.pow(jariJari, 2) * Math.sin(Math.toRadians(sudutTembereng));
-        luasTemberengLingkaran = super.hitungLuas() - luasSegitiga;
+        double luasJuring = super.hitungLuas(); 
+        double luasSegitiga = 0.5 * this.jariJari * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng));
+        luasTemberengLingkaran = luasJuring - luasSegitiga;
+        return luasTemberengLingkaran;
+    }
+
+    @Override
+    public double hitungLuas(double jariJari, double sudut) {
+        double luasJuring = super.hitungLuas(jariJari, sudut);
+        double luasSegitiga = 0.5 * Math.pow(jariJari, 2) * Math.sin(Math.toRadians(sudut));
+        luasTemberengLingkaran = luasJuring - luasSegitiga;
         return luasTemberengLingkaran;
     }
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = super.hitungKeliling() - (2 * jariJari);
-        double panjangTaliBusur = 2 * jariJari * Math.sin(sudutTembereng / 2.0);
+        double panjangBusur = super.hitungKeliling() - (2 * this.jariJari);
+        double panjangTaliBusur = 2 * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng / 2.0));
         kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
         return kelilingTemberengLingkaran;
     }
-    
-    @Override
-    public void setSudut(double sudut) {
-        super.setSudut(sudut); 
-    }
-    
-    public double getLuasTemberengLingkaran() {
-        return luasTemberengLingkaran;
-    }
 
-    public double getKelilingTemberengLingkaran() {
+    @Override
+    public double hitungKeliling(double jariJari, double sudut) {
+        double panjangBusur = super.hitungKeliling(jariJari, sudut) - (2 * jariJari);
+        double panjangTaliBusur = 2 * jariJari * Math.sin(Math.toRadians(sudut / 2.0));
+        kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
         return kelilingTemberengLingkaran;
     }
 }

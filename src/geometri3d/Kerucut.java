@@ -2,57 +2,49 @@ package geometri3d;
 
 import geometri2d.Lingkaran;
 
-public class Kerucut extends Lingkaran implements Geometri3D, Runnable  {
-    public Thread t; 
-    public double jariJari;
-    public double pi;
+public class Kerucut extends Lingkaran implements Geometri3D {
+    public double jariJari = 7;
     public double tinggiKerucut = 10;
+    public double pi;
     public double luasPermukaanKerucut;
     public double volumeKerucut;
     
-    public Kerucut() {
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
-    }
-    
     public Kerucut(double jariJari, double tinggi) {
-        super(jariJari);
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
+        super(jariJari); 
+        this.jariJari = jariJari;
         this.tinggiKerucut = tinggi;
+        this.pi = super.PI;
     }
 
-    public double getGarisPelukis() {
-        double garisPelukis = Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggiKerucut, 2));
-        return garisPelukis;
+    private double hitungGarisPelukis(double jariJari, double tinggi) {
+        return Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggi, 2));
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        double luasSelimutKerucut = pi * jariJari * getGarisPelukis();
-        luasPermukaanKerucut = super.hitungLuas() + luasSelimutKerucut;
+        double selimutKerucut = hitungGarisPelukis(this.jariJari, this.tinggiKerucut);
+        double luasAlas = super.hitungLuas(); 
+        double luasSelimut =  this.pi * this.jariJari * selimutKerucut;
+        luasPermukaanKerucut = luasAlas + luasSelimut;
+        return luasPermukaanKerucut;
+    }
+
+    public double hitungLuasPermukaan(double jariJari, double tinggi) {
+        double selimutKerucut = hitungGarisPelukis(jariJari, tinggi);
+        double luasAlas = super.hitungLuas(jariJari); 
+        double luasSelimut =  super.PI * jariJari * selimutKerucut;
+        luasPermukaanKerucut = luasAlas + luasSelimut;
         return luasPermukaanKerucut;
     }
 
     @Override
     public double hitungVolume() {
-        volumeKerucut = (1.0 / 3.0) * pi * Math.pow(jariJari, 2) * tinggiKerucut;
+        volumeKerucut = (1.0 / 3.0) * super.hitungLuas() * this.tinggiKerucut;
         return volumeKerucut;
     }
-    
-    public double getTinggiKerucut() {
-        return tinggiKerucut;
-    }
 
-    public void setTinggiKerucut(double tinggiKerucut) {
-        this.tinggiKerucut = tinggiKerucut;
-    }
-    
-    public double getLuasPermukaanKerucut() {
-        return luasPermukaanKerucut;
-    }
-
-    public double getVolumeKerucut() {
+    public double hitungVolume(double jariJari, double tinggi) {
+        volumeKerucut = (1.0 / 3.0) * super.hitungLuas(jariJari) * tinggi;
         return volumeKerucut;
     }
 }

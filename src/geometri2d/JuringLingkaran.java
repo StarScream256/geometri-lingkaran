@@ -1,50 +1,40 @@
 package geometri2d;
 
 public class JuringLingkaran extends Lingkaran {
-    private double jariJari;
-    private double pi;
-    private double sudutJuring = 45; 
-    private double luasJuringLingkaran;
-    private double kelilingJuringLingkaran;
-    
-    public JuringLingkaran() {
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
-    }
+    public double jariJari = 7; 
+    public double sudutJuring = 90;
+    public double pi;
+    public double luasJuringLingkaran;
+    public double kelilingJuringLingkaran;
     
     public JuringLingkaran(double jariJari, double sudut) {
-        super(jariJari);
+        super(jariJari); 
+        this.jariJari = jariJari;
         this.sudutJuring = sudut;
-        this.jariJari = super.getJariJari();
-        this.pi = super.getPI();
+        this.pi = super.PI;
     }
 
     @Override
     public double hitungLuas() {
-        luasJuringLingkaran = (sudutJuring / 360.0) * super.hitungLuas();
+        luasJuringLingkaran = (this.sudutJuring / 360.0) * super.hitungLuas();
+        return luasJuringLingkaran;
+    }
+
+    public double hitungLuas(double jariJari, double sudut) {
+        luasJuringLingkaran = (sudut / 360.0) * super.hitungLuas(jariJari);
         return luasJuringLingkaran;
     }
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = (sudutJuring / 360.0) * super.hitungKeliling();
-        kelilingJuringLingkaran = panjangBusur + (2 * jariJari);
+        double panjangBusur = (this.sudutJuring / 360.0) * super.hitungKeliling();
+        kelilingJuringLingkaran = panjangBusur + (2 * this.jariJari);
         return kelilingJuringLingkaran;
     }
 
-    public double getSudut() {
-        return sudutJuring;
-    }
-
-    public void setSudut(double sudut) {
-        this.sudutJuring = sudut;
-    }
-
-    public double getLuasJuringLingkaran() {
-        return luasJuringLingkaran;
-    }
-
-    public double getKelilingJuringLingkaran() {
+    public double hitungKeliling(double jariJari, double sudut) {
+        double panjangBusur = (sudut / 360.0) * super.hitungKeliling(jariJari);
+        kelilingJuringLingkaran = panjangBusur + (2 * jariJari);
         return kelilingJuringLingkaran;
     }
 }
