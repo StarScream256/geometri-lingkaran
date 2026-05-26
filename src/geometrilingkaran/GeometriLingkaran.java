@@ -79,7 +79,7 @@ public class GeometriLingkaran {
                     System.out.print("(Single-thread) ---\n");
                     double jariJari = inputDouble(scanner, "Jari-jari\t: ");
                     
-                    Lingkaran lingkaran = new Lingkaran();
+                    Lingkaran lingkaran = new Lingkaran(jariJari);
                     double luasLingkaran = lingkaran.hitungLuas();
                     double KelilingLingkaran = lingkaran.hitungKeliling();
 
