@@ -40,6 +40,8 @@ public class TemberengLingkaranThread implements Runnable {
                 System.out.print(output);
                 Thread.sleep(delay);
             }
-        } catch (InterruptedException e) {}
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

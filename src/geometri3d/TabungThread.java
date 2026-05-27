@@ -4,50 +4,48 @@
  */
 package geometri3d;
 
-// multithreading
-// implements Runnable
 public class TabungThread implements Runnable {
-    public int nomor;
+    public int count;
+    public int delay = 1000;
 
-    // constructor
     public TabungThread() {}
     
-    public TabungThread(int nomor) {
-        this.nomor = nomor;
+    public TabungThread(int count) {
+        this.count = count;
+    }
+    
+    public TabungThread(int count, int delay) {
+        this.count = count;
+        this.delay = delay;
     }
 
-    // overriding method run()
     @Override
     public void run() {
         try {
-            // Delay random antara 0 - 300 ms agar output tidak berurutan rapi
-            Thread.sleep((long)(Math.random() * 300));
+            for (int i = 0; i < count; i++) {
+                String threadName = Thread.currentThread().getName();
+                double r = (Math.random() * 10) + 1;
+                double t = (Math.random() * 10) + 1;
+                Tabung tabung = new Tabung(r, t);
+                double luasPermukaan = tabung.hitungLuasPermukaan();
+                double volume = tabung.hitungVolume();
+
+                String output = String.format(
+                    """
+                    Thread Tabung #%d (%s)
+                    Jari-jari      : %.2f
+                    Tinggi         : %.2f
+                    Luas Permukaan : %.2f
+                    Volume         : %.2f
+                    ------------------------
+                    """,
+                    i, threadName, r, t, luasPermukaan, volume
+                );
+                System.out.print(output);
+                Thread.sleep(delay);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
-        String threadName = Thread.currentThread().getName();
-        
-        double r = (Math.random() * 10) + 1;
-        double t = (Math.random() * 10) + 1;
-        Tabung tabung = new Tabung(r, t);
-        double luasPermukaan = tabung.hitungLuasPermukaan();
-        double volume = tabung.hitungVolume();
-        
-        
-        // Output Text Block
-        String output = String.format(
-            """
-            Thread Tabung #%d (%s)
-            Jari-jari      : %.2f
-            Tinggi         : %.2f
-            Luas Permukaan : %.2f
-            Volume         : %.2f
-            ------------------------
-            """,
-            this.nomor, threadName, r, t, luasPermukaan, volume
-        );
-        
-        System.out.print(output);
     }
 }

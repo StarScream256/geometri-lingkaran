@@ -135,7 +135,7 @@ public class MainFrame extends JFrame {
     }
     
     private void cincinBolaButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        CincinBolaTorusFrame f = new CincinBolaTorusFrame();
+        CincinBolaFrame f = new CincinBolaFrame();
         f.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
