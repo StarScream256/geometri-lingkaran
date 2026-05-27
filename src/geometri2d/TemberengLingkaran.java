@@ -1,6 +1,6 @@
 package geometri2d;
 
-public class TemberengLingkaran extends JuringLingkaran {
+public class TemberengLingkaran extends JuringLingkaran implements Geometri2D {
     public double jariJari;
     public double sudutTembereng = 90;
     public double pi;
