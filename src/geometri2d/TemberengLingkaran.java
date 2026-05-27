@@ -1,7 +1,7 @@
 package geometri2d;
 
 public class TemberengLingkaran extends JuringLingkaran {
-    public double jariJari = 7;
+    public double jariJari;
     public double sudutTembereng = 90;
     public double pi;
     public double luasTemberengLingkaran;
@@ -10,13 +10,16 @@ public class TemberengLingkaran extends JuringLingkaran {
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut); 
         this.jariJari = jariJari;
+        super.jariJari = jariJari;
         this.sudutTembereng = sudut;
-        this.pi = super.pi;
+        this.pi = super.PI;
+        super.hitungLuas();
+        super.hitungKeliling();
     }
 
     @Override
     public double hitungLuas() {
-        double luasJuring = super.hitungLuas(); 
+        double luasJuring = super.luasJuringLingkaran; 
         double luasSegitiga = 0.5 * this.jariJari * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng));
         luasTemberengLingkaran = luasJuring - luasSegitiga;
         return luasTemberengLingkaran;
@@ -32,7 +35,7 @@ public class TemberengLingkaran extends JuringLingkaran {
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = super.hitungKeliling() - (2 * this.jariJari);
+        double panjangBusur = super.kelilingJuringLingkaran - (2 * this.jariJari);
         double panjangTaliBusur = 2 * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng / 2.0));
         kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
         return kelilingTemberengLingkaran;

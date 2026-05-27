@@ -3,7 +3,7 @@ package geometri3d;
 import geometri2d.Lingkaran;
 
 public class Bola extends Lingkaran implements Geometri3D {
-    public double jariJari = 7;
+    public double jariJari;
     public double pi; 
     public double volumeBola;
     public double luasPermukaanBola;
@@ -11,7 +11,10 @@ public class Bola extends Lingkaran implements Geometri3D {
     public Bola(double jariJari) {
         super(jariJari); 
         this.jariJari = jariJari;
+        super.jariJari = jariJari;
         this.pi = super.PI; 
+        super.hitungLuas();
+        super.hitungKeliling();
     }
     
     @Override
@@ -27,7 +30,7 @@ public class Bola extends Lingkaran implements Geometri3D {
     
     @Override
     public double hitungLuasPermukaan() {
-       luasPermukaanBola = 4 * super.hitungLuas();
+       luasPermukaanBola = 4 * super.luasLingkaran;
         return luasPermukaanBola;
     }
     

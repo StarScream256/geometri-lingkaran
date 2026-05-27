@@ -1,7 +1,7 @@
 package geometri3d;
 
 public class TemberengBola extends Bola {
-    public double jariJari = 7;
+    public double jariJari;
     public double tinggiTembereng = 10;
     public double pi; 
     public double luasPermukaanTemberengBola;
@@ -10,11 +10,14 @@ public class TemberengBola extends Bola {
     public TemberengBola(double jariJari, double tinggi) {
         super(jariJari); 
         this.jariJari = jariJari;
+        super.jariJari = jariJari;
         this.tinggiTembereng = tinggi;
-        this.pi = super.pi; 
+        this.pi = super.PI; 
+        super.hitungLuas();
+        super.hitungKeliling();
     }
 
-    private double hitungJariJariAlas(double jariJari, double tinggi) {
+    public double hitungJariJariAlas(double jariJari, double tinggi) {
         return Math.sqrt(Math.pow(jariJari, 2) - Math.pow(jariJari - tinggi, 2));
     }
 
@@ -22,7 +25,7 @@ public class TemberengBola extends Bola {
     public double hitungLuasPermukaan() {
         double jariJariAlas = hitungJariJariAlas(this.jariJari, this.tinggiTembereng);
         double luasAlasTembereng = super.hitungLuas(jariJariAlas);
-        double luasKubahMelengkung = super.hitungKeliling() * this.tinggiTembereng;   
+        double luasKubahMelengkung = super.kelilingLingkaran * this.tinggiTembereng;   
         luasPermukaanTemberengBola = luasAlasTembereng + luasKubahMelengkung;
         return luasPermukaanTemberengBola;
     }
@@ -43,7 +46,7 @@ public class TemberengBola extends Bola {
     }
 
     public double hitungVolume(double jariJari, double tinggi) {
-        volumeTemberengBola = (1.0 / 3.0) * super.pi * Math.pow(tinggi, 2) * ((3 * jariJari) - tinggi);
+        volumeTemberengBola = (1.0 / 3.0) * super.PI * Math.pow(tinggi, 2) * ((3 * jariJari) - tinggi);
         return volumeTemberengBola;
     }
 }

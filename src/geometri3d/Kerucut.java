@@ -3,7 +3,7 @@ package geometri3d;
 import geometri2d.Lingkaran;
 
 public class Kerucut extends Lingkaran implements Geometri3D {
-    public double jariJari = 7;
+    public double jariJari;
     public double tinggiKerucut = 10;
     public double pi;
     public double luasPermukaanKerucut;
@@ -12,18 +12,21 @@ public class Kerucut extends Lingkaran implements Geometri3D {
     public Kerucut(double jariJari, double tinggi) {
         super(jariJari); 
         this.jariJari = jariJari;
+        super.jariJari = jariJari;
         this.tinggiKerucut = tinggi;
         this.pi = super.PI;
+        super.hitungLuas();
+        super.hitungKeliling();
     }
 
-    private double hitungGarisPelukis(double jariJari, double tinggi) {
+    public double hitungGarisPelukis(double jariJari, double tinggi) {
         return Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggi, 2));
     }
 
     @Override
     public double hitungLuasPermukaan() {
         double selimutKerucut = hitungGarisPelukis(this.jariJari, this.tinggiKerucut);
-        double luasAlas = super.hitungLuas(); 
+        double luasAlas = super.luasLingkaran; 
         double luasSelimut =  this.pi * this.jariJari * selimutKerucut;
         luasPermukaanKerucut = luasAlas + luasSelimut;
         return luasPermukaanKerucut;
@@ -39,7 +42,7 @@ public class Kerucut extends Lingkaran implements Geometri3D {
 
     @Override
     public double hitungVolume() {
-        volumeKerucut = (1.0 / 3.0) * super.hitungLuas() * this.tinggiKerucut;
+        volumeKerucut = (1.0 / 3.0) * super.luasLingkaran * this.tinggiKerucut;
         return volumeKerucut;
     }
 
