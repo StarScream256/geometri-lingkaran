@@ -1,6 +1,6 @@
 package geometri3d;
 
-public class JuringBola extends Bola {
+public class JuringBola extends Bola implements Geometri3D {
     public double jariJari;
     public double tinggiJuring = 10;
     public double pi; 
