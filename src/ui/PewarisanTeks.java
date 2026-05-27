@@ -14,7 +14,7 @@ import geometri3d.JuringBola;
 import geometri3d.TemberengBola;
 import geometri3d.CincinBola;
 
-public class Dynamic {
+public class PewarisanTeks {
 
     private static double inputDoubleValid(Scanner sc, String pesan) {
         while (true) {
