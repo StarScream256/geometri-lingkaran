@@ -96,8 +96,8 @@ public class TemberengLingkaranFrame extends JFrame {
                     tembereng.hitungLuas();
                     tembereng.hitungKeliling();
 
-                    txtLuas.setText(String.format("%.2f", tembereng.getLuasTemberengLingkaran()));
-                    txtKeliling.setText(String.format("%.2f", tembereng.getKelilingTemberengLingkaran()));
+                    txtLuas.setText(String.format("%.2f", tembereng.hitungLuas()));
+                    txtKeliling.setText(String.format("%.2f", tembereng.hitungKeliling()));
 
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);

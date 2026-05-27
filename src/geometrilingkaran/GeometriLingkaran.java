@@ -85,8 +85,8 @@ public class GeometriLingkaran {
 
                     String output = String.format(
                         """
-                        Luas Lingkaran\t: %.2f 
-                        Keliling \t\t: %.2f 
+                        Luas Lingkaran  : %.2f 
+                        Keliling        : %.2f 
                         ---------------------------
                         """,
                         luasLingkaran, KelilingLingkaran
@@ -94,11 +94,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                     for (int i = 0; i < jumlahThread; i++) {
-                    LingkaranThread runnable = new LingkaranThread(i +1);
+                    LingkaranThread runnable = new LingkaranThread(jumlahThread);
                     Thread thread = new Thread(runnable);
                     thread.start();
-                     }
                 }
             }
             case 2 -> { // Kerucut
@@ -114,8 +112,8 @@ public class GeometriLingkaran {
 
                     String output = String.format(
                         """
-                        Luas permukaan\t: %.2f 
-                        Volume\t\t: %.2f 
+                        Luas permukaan  : %.2f 
+                        Volume          : %.2f 
                         ---------------------------
                         """,
                         luasPermukaan, volume
@@ -123,11 +121,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-                        KerucutThread runnable = new KerucutThread(i + 1); 
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+                    KerucutThread runnable = new KerucutThread(jumlahThread); 
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 3 -> { // Kerucut Terpancung
@@ -144,8 +140,8 @@ public class GeometriLingkaran {
 
                     String output = String.format(
                         """
-                        Luas permukaan\t: %.2f 
-                        Volume\t\t: %.2f 
+                        Luas permukaan  : %.2f 
+                        Volume          : %.2f 
                         ---------------------------
                         """,
                         luasPermukaan, volume
@@ -153,11 +149,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-                        KerucutTerpancungThread runnable = new KerucutTerpancungThread(i + 1); 
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+                    KerucutTerpancungThread runnable = new KerucutTerpancungThread(jumlahThread); 
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 4 -> { // Tabung
@@ -173,8 +167,8 @@ public class GeometriLingkaran {
 
                     String output = String.format(
                         """
-                        Luas permukaan\t: %.2f 
-                        Volume\t\t: %.2f 
+                        Luas permukaan  : %.2f 
+                        Volume          : %.2f 
                         ---------------------------
                         """,
                         luasPermukaan, volume
@@ -182,22 +176,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-
-    double r = (Math.random() * 10) + 1;
-    double t = (Math.random() * 10) + 1;
-
-    Tabung tabung =
-            new Tabung(r, t);
-
-    TabungThread runnable =
-            new TabungThread(tabung);
-
-    Thread thread =
-            new Thread(runnable);
-
-    thread.start();
-}
+                    TabungThread runnable = new TabungThread(jumlahThread);
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 5 -> { // Bola
@@ -212,8 +193,8 @@ public class GeometriLingkaran {
 
                     String output = String.format(
                         """
-                        Luas permukaan\t: %.2f 
-                        Volume\t\t: %.2f 
+                        Luas permukaan  : %.2f 
+                        Volume          : %.2f 
                         ---------------------------
                         """,
                         luasPermukaan, volume
@@ -221,11 +202,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-                        BolaThread runnable = new BolaThread(i + 1); 
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+                    BolaThread runnable = new BolaThread(jumlahThread); 
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 6 -> { // Juring Bola
@@ -241,8 +220,8 @@ public class GeometriLingkaran {
 
                     String output = String.format(
                         """
-                        Luas permukaan\t: %.2f 
-                        Volume\t\t: %.2f 
+                        Luas permukaan  : %.2f 
+                        Volume          : %.2f 
                         ---------------------------
                         """,
                         luasPermukaan, volume
@@ -250,11 +229,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-                        JuringBolaThread runnable = new JuringBolaThread(i + 1); 
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+                    JuringBolaThread runnable = new JuringBolaThread(jumlahThread); 
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 7 -> { // Tembereng Bola
@@ -270,8 +247,8 @@ public class GeometriLingkaran {
                     
                     String output = String.format(
                         """
-                        Luas permukaan\t: %.2f 
-                        Volume\t\t: %.2f 
+                        Luas permukaan  : %.2f 
+                        Volume          : %.2f 
                         ---------------------------
                         """,
                         luasPermukaan, volume
@@ -279,21 +256,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-
-    double r = (Math.random() * 10) + 1;
-    double t = (Math.random() * 10) + 1;
-
-    TemberengBola tembereng =
-            new TemberengBola(r, t);
-
-    TemberengBolaThread runnable =
-            new TemberengBolaThread(tembereng);
-
-    Thread thread = new Thread(runnable);
-
-    thread.start();
-}
+                    TemberengBolaThread runnable = new TemberengBolaThread(jumlahThread);
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 8 -> { // Cincin Bola
@@ -309,8 +274,8 @@ public class GeometriLingkaran {
                     
                     String output = String.format(
                         """
-                        Luas permukaan\t: %.2f 
-                        Volume\t\t: %.2f 
+                        Luas permukaan  : %.2f 
+                        Volume          : %.2f 
                         ---------------------------
                         """,
                         luasPermukaan, volume
@@ -318,11 +283,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-                        CincinBolaThread runnable = new CincinBolaThread(i);
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+                    CincinBolaThread runnable = new CincinBolaThread(jumlahThread);
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 9 -> { // Juring Lingkaran
@@ -338,8 +301,8 @@ public class GeometriLingkaran {
 
                     String output = String.format(
                         """
-                        Luas Juring\t: %.2f 
-                        Keliling Juring\t: %.2f 
+                        Luas Juring     : %.2f 
+                        Keliling Juring : %.2f 
                         ---------------------------
                         """,
                         luas, keliling
@@ -347,11 +310,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-                        JuringLingkaranThread runnable = new JuringLingkaranThread(i);
+                        JuringLingkaranThread runnable = new JuringLingkaranThread(jumlahThread);
                         Thread thread = new Thread(runnable);
                         thread.start();
-                    }
                 }
             }
             case 10 -> { // Tembereng Lingkaran
@@ -376,11 +337,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    for (int i = 0; i < jumlahThread; i++) {
-                        TemberengLingkaranThread runnable = new TemberengLingkaranThread(i);
-                        Thread thread = new Thread(runnable);
-                        thread.start();
-                    }
+                    TemberengLingkaranThread runnable = new TemberengLingkaranThread(jumlahThread);
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             default -> System.out.println("Pilihan anda tidak valid");

@@ -10,9 +10,7 @@ public class TabungFrame extends JFrame {
 
     private JTextField txtR;
     private JTextField txtTinggi;
-
     private JButton btnHitung;
-
     private JLabel lblHasil;
 
     public TabungFrame() {
@@ -83,14 +81,6 @@ public class TabungFrame extends JFrame {
                     // object tabung
                     Tabung tabung =
                             new Tabung(r, t);
-
-                    // multithreading
-                    Thread thread =
-                            new Thread(
-                                    new TabungThread(tabung)
-                            );
-
-                    thread.start();
 
                     // tampilkan hasil
                     lblHasil.setText(

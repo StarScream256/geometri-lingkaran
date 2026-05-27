@@ -88,14 +88,6 @@ public class TemberengBolaFrame extends JFrame {
                     TemberengBola tb =
                             new TemberengBola(r, t);
 
-                    // multithreading
-                    Thread thread =
-                            new Thread(
-                                    new TemberengBolaThread(tb)
-                            );
-
-                    thread.start();
-
                     // tampilkan hasil
                     lblHasil.setText(
                             "Hasil : "
