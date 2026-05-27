@@ -33,6 +33,7 @@ import ui.MainFrame;
  * @author asus
  */
 public class GeometriLingkaran {
+    public static int delay = 1000;
     
     private static double inputDouble(Scanner sc, String pesan) {
         System.out.print(pesan);
@@ -94,7 +95,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    LingkaranThread runnable = new LingkaranThread(jumlahThread);
+                    Lingkaran runnable = new Lingkaran(1, jumlahThread, delay);
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -310,7 +311,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                        JuringLingkaranThread runnable = new JuringLingkaranThread(jumlahThread);
+                        JuringLingkaran runnable = new JuringLingkaran(1, 45, jumlahThread, delay);
                         Thread thread = new Thread(runnable);
                         thread.start();
                 }
@@ -337,7 +338,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    TemberengLingkaranThread runnable = new TemberengLingkaranThread(jumlahThread);
+                    TemberengLingkaran runnable = new TemberengLingkaran(1, 45, jumlahThread, delay);
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }

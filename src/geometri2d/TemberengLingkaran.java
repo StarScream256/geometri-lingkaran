@@ -1,17 +1,29 @@
 package geometri2d;
 
-public class TemberengLingkaran extends JuringLingkaran {
+public class TemberengLingkaran extends JuringLingkaran implements Runnable {
     public double jariJari = 7;
     public double sudutTembereng = 90;
     public double pi;
     public double luasTemberengLingkaran;
     public double kelilingTemberengLingkaran;
+    
+    public int count;
+    public int delay = 1000;
  
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut); 
         this.jariJari = jariJari;
         this.sudutTembereng = sudut;
         this.pi = super.pi;
+    }
+    
+    public TemberengLingkaran(double jariJari, double sudut, int count, int delay) {
+        super(jariJari, sudut); 
+        this.jariJari = jariJari;
+        this.sudutTembereng = sudut;
+        this.pi = super.pi;
+        this.count = count;
+        this.delay = delay;
     }
 
     @Override
@@ -44,5 +56,34 @@ public class TemberengLingkaran extends JuringLingkaran {
         double panjangTaliBusur = 2 * jariJari * Math.sin(Math.toRadians(sudut / 2.0));
         kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
         return kelilingTemberengLingkaran;
+    }
+    
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < count; i++) {
+                String threadName = Thread.currentThread().getName();
+                jariJari += i;
+                sudutJuring += i;
+                luas = hitungLuas(jariJari, sudutJuring);
+                keliling = hitungKeliling(jariJari, sudutJuring);
+
+                String output = String.format(
+                    """
+                    Thread Tembereng Lingkaran #%d (%s)
+                    Jari-jari          : %.2f
+                    Sudut Tembereng    : %.2f
+                    Luas Tembereng     : %.2f 
+                    Keliling Tembereng : %.2f 
+                    ------------------------------------
+                    """,
+                    i, threadName, jariJari, sudutJuring, luas, keliling
+                );
+                System.out.print(output);
+                Thread.sleep(delay);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

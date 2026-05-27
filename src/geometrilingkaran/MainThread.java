@@ -4,8 +4,11 @@
  */
 package geometrilingkaran;
 
+import geometri2d.JuringLingkaran;
 import geometri2d.JuringLingkaranThread;
+import geometri2d.Lingkaran;
 import geometri2d.LingkaranThread;
+import geometri2d.TemberengLingkaran;
 import geometri2d.TemberengLingkaranThread;
 import geometri3d.BolaThread;
 import geometri3d.CincinBolaThread;
@@ -23,11 +26,12 @@ public class MainThread {
     public static void main(String[] args) {
         int count = 100;
         count /= 10;
-        int delay = 2000;
+        int delay = 1000;
         
-        Thread lingkaranThread = new Thread(new LingkaranThread(count, delay));
-        Thread juringLingkaranThread = new Thread(new JuringLingkaranThread(count, delay));
-        Thread temberengLingkaranThread = new Thread(new TemberengLingkaranThread(count, delay));
+        Thread lingkaranThread = new Thread(new Lingkaran(1, count, delay));
+        Thread juringLingkaranThread = new Thread(new JuringLingkaran(1, 45, count, delay));
+        Thread temberengLingkaranThread = new Thread(new TemberengLingkaran(1, 45, count, delay));
+        
         Thread kerucutThread = new Thread(new KerucutThread(count, delay));
         Thread kerucutTerpancungThread = new Thread(new KerucutTerpancungThread(count, delay));
         Thread tabungThread = new Thread(new TabungThread(count, delay));
@@ -36,9 +40,10 @@ public class MainThread {
         Thread tembrengBolaThread = new Thread(new TemberengBolaThread(count, delay));
         Thread cincinBolaThread = new Thread(new CincinBolaThread(count, delay));
 
-        Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
-            kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, tembrengBolaThread, cincinBolaThread
-        };
+        // Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
+        //     kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, tembrengBolaThread, cincinBolaThread
+        // };
+        Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread};
         
         for (Thread thread : threads) {
             thread.start();
