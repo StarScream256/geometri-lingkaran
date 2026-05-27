@@ -2,13 +2,13 @@ package geometri2d;
 
 public class Lingkaran implements Geometri2D, Runnable {
     public double jariJari = 7;
-    public double luas;
-    public double keliling;
+    public double luasLingkaran;
+    public double kelilingLingkaran;
     public final double PI = Math.PI;
     
     // attribut multi-thread
     public int count;
-    public int delay = 1000;
+    public int delay;
     
     public Lingkaran(double jariJari) {
         this.jariJari = jariJari;
@@ -23,24 +23,24 @@ public class Lingkaran implements Geometri2D, Runnable {
 
     @Override
     public double hitungLuas() {
-        luas = PI * this.jariJari * this.jariJari;
-        return luas;
+        luasLingkaran = PI * this.jariJari * this.jariJari;
+        return luasLingkaran;
     }
     
     public double hitungLuas(double jariJari) {
-        luas = PI * jariJari * jariJari;
-        return luas;
+        luasLingkaran = PI * jariJari * jariJari;
+        return luasLingkaran;
     }
     
     @Override
     public double hitungKeliling() {
-        keliling = 2 * PI * this.jariJari;
-        return keliling;
+        kelilingLingkaran = 2 * PI * this.jariJari;
+        return kelilingLingkaran;
     }
     
     public double hitungKeliling(double jariJari) {
-        keliling = 2 * PI * jariJari;
-        return keliling;
+        kelilingLingkaran = 2 * PI * jariJari;
+        return kelilingLingkaran;
     }
     
     @Override
@@ -49,8 +49,8 @@ public class Lingkaran implements Geometri2D, Runnable {
             for (int i = 1; i <= count; i++) {
                 String threadName = Thread.currentThread().getName();
                 jariJari += i;
-                luas = hitungLuas(jariJari);
-                keliling = hitungKeliling(jariJari);
+                luasLingkaran = hitungLuas(jariJari);
+                kelilingLingkaran = hitungKeliling(jariJari);
 
                 String output = String.format(
                     """
@@ -60,7 +60,7 @@ public class Lingkaran implements Geometri2D, Runnable {
                     Keliling  : %.2f
                     -----------------------------
                     """,
-                    i, threadName, jariJari, luas, keliling
+                    i, threadName, jariJari, luasLingkaran, kelilingLingkaran
                 );
                 System.out.print(output);
                 Thread.sleep(delay);

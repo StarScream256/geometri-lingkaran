@@ -5,18 +5,15 @@
 package geometrilingkaran;
 
 import geometri2d.JuringLingkaran;
-import geometri2d.JuringLingkaranThread;
 import geometri2d.Lingkaran;
-import geometri2d.LingkaranThread;
 import geometri2d.TemberengLingkaran;
-import geometri2d.TemberengLingkaranThread;
-import geometri3d.BolaThread;
-import geometri3d.CincinBolaThread;
-import geometri3d.JuringBolaThread;
-import geometri3d.KerucutTerpancungThread;
-import geometri3d.KerucutThread;
-import geometri3d.TabungThread;
-import geometri3d.TemberengBolaThread;
+import geometri3d.Bola;
+import geometri3d.CincinBola;
+import geometri3d.JuringBola;
+import geometri3d.Kerucut;
+import geometri3d.KerucutTerpancung;
+import geometri3d.Tabung;
+import geometri3d.TemberengBola;
 
 /**
  *
@@ -31,19 +28,17 @@ public class MainThread {
         Thread lingkaranThread = new Thread(new Lingkaran(1, count, delay));
         Thread juringLingkaranThread = new Thread(new JuringLingkaran(1, 45, count, delay));
         Thread temberengLingkaranThread = new Thread(new TemberengLingkaran(1, 45, count, delay));
-        
-        Thread kerucutThread = new Thread(new KerucutThread(count, delay));
-        Thread kerucutTerpancungThread = new Thread(new KerucutTerpancungThread(count, delay));
-        Thread tabungThread = new Thread(new TabungThread(count, delay));
-        Thread bolaThread = new Thread(new BolaThread(count, delay));
-        Thread juringBolaThread = new Thread(new JuringBolaThread(count, delay));
-        Thread tembrengBolaThread = new Thread(new TemberengBolaThread(count, delay));
-        Thread cincinBolaThread = new Thread(new CincinBolaThread(count, delay));
+        Thread kerucutThread = new Thread(new Kerucut(10, 20, count, delay));
+        Thread kerucutTerpancungThread = new Thread(new KerucutTerpancung(10, 10, 5, count, delay));
+        Thread tabungThread = new Thread(new Tabung(5, 5, count, delay));
+        Thread bolaThread = new Thread(new Bola(10, count, delay));
+        Thread juringBolaThread = new Thread(new JuringBola(10, 5, count, delay));
+        Thread tembrengBolaThread = new Thread(new TemberengBola(10, 5, count, delay));
+        Thread cincinBolaThread = new Thread(new CincinBola(10, 5, count, delay));
 
-        // Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
-        //     kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, tembrengBolaThread, cincinBolaThread
-        // };
-        Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread};
+         Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
+             kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, tembrengBolaThread, cincinBolaThread
+         };
         
         for (Thread thread : threads) {
             thread.start();

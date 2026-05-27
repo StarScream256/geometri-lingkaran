@@ -2,16 +2,33 @@ package geometri3d;
 
 import geometri2d.Lingkaran;
 
-public class Bola extends Lingkaran implements Geometri3D {
-    public double jariJari = 7;
+public class Bola extends Lingkaran implements Geometri3D, Runnable {
+    public double jariJari;
     public double pi; 
     public double volumeBola;
     public double luasPermukaanBola;
     
+    public int count;
+    public int delay;
+    
     public Bola(double jariJari) {
         super(jariJari); 
         this.jariJari = jariJari;
+        super.jariJari = jariJari;
         this.pi = super.PI; 
+        super.hitungLuas();
+        super.hitungKeliling();
+    }
+    
+    public Bola(double jariJari, int count, int delay) {
+        super(jariJari); 
+        this.jariJari = jariJari;
+        super.jariJari = jariJari;
+        this.pi = super.PI; 
+        super.hitungLuas();
+        super.hitungKeliling();
+        this.count = count;
+        this.delay = delay;
     }
     
     @Override
@@ -27,12 +44,39 @@ public class Bola extends Lingkaran implements Geometri3D {
     
     @Override
     public double hitungLuasPermukaan() {
-       luasPermukaanBola = 4 * super.hitungLuas();
+       luasPermukaanBola = 4 * super.luasLingkaran;
         return luasPermukaanBola;
     }
     
     public double hitungLuasPermukaan(double jariJari) {
         luasPermukaanBola = 4 * super.hitungLuas(jariJari);
         return luasPermukaanBola;
+    }
+    
+    @Override
+    public void run(){
+        try{
+            for (int i = 0; i < count; i++) {
+                String threadName = Thread.currentThread().getName();
+                jariJari += i;
+                luasPermukaanBola = hitungLuasPermukaan(jariJari);
+                volumeBola = hitungVolume(jariJari);
+
+                String output = String.format(
+                    """
+                    Thread bola #%d (%s)
+                    Jari-jari       : %.2f
+                    Luas Permukaan  : %.2f
+                    Volume          : %.2f
+                    -----------------------------
+                    """,
+                    i, threadName, jariJari, luasPermukaanBola, volumeBola
+                );
+                System.out.print(output);
+                Thread.sleep(delay);
+            }
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
     }
 }

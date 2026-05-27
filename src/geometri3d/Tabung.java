@@ -3,22 +3,40 @@ package geometri3d;
 import geometri2d.Lingkaran;
 
 public class Tabung extends Lingkaran implements Geometri3D {
-    public double jariJari = 7;
+    public double jariJari;
     public double tinggi = 10;
     public double pi; 
     public double luasPermukaanTabung;
     public double volumeTabung;
+    
+    public int count;
+    public int delay;
 
     public Tabung(double jariJari, double tinggi) {
         super(jariJari); 
         this.jariJari = jariJari;
+        super.jariJari = jariJari;
         this.tinggi = tinggi;
         this.pi = super.PI;
+        super.hitungLuas();
+        super.hitungKeliling();
+    }
+    
+    public Tabung(double jariJari, double tinggi, int count, int delay) {
+        super(jariJari); 
+        this.jariJari = jariJari;
+        super.jariJari = jariJari;
+        this.tinggi = tinggi;
+        this.pi = super.PI;
+        super.hitungLuas();
+        super.hitungKeliling();
+        this.count = count;
+        this.delay = delay;
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        double luasAlas = super.hitungLuas(); 
+        double luasAlas = super.luasLingkaran; 
         double luasSelimut = 2 * this.pi * this.jariJari * this.tinggi;
         luasPermukaanTabung = (2 * luasAlas) + luasSelimut;
         return luasPermukaanTabung;
@@ -33,12 +51,41 @@ public class Tabung extends Lingkaran implements Geometri3D {
 
     @Override
     public double hitungVolume() {
-        volumeTabung = super.hitungLuas() * this.tinggi;
+        volumeTabung = super.luasLingkaran * this.tinggi;
         return volumeTabung;
     }
 
     public double hitungVolume(double jariJari, double tinggi) {
         volumeTabung = super.hitungLuas(jariJari) * tinggi;
         return volumeTabung;
+    }
+    
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < count; i++) {
+                String threadName = Thread.currentThread().getName();
+                jariJari += i;
+                tinggi += i;
+                luasPermukaanTabung = hitungLuasPermukaan(jariJari, tinggi);
+                volumeTabung = hitungVolume(jariJari, tinggi);
+
+                String output = String.format(
+                    """
+                    Thread Tabung #%d (%s)
+                    Jari-jari      : %.2f
+                    Tinggi         : %.2f
+                    Luas Permukaan : %.2f
+                    Volume         : %.2f
+                    ------------------------
+                    """,
+                    i, threadName, jariJari, tinggi, luasPermukaanTabung, volumeTabung
+                );
+                System.out.print(output);
+                Thread.sleep(delay);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -8,13 +8,16 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
     public double kelilingTemberengLingkaran;
     
     public int count;
-    public int delay = 1000;
+    public int delay;
  
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut); 
         this.jariJari = jariJari;
+        super.jariJari = jariJari;
         this.sudutTembereng = sudut;
-        this.pi = super.pi;
+        this.pi = super.PI;
+        super.hitungLuas();
+        super.hitungKeliling();
     }
     
     public TemberengLingkaran(double jariJari, double sudut, int count, int delay) {
@@ -28,7 +31,7 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
 
     @Override
     public double hitungLuas() {
-        double luasJuring = super.hitungLuas(); 
+        double luasJuring = super.luasJuringLingkaran; 
         double luasSegitiga = 0.5 * this.jariJari * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng));
         luasTemberengLingkaran = luasJuring - luasSegitiga;
         return luasTemberengLingkaran;
@@ -44,7 +47,7 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = super.hitungKeliling() - (2 * this.jariJari);
+        double panjangBusur = super.kelilingJuringLingkaran - (2 * this.jariJari);
         double panjangTaliBusur = 2 * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng / 2.0));
         kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
         return kelilingTemberengLingkaran;
@@ -65,8 +68,8 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
                 String threadName = Thread.currentThread().getName();
                 jariJari += i;
                 sudutJuring += i;
-                luas = hitungLuas(jariJari, sudutJuring);
-                keliling = hitungKeliling(jariJari, sudutJuring);
+                luasTemberengLingkaran = hitungLuas(jariJari, sudutJuring);
+                kelilingTemberengLingkaran = hitungKeliling(jariJari, sudutJuring);
 
                 String output = String.format(
                     """
@@ -77,7 +80,7 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
                     Keliling Tembereng : %.2f 
                     ------------------------------------
                     """,
-                    i, threadName, jariJari, sudutJuring, luas, keliling
+                    i, threadName, jariJari, sudutJuring, luasLingkaran, kelilingLingkaran
                 );
                 System.out.print(output);
                 Thread.sleep(delay);

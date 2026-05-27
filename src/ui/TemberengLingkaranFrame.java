@@ -93,9 +93,6 @@ public class TemberengLingkaranFrame extends JFrame {
 
                     TemberengLingkaran tembereng = new TemberengLingkaran(jariJariValue, sudutValue);
 
-                    tembereng.hitungLuas();
-                    tembereng.hitungKeliling();
-
                     txtLuas.setText(String.format("%.2f", tembereng.hitungLuas()));
                     txtKeliling.setText(String.format("%.2f", tembereng.hitungKeliling()));
 
