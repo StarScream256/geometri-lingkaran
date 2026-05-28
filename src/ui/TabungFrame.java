@@ -1,7 +1,6 @@
 package ui;
 
 import geometri3d.Tabung;
-import geometri3d.TabungThread;
 
 import javax.swing.*;
 import java.awt.event.*;

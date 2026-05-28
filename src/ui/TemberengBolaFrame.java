@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 
 import geometri3d.TemberengBola;
-import geometri3d.TemberengBolaThread;
 
 public class TemberengBolaFrame extends JFrame {
 

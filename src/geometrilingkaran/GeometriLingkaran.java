@@ -5,27 +5,17 @@
 package geometrilingkaran;
 
 import geometri3d.CincinBola;
-import geometri3d.CincinBolaThread;
 import geometri3d.Kerucut;
-import geometri3d.KerucutThread;
 import geometri3d.KerucutTerpancung;
-import geometri3d.KerucutTerpancungThread;
 import geometri3d.Tabung;
-import geometri3d.TabungThread;
 import geometri3d.Bola;
-import geometri3d.BolaThread;
 import geometri3d.JuringBola;
-import geometri3d.JuringBolaThread;
 import geometri3d.TemberengBola;
-import geometri3d.TemberengBolaThread;
 import java.util.Locale;
 import java.util.Scanner;
 import geometri2d.Lingkaran;
-import geometri2d.JuringLingkaranThread;
 import geometri2d.JuringLingkaran;
-import geometri2d.TemberengLingkaranThread;
 import geometri2d.TemberengLingkaran;
-import geometri2d.LingkaranThread;
 import ui.MainFrame;
 
 /**
@@ -122,7 +112,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    KerucutThread runnable = new KerucutThread(jumlahThread); 
+                    Kerucut runnable = new Kerucut(10, 20, jumlahThread, delay); 
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -150,7 +140,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    KerucutTerpancungThread runnable = new KerucutTerpancungThread(jumlahThread); 
+                    KerucutTerpancung runnable = new KerucutTerpancung(10, 10, 5, jumlahThread, delay); 
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -177,7 +167,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    TabungThread runnable = new TabungThread(jumlahThread);
+                    Tabung runnable = new Tabung(5, 5, jumlahThread, delay);
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -203,7 +193,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    BolaThread runnable = new BolaThread(jumlahThread); 
+                    Bola runnable = new Bola(10, jumlahThread, delay); 
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -230,7 +220,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    JuringBolaThread runnable = new JuringBolaThread(jumlahThread); 
+                    JuringBola runnable = new JuringBola(10, 5, jumlahThread, delay); 
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -257,7 +247,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    TemberengBolaThread runnable = new TemberengBolaThread(jumlahThread);
+                    TemberengBola runnable = new TemberengBola(10, 5, jumlahThread, delay);
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -284,7 +274,7 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                    CincinBolaThread runnable = new CincinBolaThread(jumlahThread);
+                    CincinBola runnable = new CincinBola(10, 5, jumlahThread, delay);
                     Thread thread = new Thread(runnable);
                     thread.start();
                 }
@@ -311,9 +301,9 @@ public class GeometriLingkaran {
                     System.out.print(output);
                 } else { // Multi-thread
                     System.out.print("(Multi-thread) ---\n");
-                        JuringLingkaran runnable = new JuringLingkaran(1, 45, jumlahThread, delay);
-                        Thread thread = new Thread(runnable);
-                        thread.start();
+                    JuringLingkaran runnable = new JuringLingkaran(1, 45, jumlahThread, delay);
+                    Thread thread = new Thread(runnable);
+                    thread.start();
                 }
             }
             case 10 -> { // Tembereng Lingkaran

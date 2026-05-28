@@ -1,6 +1,6 @@
 package geometri3d;
 
-public class KerucutTerpancung extends Kerucut {
+public class KerucutTerpancung extends Kerucut implements Geometri3D, Runnable {
     public double jariJariBawah;
     public double jariJariAtas = 3;
     public double tinggiKerucutTerpancung = 10;

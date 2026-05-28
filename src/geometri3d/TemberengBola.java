@@ -1,6 +1,6 @@
 package geometri3d;
 
-public class TemberengBola extends Bola {
+public class TemberengBola extends Bola implements Geometri3D, Runnable {
     public double jariJari;
     public double tinggiTembereng = 10;
     public double pi; 

@@ -2,7 +2,7 @@ package geometri3d;
 
 import geometri2d.Lingkaran;
 
-public class Tabung extends Lingkaran implements Geometri3D {
+public class Tabung extends Lingkaran implements Geometri3D, Runnable {
     public double jariJari;
     public double tinggi = 10;
     public double pi; 

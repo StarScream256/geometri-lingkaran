@@ -7,7 +7,6 @@ package uiold;
 import javax.swing.*;
 import java.awt.event.*;
 import geometri3d.Tabung;
-import geometri3d.TabungThread;
 
 public class TabungFrame extends JFrame {
 
