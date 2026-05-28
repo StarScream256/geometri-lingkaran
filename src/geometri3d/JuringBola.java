@@ -7,10 +7,10 @@ public class JuringBola extends Bola implements Geometri3D, Runnable {
     public double luasPermukaanJuringBola;
     public double volumeJuringBola;
     
-    public int count;
+    public int jumlahThread;
     public int delay;
         
-    public JuringBola(double jariJari, double tinggi){
+    public JuringBola(double jariJari, double tinggi) {
         super(jariJari); 
         this.jariJari = jariJari;
         super.jariJari = jariJari;
@@ -18,9 +18,11 @@ public class JuringBola extends Bola implements Geometri3D, Runnable {
         this.pi = super.PI;
         super.hitungLuas();
         super.hitungKeliling();
+        this.jumlahThread = super.jumlahThread;
+        this.delay = super.delay;
     }
     
-    public JuringBola(double jariJari, double tinggi, int count, int delay){
+    public JuringBola(double jariJari, double tinggi, int jumlahThread, int delay) {
         super(jariJari); 
         this.jariJari = jariJari;
         super.jariJari = jariJari;
@@ -28,7 +30,7 @@ public class JuringBola extends Bola implements Geometri3D, Runnable {
         this.pi = super.PI;
         super.hitungLuas();
         super.hitungKeliling();
-        this.count = count;
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
     }
     
@@ -54,7 +56,7 @@ public class JuringBola extends Bola implements Geometri3D, Runnable {
     }
 
     @Override
-    public double hitungVolume(){
+    public double hitungVolume() {
         volumeJuringBola = (2.0 / 3.0) * super.luasLingkaran * this.tinggiJuring;
         return volumeJuringBola;
     }
@@ -65,9 +67,9 @@ public class JuringBola extends Bola implements Geometri3D, Runnable {
     }
     
     @Override
-    public void run(){
-        try{
-            for (int i = 0; i < count; i++) {
+    public void run() {
+        try {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 jariJari += i;
                 tinggiJuring += i;
@@ -89,7 +91,7 @@ public class JuringBola extends Bola implements Geometri3D, Runnable {
                 Thread.sleep(delay);
             }
                       
-        }catch(InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

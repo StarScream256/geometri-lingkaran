@@ -7,17 +7,17 @@ public class Lingkaran implements Geometri2D, Runnable {
     public final double PI = Math.PI;
     
     // attribut multi-thread
-    public int count;
-    public int delay;
+    public int jumlahThread = 10;
+    public int delay = 1000;
     
     public Lingkaran(double jariJari) {
         this.jariJari = jariJari;
     }
     
     // constructor multi-thread
-    public Lingkaran(double jariJari, int count, int delay) {
+    public Lingkaran(double jariJari, int jumlahThread, int delay) {
         this.jariJari = jariJari;
-        this.count = count;
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
     }
 
@@ -46,7 +46,7 @@ public class Lingkaran implements Geometri2D, Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 1; i <= count; i++) {
+            for (int i = 1; i <= jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 jariJari += i;
                 luasLingkaran = hitungLuas(jariJari);

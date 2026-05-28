@@ -8,7 +8,7 @@ public class Bola extends Lingkaran implements Geometri3D, Runnable {
     public double volumeBola;
     public double luasPermukaanBola;
     
-    public int count;
+    public int jumlahThread;
     public int delay;
     
     public Bola(double jariJari) {
@@ -18,16 +18,18 @@ public class Bola extends Lingkaran implements Geometri3D, Runnable {
         this.pi = super.PI; 
         super.hitungLuas();
         super.hitungKeliling();
+        this.jumlahThread = super.jumlahThread;
+        this.delay = super.delay;
     }
     
-    public Bola(double jariJari, int count, int delay) {
+    public Bola(double jariJari, int jumlahThread, int delay) {
         super(jariJari); 
         this.jariJari = jariJari;
         super.jariJari = jariJari;
         this.pi = super.PI; 
         super.hitungLuas();
         super.hitungKeliling();
-        this.count = count;
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
     }
     
@@ -56,7 +58,7 @@ public class Bola extends Lingkaran implements Geometri3D, Runnable {
     @Override
     public void run(){
         try{
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 jariJari += i;
                 luasPermukaanBola = hitungLuasPermukaan(jariJari);

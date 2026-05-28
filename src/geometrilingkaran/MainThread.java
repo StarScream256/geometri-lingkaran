@@ -21,20 +21,20 @@ import geometri3d.TemberengBola;
  */
 public class MainThread {
     public static void main(String[] args) {
-        int count = 100;
-        count /= 10;
+        int jumlahThread = 100;
+        jumlahThread /= 10;
         int delay = 1000;
         
-        Thread lingkaranThread = new Thread(new Lingkaran(1, count, delay));
-        Thread juringLingkaranThread = new Thread(new JuringLingkaran(1, 45, count, delay));
-        Thread temberengLingkaranThread = new Thread(new TemberengLingkaran(1, 45, count, delay));
-        Thread kerucutThread = new Thread(new Kerucut(10, 20, count, delay));
-        Thread kerucutTerpancungThread = new Thread(new KerucutTerpancung(10, 10, 5, count, delay));
-        Thread tabungThread = new Thread(new Tabung(5, 5, count, delay));
-        Thread bolaThread = new Thread(new Bola(10, count, delay));
-        Thread juringBolaThread = new Thread(new JuringBola(10, 5, count, delay));
-        Thread tembrengBolaThread = new Thread(new TemberengBola(10, 5, count, delay));
-        Thread cincinBolaThread = new Thread(new CincinBola(10, 5, count, delay));
+        Thread lingkaranThread = new Thread(new Lingkaran(1, jumlahThread, delay));
+        Thread juringLingkaranThread = new Thread(new JuringLingkaran(1, 45, jumlahThread, delay));
+        Thread temberengLingkaranThread = new Thread(new TemberengLingkaran(1, 45, jumlahThread, delay));
+        Thread kerucutThread = new Thread(new Kerucut(10, 20, jumlahThread, delay));
+        Thread kerucutTerpancungThread = new Thread(new KerucutTerpancung(10, 10, 5, jumlahThread, delay));
+        Thread tabungThread = new Thread(new Tabung(5, 5, jumlahThread, delay));
+        Thread bolaThread = new Thread(new Bola(10, jumlahThread, delay));
+        Thread juringBolaThread = new Thread(new JuringBola(10, 5, jumlahThread, delay));
+        Thread tembrengBolaThread = new Thread(new TemberengBola(10, 5, jumlahThread, delay));
+        Thread cincinBolaThread = new Thread(new CincinBola(10, 5, jumlahThread, delay));
 
          Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
              kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, tembrengBolaThread, cincinBolaThread

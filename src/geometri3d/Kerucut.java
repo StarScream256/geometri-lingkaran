@@ -9,7 +9,7 @@ public class Kerucut extends Lingkaran implements Geometri3D, Runnable {
     public double luasPermukaanKerucut;
     public double volumeKerucut;
     
-    public int count;
+    public int jumlahThread;
     public int delay;
     
     public Kerucut(double jariJari, double tinggi) {
@@ -20,9 +20,11 @@ public class Kerucut extends Lingkaran implements Geometri3D, Runnable {
         this.pi = super.PI;
         super.hitungLuas();
         super.hitungKeliling();
+        this.jumlahThread = super.jumlahThread;
+        this.delay = super.delay;
     }
     
-    public Kerucut(double jariJari, double tinggi, int count, int delay) {
+    public Kerucut(double jariJari, double tinggi, int jumlahThread, int delay) {
         super(jariJari); 
         this.jariJari = jariJari;
         super.jariJari = jariJari;
@@ -30,7 +32,7 @@ public class Kerucut extends Lingkaran implements Geometri3D, Runnable {
         this.pi = super.PI;
         super.hitungLuas();
         super.hitungKeliling();
-        this.count = count;
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
     }
 
@@ -69,7 +71,7 @@ public class Kerucut extends Lingkaran implements Geometri3D, Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 jariJari += i; 
                 tinggiKerucut += i;

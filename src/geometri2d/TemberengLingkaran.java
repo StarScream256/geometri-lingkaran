@@ -7,7 +7,7 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
     public double luasTemberengLingkaran;
     public double kelilingTemberengLingkaran;
     
-    public int count;
+    public int jumlahThread;
     public int delay;
  
     public TemberengLingkaran(double jariJari, double sudut) {
@@ -18,14 +18,16 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
         this.pi = super.PI;
         super.hitungLuas();
         super.hitungKeliling();
+        this.jumlahThread = super.jumlahThread;
+        this.delay = super.delay;
     }
     
-    public TemberengLingkaran(double jariJari, double sudut, int count, int delay) {
+    public TemberengLingkaran(double jariJari, double sudut, int jumlahThread, int delay) {
         super(jariJari, sudut); 
         this.jariJari = jariJari;
         this.sudutTembereng = sudut;
         this.pi = super.pi;
-        this.count = count;
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
     }
 
@@ -64,7 +66,7 @@ public class TemberengLingkaran extends JuringLingkaran implements Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 jariJari += i;
                 sudutJuring += i;
