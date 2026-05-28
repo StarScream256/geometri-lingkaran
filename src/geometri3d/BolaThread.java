@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
  * @author devio
  */
 public class BolaThread implements Runnable {
-    public int count;
+    public int jumlahThread;
     public int delay = 1000;
     
     public DefaultTableModel model;
@@ -17,11 +17,11 @@ public class BolaThread implements Runnable {
     public BolaThread() {}
     
     public BolaThread(int count){
-        this.count = count;
+        this.jumlahThread = count;
     }
     
-    public BolaThread(int count, int delay, DefaultTableModel model, int columnIndex){
-        this.count = count;
+    public BolaThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex){
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
         this.model = model;
         this.columnIndex = columnIndex;
@@ -30,7 +30,7 @@ public class BolaThread implements Runnable {
     @Override
     public void run(){
         try{
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 double jariJari = (Math.random() * (12 - 2)) + 2;
                 Bola bola = new Bola(jariJari);
@@ -55,7 +55,7 @@ public class BolaThread implements Runnable {
                 System.out.print(output);
                 Thread.sleep(delay);
             }
-        }catch(InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

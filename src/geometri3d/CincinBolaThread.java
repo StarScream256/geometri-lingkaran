@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author asus
  */
 public class CincinBolaThread implements Runnable {
-    public int count;
+    public int jumlahThread;
     public int delay = 1000;
     
     public DefaultTableModel model;
@@ -21,11 +21,11 @@ public class CincinBolaThread implements Runnable {
     public CincinBolaThread() {}
     
     public CincinBolaThread(int count) {
-        this.count = count;
+        this.jumlahThread = count;
     }
     
-    public CincinBolaThread(int count, int delay, DefaultTableModel model, int columnIndex) {
-        this.count = count;
+    public CincinBolaThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
         this.model = model;
         this.columnIndex = columnIndex;
@@ -34,7 +34,7 @@ public class CincinBolaThread implements Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 double jariJari = (Math.random() * (12 - 2)) + 2;
                 double tinggi = (Math.random() * (12 - 2)) + 2;

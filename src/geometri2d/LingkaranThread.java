@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Lenovo
  */
 public class LingkaranThread implements Runnable {
-    public int count;
+    public int jumlahThread;
     public int delay = 1000;
     
     public DefaultTableModel model;
@@ -21,11 +21,11 @@ public class LingkaranThread implements Runnable {
     public LingkaranThread() {}
 
     public LingkaranThread(int count) {
-        this.count = count;
+        this.jumlahThread = count;
     }
     
-    public LingkaranThread(int count, int delay, DefaultTableModel model, int columnIndex) {
-        this.count = count;
+    public LingkaranThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
         this.model = model;
         this.columnIndex = columnIndex;
@@ -34,7 +34,7 @@ public class LingkaranThread implements Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 double jariJari = (Math.random() * (12 - 2)) + 2;
                 Lingkaran lingkaran = new Lingkaran(jariJari);

@@ -4,7 +4,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class KerucutTerpancungThread implements Runnable {
-    public int count;
+    public int jumlahThread;
     public int delay = 1000;
     
     public DefaultTableModel model;
@@ -13,11 +13,11 @@ public class KerucutTerpancungThread implements Runnable {
     public KerucutTerpancungThread() {}
 
     public KerucutTerpancungThread(int count) {
-        this.count = count;
+        this.jumlahThread = count;
     }
     
-    public KerucutTerpancungThread(int count, int delay, DefaultTableModel model, int columnIndex) {
-        this.count = count;
+    public KerucutTerpancungThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
         this.model = model;
         this.columnIndex = columnIndex;
@@ -26,7 +26,7 @@ public class KerucutTerpancungThread implements Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 double jariJariBawah = (Math.random() * (12 - 7)) + 7;
                 double jariJariAtas = (Math.random() * (6 - 2)) + 2;

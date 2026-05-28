@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class TabungThread implements Runnable {
-    public int count;
+    public int jumlahThread;
     public int delay = 1000;
     
     public DefaultTableModel model;
@@ -17,11 +17,11 @@ public class TabungThread implements Runnable {
     public TabungThread() {}
     
     public TabungThread(int count) {
-        this.count = count;
+        this.jumlahThread = count;
     }
     
-    public TabungThread(int count, int delay, DefaultTableModel model, int columnIndex) {
-        this.count = count;
+    public TabungThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
         this.model = model;
         this.columnIndex = columnIndex;
@@ -30,7 +30,7 @@ public class TabungThread implements Runnable {
     @Override
     public void run() {
         try {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 double r = (Math.random() * 10) + 1;
                 double t = (Math.random() * 10) + 1;

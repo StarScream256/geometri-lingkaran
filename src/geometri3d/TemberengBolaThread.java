@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class TemberengBolaThread implements Runnable {
-    public int count;
+    public int jumlahThread;
     public int delay = 1000;
     
     public DefaultTableModel model;
@@ -17,11 +17,11 @@ public class TemberengBolaThread implements Runnable {
     public TemberengBolaThread() {}
 
     public TemberengBolaThread(int count) {
-        this.count = count;
+        this.jumlahThread = count;
     }
     
-    public TemberengBolaThread(int count, int delay, DefaultTableModel model, int columnIndex) {
-        this.count = count;
+    public TemberengBolaThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
+        this.jumlahThread = jumlahThread;
         this.delay = delay;
         this.model = model;
         this.columnIndex = columnIndex;
@@ -30,7 +30,7 @@ public class TemberengBolaThread implements Runnable {
     @Override
     public void run(){
         try{
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < jumlahThread; i++) {
                 String threadName = Thread.currentThread().getName();
                 double jariJari = (Math.random() * (12-2))+2;
                 double tinggi = (Math.random() * (12-2))+2;
