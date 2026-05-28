@@ -12,11 +12,10 @@ public class Kerucut extends Lingkaran implements Geometri3D {
     public Kerucut(double jariJari, double tinggi) {
         super(jariJari); 
         this.jariJari = jariJari;
-        super.jariJari = jariJari;
         this.tinggiKerucut = tinggi;
         this.pi = super.PI;
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuas(this.jariJari);
+        super.hitungKeliling(this.jariJari);
     }
 
     public double hitungGarisPelukis(double jariJari, double tinggi) {

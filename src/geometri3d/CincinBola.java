@@ -10,11 +10,10 @@ public class CincinBola extends Bola implements Geometri3D {
     public CincinBola(double jariJari, double tinggi) {
         super(jariJari); 
         this.jariJari = jariJari;
-        super.jariJari = jariJari;
         this.tinggi = tinggi;
         this.pi = super.PI;
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuasPermukaan(this.jariJari);
+        super.hitungVolume(this.jariJari);
     }
 
     @Override

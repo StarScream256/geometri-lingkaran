@@ -10,11 +10,10 @@ public class JuringLingkaran extends Lingkaran implements Geometri2D {
     public JuringLingkaran(double jariJari, double sudut) {
         super(jariJari); 
         this.jariJari = jariJari;
-        super.jariJari = jariJari;
         this.sudutJuring = sudut;
         this.pi = super.PI;
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuas(this.jariJari);
+        super.hitungKeliling(this.jariJari);
     }
 
     @Override

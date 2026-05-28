@@ -12,11 +12,10 @@ public class Tabung extends Lingkaran implements Geometri3D {
     public Tabung(double jariJari, double tinggi) {
         super(jariJari); 
         this.jariJari = jariJari;
-        super.jariJari = jariJari;
         this.tinggi = tinggi;
         this.pi = super.PI;
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuas(this.jariJari);
+        super.hitungKeliling(this.jariJari);
     }
 
     @Override

@@ -11,10 +11,9 @@ public class Bola extends Lingkaran implements Geometri3D {
     public Bola(double jariJari) {
         super(jariJari); 
         this.jariJari = jariJari;
-        super.jariJari = jariJari;
         this.pi = super.PI; 
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuas(this.jariJari);
+        super.hitungKeliling(this.jariJari);
     }
     
     @Override

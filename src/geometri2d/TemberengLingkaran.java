@@ -10,11 +10,10 @@ public class TemberengLingkaran extends JuringLingkaran implements Geometri2D {
     public TemberengLingkaran(double jariJari, double sudut) {
         super(jariJari, sudut); 
         this.jariJari = jariJari;
-        super.jariJari = jariJari;
         this.sudutTembereng = sudut;
         this.pi = super.PI;
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuas(this.jariJari, this.sudutTembereng);
+        super.hitungKeliling(this.jariJari, this.sudutTembereng);
     }
 
     @Override

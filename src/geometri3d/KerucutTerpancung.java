@@ -11,12 +11,11 @@ public class KerucutTerpancung extends Kerucut {
     public KerucutTerpancung(double jariJariBawah, double tinggi, double jariJariAtas) {
         super(jariJariBawah, tinggi); 
         this.jariJariBawah = jariJariBawah;
-        super.jariJari = jariJariBawah;
         this.tinggiKerucutTerpancung = tinggi;
         this.jariJariAtas = jariJariAtas;
         this.pi = super.PI; 
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuasPermukaan(this.jariJariBawah, this.tinggiKerucutTerpancung);
+        super.hitungVolume(this.jariJariBawah, this.tinggiKerucutTerpancung);
     }
 
     public double hitungGarisPelukis(double jariJariBawah, double jariJariAtas, double tinggi) {

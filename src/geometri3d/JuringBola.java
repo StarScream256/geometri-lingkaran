@@ -10,11 +10,10 @@ public class JuringBola extends Bola implements Geometri3D {
     public JuringBola(double jariJari, double tinggi){
         super(jariJari); 
         this.jariJari = jariJari;
-        super.jariJari = jariJari;
         this.tinggiJuring = tinggi;
         this.pi = super.PI;
-        super.hitungLuas();
-        super.hitungKeliling();
+        super.hitungLuasPermukaan(this.jariJari);
+        super.hitungVolume(this.jariJari);
     }
     
     public double hitungJariJariAlas(double jariJari, double tinggi) {
