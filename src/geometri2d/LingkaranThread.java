@@ -4,7 +4,8 @@
  */
 package geometri2d;
 
-import geometri2d.Lingkaran;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,26 +15,36 @@ public class LingkaranThread implements Runnable {
     public int count;
     public int delay = 1000;
     
+    public DefaultTableModel model;
+    public int columnIndex;
+    
     public LingkaranThread() {}
 
     public LingkaranThread(int count) {
         this.count = count;
     }
     
-    public LingkaranThread(int count, int delay) {
+    public LingkaranThread(int count, int delay, DefaultTableModel model, int columnIndex) {
         this.count = count;
         this.delay = delay;
+        this.model = model;
+        this.columnIndex = columnIndex;
     }
 
     @Override
     public void run() {
         try {
-            for (int i = 1; i <= count; i++) {
+            for (int i = 0; i < count; i++) {
                 String threadName = Thread.currentThread().getName();
                 double jariJari = (Math.random() * (12 - 2)) + 2;
                 Lingkaran lingkaran = new Lingkaran(jariJari);
                 double luas = lingkaran.hitungLuas();
                 double keliling = lingkaran.hitungKeliling();
+                
+                final int currentRow = i;
+                SwingUtilities.invokeLater(() -> {
+                    model.setValueAt("✅", currentRow, columnIndex);
+                });
 
                 String output = String.format(
                     """

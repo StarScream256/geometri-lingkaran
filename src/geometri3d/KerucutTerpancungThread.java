@@ -1,8 +1,14 @@
 package geometri3d;
 
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 public class KerucutTerpancungThread implements Runnable {
     public int count;
     public int delay = 1000;
+    
+    public DefaultTableModel model;
+    public int columnIndex;
     
     public KerucutTerpancungThread() {}
 
@@ -10,9 +16,11 @@ public class KerucutTerpancungThread implements Runnable {
         this.count = count;
     }
     
-    public KerucutTerpancungThread(int count, int delay) {
+    public KerucutTerpancungThread(int count, int delay, DefaultTableModel model, int columnIndex) {
         this.count = count;
         this.delay = delay;
+        this.model = model;
+        this.columnIndex = columnIndex;
     }
 
     @Override
@@ -26,6 +34,11 @@ public class KerucutTerpancungThread implements Runnable {
                 KerucutTerpancung kt = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
                 double luasPermukaan = kt.hitungLuasPermukaan();
                 double volume = kt.hitungVolume();
+                
+                final int currentRow = i;
+                SwingUtilities.invokeLater(() -> {
+                    model.setValueAt("✅", currentRow, columnIndex);
+                });
 
                 String output = String.format(
                     """

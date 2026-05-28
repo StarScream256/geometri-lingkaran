@@ -1,5 +1,8 @@
 package geometri3d;
 
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author devio
@@ -8,15 +11,20 @@ public class JuringBolaThread implements Runnable{
     public int count;
     public int delay = 1000;
     
+    public DefaultTableModel model;
+    public int columnIndex;
+    
     public JuringBolaThread() {}
     
     public JuringBolaThread(int count){
         this.count = count;
     }
     
-    public JuringBolaThread(int count, int delay){
+    public JuringBolaThread(int count, int delay, DefaultTableModel model, int columnIndex){
         this.count = count;
         this.delay = delay;
+        this.model = model;
+        this.columnIndex = columnIndex;
     }
     
     @Override
@@ -29,6 +37,11 @@ public class JuringBolaThread implements Runnable{
                 JuringBola juringBola = new JuringBola(jariJari,tinggi);
                 double luasPermukaan = juringBola.hitungLuasPermukaan();
                 double volume = juringBola.hitungVolume();
+                
+                final int currentRow = i;
+                SwingUtilities.invokeLater(() -> {
+                    model.setValueAt("✅", currentRow, columnIndex);
+                });
 
                 String output = String.format(
                     """

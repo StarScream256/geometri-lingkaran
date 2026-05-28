@@ -1,8 +1,14 @@
 package geometri2d;
 
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 public class TemberengLingkaranThread implements Runnable {
     public int count;
     public int delay = 1000;
+    
+    public DefaultTableModel model;
+    public int columnIndex;
 
     public TemberengLingkaranThread() {}
     
@@ -10,9 +16,11 @@ public class TemberengLingkaranThread implements Runnable {
         this.count = count;
     }
     
-    public TemberengLingkaranThread(int count, int delay) {
+    public TemberengLingkaranThread(int count, int delay, DefaultTableModel model, int columnIndex) {
         this.count = count;
         this.delay = delay;
+        this.model = model;
+        this.columnIndex = columnIndex;
     }
 
     @Override
@@ -25,6 +33,11 @@ public class TemberengLingkaranThread implements Runnable {
                 TemberengLingkaran tembereng = new TemberengLingkaran(jariJari, sudut);
                 double luas = tembereng.hitungLuas();
                 double keliling = tembereng.hitungKeliling();
+                
+                final int currentRow = i;
+                SwingUtilities.invokeLater(() -> {
+                    model.setValueAt("✅", currentRow, columnIndex);
+                });
 
                 String output = String.format(
                     """

@@ -4,6 +4,9 @@
  */
 package geometri3d;
 
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author asus
@@ -12,15 +15,20 @@ public class CincinBolaThread implements Runnable {
     public int count;
     public int delay = 1000;
     
+    public DefaultTableModel model;
+    public int columnIndex;
+    
     public CincinBolaThread() {}
     
     public CincinBolaThread(int count) {
         this.count = count;
     }
     
-    public CincinBolaThread(int count, int delay) {
+    public CincinBolaThread(int count, int delay, DefaultTableModel model, int columnIndex) {
         this.count = count;
         this.delay = delay;
+        this.model = model;
+        this.columnIndex = columnIndex;
     }
 
     @Override
@@ -33,6 +41,11 @@ public class CincinBolaThread implements Runnable {
                 CincinBola cincinBola = new CincinBola(jariJari, tinggi);
                 double luasPermukaan = cincinBola.hitungLuasPermukaan();
                 double volume = cincinBola.hitungVolume();
+                
+                final int currentRow = i;
+                SwingUtilities.invokeLater(() -> {
+                    model.setValueAt("✅", currentRow, columnIndex);
+                });
 
                 String output = String.format(
                     """
