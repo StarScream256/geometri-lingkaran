@@ -31,6 +31,8 @@ public class KerucutThread implements Runnable {
                 double jariJari = (Math.random() * (12 - 2)) + 2; 
                 double tinggi = (Math.random() * (12 - 2)) + 2;
                 Kerucut kerucut = new Kerucut(jariJari, tinggi);
+                kerucut.hitungLuasPermukaan(); 
+                kerucut.hitungVolume();
                 double luasPermukaan = kerucut.luasPermukaanKerucut;
                 double volume = kerucut.volumeKerucut;
                 
