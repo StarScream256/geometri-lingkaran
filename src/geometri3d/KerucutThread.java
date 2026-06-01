@@ -36,10 +36,12 @@ public class KerucutThread implements Runnable {
                 double luasPermukaan = kerucut.luasPermukaanKerucut;
                 double volume = kerucut.volumeKerucut;
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

@@ -42,10 +42,12 @@ public class CincinBolaThread implements Runnable {
                 double luasPermukaan = cincinBola.hitungLuasPermukaan();
                 double volume = cincinBola.hitungVolume();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

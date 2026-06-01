@@ -41,10 +41,12 @@ public class LingkaranThread implements Runnable {
                 double luas = lingkaran.hitungLuas();
                 double keliling = lingkaran.hitungKeliling();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

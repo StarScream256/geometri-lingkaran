@@ -38,10 +38,12 @@ public class JuringBolaThread implements Runnable{
                 double luasPermukaan = juringBola.hitungLuasPermukaan();
                 double volume = juringBola.hitungVolume();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

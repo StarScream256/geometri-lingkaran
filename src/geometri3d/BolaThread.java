@@ -37,10 +37,12 @@ public class BolaThread implements Runnable {
                 double luasPermukaan = bola.hitungLuasPermukaan();
                 double volume = bola.hitungVolume();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

@@ -34,10 +34,12 @@ public class TemberengLingkaranThread implements Runnable {
                 double luas = tembereng.hitungLuas();
                 double keliling = tembereng.hitungKeliling();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

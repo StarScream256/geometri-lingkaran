@@ -38,10 +38,12 @@ public class TemberengBolaThread implements Runnable {
                 double luasPermukaan = temberengBola.hitungLuasPermukaan();
                 double volume = temberengBola.hitungVolume();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

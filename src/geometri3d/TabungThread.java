@@ -38,10 +38,12 @@ public class TabungThread implements Runnable {
                 double luasPermukaan = tabung.hitungLuasPermukaan();
                 double volume = tabung.hitungVolume();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """

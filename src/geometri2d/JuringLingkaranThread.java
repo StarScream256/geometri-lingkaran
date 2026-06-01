@@ -35,10 +35,12 @@ public class JuringLingkaranThread implements Runnable {
                 double luas = juring.hitungLuas();
                 double keliling = juring.hitungKeliling();
                 
-                final int currentRow = i;
-                SwingUtilities.invokeLater(() -> {
-                    model.setValueAt("✅", currentRow, columnIndex);
-                });
+                if (model != null) {
+                    final int currentRow = i;
+                    SwingUtilities.invokeLater(() -> {
+                        model.setValueAt("✅", currentRow, columnIndex);
+                    });
+                }
 
                 String output = String.format(
                     """
