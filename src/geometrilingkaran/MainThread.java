@@ -20,10 +20,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author asus
- */
 public class MainThread {
     public static void main(String[] args) {
         int jumlahThread = 100;
@@ -60,28 +56,47 @@ public class MainThread {
         Thread tembrengBolaThread = new Thread(new TemberengBolaThread(jumlahThread, delay, model, 9));
         Thread cincinBolaThread = new Thread(new CincinBolaThread(jumlahThread, delay, model, 10));
 
-        Thread[] threads = {lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
-            kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, tembrengBolaThread, cincinBolaThread
+        Thread[] threads = {
+            lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
+            kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, 
+            tembrengBolaThread, cincinBolaThread
         };
         
-        // interupsi random, setelah detik ke 3, pilih thread random untuk diinterupsi
+        // interrupt random BERULANG (3 kali)
         Thread randomInterrupt = new Thread(() -> {
-           try {
+            try {
+                // Interrupt ke-1 setelah 3 detik
                 Thread.sleep(3000);
-                int randomIndex = (int) (Math.random() * threads.length);
-                Thread targetThread = threads[randomIndex];
-                
-                System.err.println("\n" + targetThread.getName() + " di interupsi!");
-                targetThread.interrupt();
-                JOptionPane.showMessageDialog(null, targetThread.getName() + " akan di interupsi!" + randomIndex);
-           } catch (InterruptedException e) {}
+                int idx1 = (int) (Math.random() * threads.length);
+                System.err.println("\n[INTERRUPT-1] " + threads[idx1].getName() + " di interupsi!");
+                threads[idx1].interrupt();
+                JOptionPane.showMessageDialog(null, "[INTERRUPT-1] " + threads[idx1].getName() + " di interupsi!");
+
+                // Interrupt ke-2 setelah 1 detik
+                Thread.sleep(1000);
+                int idx2 = (int) (Math.random() * threads.length);
+                System.err.println("\n[INTERRUPT-2] " + threads[idx2].getName() + " di interupsi!");
+                threads[idx2].interrupt();
+                JOptionPane.showMessageDialog(null, "[INTERRUPT-2] " + threads[idx2].getName() + " di interupsi!");
+
+                // Interrupt ke-3 setelah 1 detik
+                Thread.sleep(1000);
+                int idx3 = (int) (Math.random() * threads.length);
+                System.err.println("\n[INTERRUPT-3] " + threads[idx3].getName() + " di interupsi!");
+                threads[idx3].interrupt();
+                JOptionPane.showMessageDialog(null, "[INTERRUPT-3] " + threads[idx3].getName() + " di interupsi!");
+
+            } catch (InterruptedException e) {}
         });
         randomInterrupt.start();
         
+        // start semua thread dulu (paralel)
         for (Thread thread : threads) {
             thread.start();
-            
-            // thread akan berjalan berurutan menunggu thread sebelumnya selesai
+        }
+        
+        // tunggu semua selesai di akhir
+        for (Thread thread : threads) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
