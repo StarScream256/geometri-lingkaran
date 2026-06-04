@@ -21,8 +21,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class MainThread {
-    public static void main(String[] args) {
-        int jumlahThread = 100;
+    
+    public void run(int jumlahThread) {
         jumlahThread /= 10;
         int delay = 1000;
         
@@ -72,14 +72,14 @@ public class MainThread {
                 threads[idx1].interrupt();
                 JOptionPane.showMessageDialog(null, "[INTERRUPT-1] " + threads[idx1].getName() + " di interupsi!");
 
-                // Interrupt ke-2 setelah 1 detik
+                // Interrupt ke-2 1 detik kemudian
                 Thread.sleep(1000);
                 int idx2 = (int) (Math.random() * threads.length);
                 System.err.println("\n[INTERRUPT-2] " + threads[idx2].getName() + " di interupsi!");
                 threads[idx2].interrupt();
                 JOptionPane.showMessageDialog(null, "[INTERRUPT-2] " + threads[idx2].getName() + " di interupsi!");
 
-                // Interrupt ke-3 setelah 1 detik
+                // Interrupt ke-3 1 detik kemudian
                 Thread.sleep(1000);
                 int idx3 = (int) (Math.random() * threads.length);
                 System.err.println("\n[INTERRUPT-3] " + threads[idx3].getName() + " di interupsi!");
@@ -90,18 +90,13 @@ public class MainThread {
         });
         randomInterrupt.start();
         
-        // start semua thread dulu (paralel)
+        // start semua thread (paralel)
         for (Thread thread : threads) {
             thread.start();
         }
-        
-        // tunggu semua selesai di akhir
-        for (Thread thread : threads) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    }
+            
+    public static void main(String[] args) {
+        new MainThread().run(100);
     }
 }

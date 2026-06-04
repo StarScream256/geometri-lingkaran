@@ -3,21 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/TemberengBolaThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/ui/PewarisanTeks.java</file>
             <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri2d/LingkaranThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri2d/TemberengLingkaranThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/CincinBolaThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri2d/TemberengLingkaran.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/KerucutThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/TabungThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/TemberengBola.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/BolaThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri2d/JuringLingkaranThread.java</file>
+            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometrilingkaran/GeometriLingkaran.java</file>
             <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometrilingkaran/MainThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/KerucutTerpancungThread.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/KerucutTerpancung.java</file>
-            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/geometri3d/JuringBolaThread.java</file>
+            <file>file:/D:/Kuliah/Semester%204/Pemrograman%20Berorientasi%20Objek/GeometriLingkaran/src/ui/LingkaranFrame.java</file>
         </group>
     </open-files>
 </project-private>
