@@ -13,12 +13,6 @@ public class TabungThread implements Runnable {
     
     public DefaultTableModel model;
     public int columnIndex;
-
-    public TabungThread() {}
-    
-    public TabungThread(int count) {
-        this.jumlahThread = count;
-    }
     
     public TabungThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
         this.jumlahThread = jumlahThread;

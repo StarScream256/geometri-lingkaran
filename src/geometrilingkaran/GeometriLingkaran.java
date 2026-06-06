@@ -12,14 +12,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import ui.MainFrame;
 
-
 public class GeometriLingkaran {
     public static Scanner scanner;
     public static int pilihanMetode;
     public static int pilihanBangun;
     public static int jumlahThread;
     
-    private static double inputDouble(Scanner sc, String label) {
+    public static double inputDouble(Scanner sc, String label) {
         try {
             System.out.print(label);
             double inputValue = sc.nextDouble();
@@ -33,7 +32,7 @@ public class GeometriLingkaran {
         return 0;
     }
     
-    private static int inputInt(Scanner sc, String label) {
+    public static int inputInt(Scanner sc, String label) {
         try {
             System.out.print(label);
             int inputValue = sc.nextInt();

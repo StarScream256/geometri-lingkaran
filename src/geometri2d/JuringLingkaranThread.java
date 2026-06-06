@@ -10,12 +10,6 @@ public class JuringLingkaranThread implements Runnable {
     public DefaultTableModel model;
     public int columnIndex;
     
-    public JuringLingkaranThread() {}
-    
-    public JuringLingkaranThread(int count) {
-        this.jumlahThread = count;
-    }
-    
     public JuringLingkaranThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
         this.jumlahThread = jumlahThread;
         this.delay = delay;

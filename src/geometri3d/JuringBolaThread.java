@@ -14,12 +14,6 @@ public class JuringBolaThread implements Runnable{
     public DefaultTableModel model;
     public int columnIndex;
     
-    public JuringBolaThread() {}
-    
-    public JuringBolaThread(int count){
-        this.jumlahThread = count;
-    }
-    
     public JuringBolaThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex){
         this.jumlahThread = jumlahThread;
         this.delay = delay;

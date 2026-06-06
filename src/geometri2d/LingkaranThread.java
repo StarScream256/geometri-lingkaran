@@ -18,12 +18,6 @@ public class LingkaranThread implements Runnable {
     public DefaultTableModel model;
     public int columnIndex;
     
-    public LingkaranThread() {}
-
-    public LingkaranThread(int count) {
-        this.jumlahThread = count;
-    }
-    
     public LingkaranThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
         this.jumlahThread = jumlahThread;
         this.delay = delay;

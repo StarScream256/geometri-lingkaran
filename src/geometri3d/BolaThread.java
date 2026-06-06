@@ -14,12 +14,6 @@ public class BolaThread implements Runnable {
     public DefaultTableModel model;
     public int columnIndex;
     
-    public BolaThread() {}
-    
-    public BolaThread(int count){
-        this.jumlahThread = count;
-    }
-    
     public BolaThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex){
         this.jumlahThread = jumlahThread;
         this.delay = delay;

@@ -10,12 +10,6 @@ public class KerucutThread implements Runnable {
     public DefaultTableModel model;
     public int columnIndex;
     
-    public KerucutThread() {}
-    
-    public KerucutThread(int count) {
-        this.jumlahThread = count;
-    }
-    
     public KerucutThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
         this.jumlahThread = jumlahThread;
         this.delay = delay;

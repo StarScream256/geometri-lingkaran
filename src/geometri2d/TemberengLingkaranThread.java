@@ -9,12 +9,6 @@ public class TemberengLingkaranThread implements Runnable {
     
     public DefaultTableModel model;
     public int columnIndex;
-
-    public TemberengLingkaranThread() {}
-    
-    public TemberengLingkaranThread(int count) {
-        this.jumlahThread = count;
-    }
     
     public TemberengLingkaranThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
         this.jumlahThread = jumlahThread;

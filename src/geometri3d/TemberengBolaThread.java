@@ -14,12 +14,6 @@ public class TemberengBolaThread implements Runnable {
     public DefaultTableModel model;
     public int columnIndex;
     
-    public TemberengBolaThread() {}
-
-    public TemberengBolaThread(int count) {
-        this.jumlahThread = count;
-    }
-    
     public TemberengBolaThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
         this.jumlahThread = jumlahThread;
         this.delay = delay;

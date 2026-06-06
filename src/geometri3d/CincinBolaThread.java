@@ -18,12 +18,6 @@ public class CincinBolaThread implements Runnable {
     public DefaultTableModel model;
     public int columnIndex;
     
-    public CincinBolaThread() {}
-    
-    public CincinBolaThread(int count) {
-        this.jumlahThread = count;
-    }
-    
     public CincinBolaThread(int jumlahThread, int delay, DefaultTableModel model, int columnIndex) {
         this.jumlahThread = jumlahThread;
         this.delay = delay;
