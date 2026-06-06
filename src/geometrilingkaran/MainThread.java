@@ -70,21 +70,21 @@ public class MainThread {
                 int idx1 = (int) (Math.random() * threads.length);
                 System.err.println("\n[INTERRUPT-1] " + threads[idx1].getName() + " di interupsi!");
                 threads[idx1].interrupt();
-                JOptionPane.showMessageDialog(null, "[INTERRUPT-1] " + threads[idx1].getName() + " di interupsi!");
+                JOptionPane.showMessageDialog(null, "[INTERRUPT-1] " + threads[idx1].getName() + " akan di interupsi!");
 
                 // Interrupt ke-2 1 detik kemudian
                 Thread.sleep(1000);
                 int idx2 = (int) (Math.random() * threads.length);
                 System.err.println("\n[INTERRUPT-2] " + threads[idx2].getName() + " di interupsi!");
                 threads[idx2].interrupt();
-                JOptionPane.showMessageDialog(null, "[INTERRUPT-2] " + threads[idx2].getName() + " di interupsi!");
+                JOptionPane.showMessageDialog(null, "[INTERRUPT-2] " + threads[idx2].getName() + " akan di interupsi!");
 
                 // Interrupt ke-3 1 detik kemudian
                 Thread.sleep(1000);
                 int idx3 = (int) (Math.random() * threads.length);
                 System.err.println("\n[INTERRUPT-3] " + threads[idx3].getName() + " di interupsi!");
                 threads[idx3].interrupt();
-                JOptionPane.showMessageDialog(null, "[INTERRUPT-3] " + threads[idx3].getName() + " di interupsi!");
+                JOptionPane.showMessageDialog(null, "[INTERRUPT-3] " + threads[idx3].getName() + " akan di interupsi!");
 
             } catch (InterruptedException e) {}
         });

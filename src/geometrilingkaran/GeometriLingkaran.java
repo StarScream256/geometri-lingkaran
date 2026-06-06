@@ -10,28 +10,40 @@ import geometri3d.TemberengBola;
 import geometri2d.Lingkaran;
 import geometri2d.JuringLingkaran;
 import geometri2d.TemberengLingkaran;
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 import ui.MainFrame;
 
-/**
- * @author asus
- */
+
 public class GeometriLingkaran {
-    public static Scanner scanner = new Scanner(System.in);
     
-    private static double inputDouble(Scanner sc, String pesan) {
-        System.out.print(pesan);
-        return sc.nextDouble();
+    private static double inputDouble(Scanner sc, String label) {
+        try {
+            System.out.print(label);
+            double inputValue = sc.nextDouble();
+            return inputValue;
+        } catch (InputMismatchException e) {
+            System.out.println("Input harus angka!");
+        }
+        return 0;
     }
     
-    private static int inputInt(Scanner sc, String pesan) {
-        System.out.print(pesan);
-        return sc.nextInt();
+    private static int inputInt(Scanner sc, String label) {
+        try {
+            System.out.print(label);
+            int inputValue = sc.nextInt();
+            return inputValue;
+        } catch (InputMismatchException e) {
+            System.out.println("Input harus angka!");
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
         new MainFrame().setVisible(true);
+        
+        Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
         
         System.out.println("Metode output");
@@ -41,7 +53,9 @@ public class GeometriLingkaran {
         
         if (metodeTerpilih == 2) {
             int jumlahThread = inputInt(scanner, "Input jumlah : ");
-            new MainThread().run(jumlahThread);
+            if (jumlahThread > 0) {
+                new MainThread().run(jumlahThread);
+            }
             return;
         }
         
@@ -64,8 +78,8 @@ public class GeometriLingkaran {
                 double jariJari = inputDouble(scanner, "Jari-jari\t: ");
                 
                 Lingkaran lingkaran = new Lingkaran(jariJari);
-                double luasLingkaran = lingkaran.hitungLuas();
-                double KelilingLingkaran = lingkaran.hitungKeliling();
+                double luas = lingkaran.hitungLuas();
+                double keliling = lingkaran.hitungKeliling();
 
                 String output = String.format(
                     """
@@ -73,7 +87,7 @@ public class GeometriLingkaran {
                     Keliling        : %.2f 
                     ---------------------------
                     """,
-                    luasLingkaran, KelilingLingkaran
+                    luas, keliling
                 );
                 System.out.print(output);
             }
