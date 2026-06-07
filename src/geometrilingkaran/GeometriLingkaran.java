@@ -14,34 +14,34 @@ import ui.MainFrame;
 
 public class GeometriLingkaran {
     public static Scanner scanner;
-    public static int pilihanMetode;
-    public static int pilihanBangun;
     public static int jumlahThread;
     
-    public static double inputDouble(Scanner sc, String label) {
+    public static double inputDouble(String label) {
         try {
             System.out.print(label);
-            double inputValue = sc.nextDouble();
+            double inputValue = scanner.nextDouble();
             if (inputValue <= 0) {
-                System.out.println("Input angka harus lebih besar dari 1");
+                System.out.println("Input angka harus lebih besar dari 0");
             }
             return inputValue;
         } catch (InputMismatchException e) {
             System.out.println("Input harus angka!");
+            scanner.next();
         }
         return 0;
     }
     
-    public static int inputInt(Scanner sc, String label) {
+    public static int inputInt(String label) {
         try {
             System.out.print(label);
-            int inputValue = sc.nextInt();
+            int inputValue = scanner.nextInt();
             if (inputValue <= 0) {
-                System.out.println("Input angka harus lebih besar dari 1");
+                System.out.println("Input angka harus lebih besar dari 0");
             }
             return inputValue;
         } catch (InputMismatchException e) {
             System.out.println("Input harus angka!");
+            scanner.next();
         }
         return 0;
     }
@@ -152,10 +152,10 @@ public class GeometriLingkaran {
         System.out.println("Metode output");
         System.out.println("[1] Single-thread");
         System.out.println("[2] Multi-thread");
-        pilihanMetode = inputInt(scanner, "Pilih metode: ");
+        int pilihanMetode = inputInt("Pilih metode: ");
         
         if (pilihanMetode == 2) {
-            jumlahThread = inputInt(scanner, "Input jumlah thread : ");
+            jumlahThread = inputInt("Input jumlah thread : ");
             if (jumlahThread > 0) {
                 jalankanMultithread();
             }
@@ -173,12 +173,12 @@ public class GeometriLingkaran {
         System.out.println(" [8] Cincin Bola");
         System.out.println(" [9] Juring Lingkaran");
         System.out.println("[10] Tembereng Lingkaran");
-        pilihanBangun = inputInt(scanner, "Pilih bangun: ");
+        int pilihanBangun = inputInt("Pilih bangun: ");
         
         switch (pilihanBangun) {
             case 1 -> { // Lingkaran
                 System.out.print("\n --- Lingkaran (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
                 
                 Lingkaran lingkaran = new Lingkaran(jariJari);
                 double luas = lingkaran.hitungLuas();
@@ -187,8 +187,8 @@ public class GeometriLingkaran {
             }
             case 2 -> { // Kerucut
                 System.out.print("\n --- Kerucut (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
-                double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
+                double tinggi = inputDouble("Tinggi\t\t: ");
                 
                 Kerucut kerucut = new Kerucut(jariJari, tinggi);
                 double luasPermukaan = kerucut.hitungLuasPermukaan();
@@ -197,9 +197,9 @@ public class GeometriLingkaran {
             }
             case 3 -> { // Kerucut Terpancung
                 System.out.print("\n --- Kerucut Terpancung (Single-thread) ---\n");
-                double jariJariBawah = inputDouble(scanner, "Jari-jari Bawah\t: ");
-                double jariJariAtas = inputDouble(scanner, "Jari-jari Atas\t: ");
-                double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+                double jariJariBawah = inputDouble("Jari-jari Bawah\t: ");
+                double jariJariAtas = inputDouble("Jari-jari Atas\t: ");
+                double tinggi = inputDouble("Tinggi\t\t: ");
 
                 Kerucut kt = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
                 double luasPermukaan = kt.hitungLuasPermukaan();
@@ -208,8 +208,8 @@ public class GeometriLingkaran {
             }
             case 4 -> { // Tabung
                 System.out.print("\n --- Tabung (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
-                double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
+                double tinggi = inputDouble("Tinggi\t\t: ");
 
                 Tabung tabung = new Tabung(jariJari, tinggi);
                 double luasPermukaan = tabung.hitungLuasPermukaan();
@@ -218,7 +218,7 @@ public class GeometriLingkaran {
             }
             case 5 -> { // Bola
                 System.out.print("\n --- Bola (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
 
                 Bola bola = new Bola(jariJari);
                 double luasPermukaan = bola.hitungLuasPermukaan();
@@ -227,8 +227,8 @@ public class GeometriLingkaran {
             }
             case 6 -> { // Juring Bola
                 System.out.print("\n --- Juring Bola (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
-                double tinggi = inputDouble(scanner, "Tinggi\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
+                double tinggi = inputDouble("Tinggi\t: ");
 
                 Bola juringBola = new JuringBola(jariJari, tinggi);
                 double luasPermukaan = juringBola.hitungLuasPermukaan();
@@ -237,8 +237,8 @@ public class GeometriLingkaran {
             }
             case 7 -> { // Tembereng Bola
                 System.out.print("\n --- Tembereng Bola (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
-                double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
+                double tinggi = inputDouble("Tinggi\t\t: ");
                 
                 Bola tembereng = new TemberengBola(jariJari, tinggi);
                 double luasPermukaan = tembereng.hitungLuasPermukaan();
@@ -247,8 +247,8 @@ public class GeometriLingkaran {
             }
             case 8 -> { // Cincin Bola
                 System.out.print("\n --- Cincin Bola (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
-                double tinggi = inputDouble(scanner, "Tinggi\t\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
+                double tinggi = inputDouble("Tinggi\t\t: ");
                 
                 Bola cincinBola = new CincinBola(jariJari, tinggi);
                 double luasPermukaan = cincinBola.hitungLuasPermukaan();
@@ -257,8 +257,8 @@ public class GeometriLingkaran {
             }
             case 9 -> { // Juring Lingkaran
                 System.out.print("\n --- Juring Lingkaran (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari\t: ");
-                double sudut = inputDouble(scanner, "Sudut (Derajat)\t: ");
+                double jariJari = inputDouble("Jari-jari\t: ");
+                double sudut = inputDouble("Sudut (Derajat)\t: ");
 
                 JuringLingkaran juringLingkaran = new JuringLingkaran(jariJari, sudut);
                 double luas = juringLingkaran.hitungLuas();
@@ -267,8 +267,8 @@ public class GeometriLingkaran {
             }
             case 10 -> { // Tembereng Lingkaran
                 System.out.print("\n --- Tembereng Lingkaran (Single-thread) ---\n");
-                double jariJari = inputDouble(scanner, "Jari-jari          : ");
-                double sudut = inputDouble(scanner,    "Sudut (Derajat)    : ");
+                double jariJari = inputDouble("Jari-jari\t: ");
+                double sudut = inputDouble("Sudut (Derajat)\t: ");
 
                 TemberengLingkaran temberengLingkaran = new TemberengLingkaran(jariJari, sudut);
                 double luas = temberengLingkaran.hitungLuas();
