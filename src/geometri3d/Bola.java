@@ -29,7 +29,7 @@ public class Bola extends Lingkaran implements Geometri3D {
     
     @Override
     public double hitungLuasPermukaan() {
-       luasPermukaanBola = 4 * super.luasLingkaran;
+        luasPermukaanBola = 4 * super.luasLingkaran;
         return luasPermukaanBola;
     }
     
