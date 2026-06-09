@@ -28,10 +28,9 @@ public class GeometriLingkaran {
     public static Bola cincinBola;
     
     public static double jariJari;
-    public static double jariJariBawah; // untuk kerucutTerpancung
-    public static double jariJariAtas; // untuk kerucutTerpancung
+    public static double jariJariAtas;
     public static double tinggi;
-    public static double sudut; // untuk juringLingkaran, temberengLingkarang
+    public static double sudut;
     
     public static double luas;
     public static double keliling;
@@ -57,6 +56,8 @@ public class GeometriLingkaran {
     public static Thread cincinBolaThread;
     public static Thread[] threads;
     public static Thread randomInterrupt;
+    
+    public static String output;
     
     
     public static double inputDouble(String label) {
@@ -90,7 +91,7 @@ public class GeometriLingkaran {
     }
     
     public static String format2DOutput(double luas, double keliling) {
-        String output = String.format(
+        output = String.format(
             """
             Luas Lingkaran  : %.2f 
             Keliling        : %.2f 
@@ -102,7 +103,7 @@ public class GeometriLingkaran {
     }
     
     public static String format3DOutput(double luasPermukaan, double volume) {
-        String output = String.format(
+        output = String.format(
             """
             Luas Permukaan  : %.2f 
             Volume          : %.2f 
@@ -239,11 +240,11 @@ public class GeometriLingkaran {
             }
             case 3 -> { // Kerucut Terpancung
                 System.out.print("\n --- Kerucut Terpancung (Single-thread) ---\n");
-                jariJariBawah = inputDouble("Jari-jari Bawah\t: ");
+                jariJari = inputDouble("Jari-jari Bawah\t: ");
                 jariJariAtas = inputDouble("Jari-jari Atas\t: ");
                 tinggi = inputDouble("Tinggi\t\t: ");
 
-                kerucutTerpancung = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
+                kerucutTerpancung = new KerucutTerpancung(jariJari, tinggi, jariJariAtas);
                 luasPermukaan = kerucutTerpancung.hitungLuasPermukaan();
                 volume = kerucutTerpancung.hitungVolume();
                 System.out.println(format3DOutput(luasPermukaan, volume));

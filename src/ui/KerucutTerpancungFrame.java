@@ -6,73 +6,73 @@ import java.awt.event.*;
 
 public class KerucutTerpancungFrame extends JFrame {
 
-    private JTextField txtJariJariBawah, txtJariJariAtas, txtTinggi;
-    private JButton btnHitung;
-    private JLabel lblLuasPermukaan, lblVolume;
-    private JTextField txtLuasPermukaan, txtVolume;
+    public JTextField txtJariJariBawah, txtJariJariAtas, txtTinggi;
+    public JButton btnHitung;
+    public JLabel lblLuasPermukaan, lblVolume;
+    public JTextField txtLuasPermukaan, txtVolume;
 
     public KerucutTerpancungFrame() {
-        setTitle("Kerucut Terpancung");
-        setSize(400, 400);
-        setLayout(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setTitle("Kerucut Terpancung");
+        this.setSize(400, 400);
+        this.setLayout(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JLabel lblTitle = new JLabel("Kerucut Terpancung");
         lblTitle.setBounds(120, 15, 160, 25);
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 14));
         lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-        add(lblTitle);
+        this.add(lblTitle);
 
         JLabel lblJariJariBawah = new JLabel("Jari-jari Bawah");
         lblJariJariBawah.setBounds(10, 50, 100, 20);
-        add(lblJariJariBawah);
+        this.add(lblJariJariBawah);
 
         txtJariJariBawah = new JTextField();
         txtJariJariBawah.setBounds(120, 50, 250, 25);
-        add(txtJariJariBawah);
+        this.add(txtJariJariBawah);
 
         JLabel lblJariJariAtas = new JLabel("Jari-jari Atas");
         lblJariJariAtas.setBounds(10, 85, 100, 20);
-        add(lblJariJariAtas);
+        this.add(lblJariJariAtas);
 
         txtJariJariAtas = new JTextField();
         txtJariJariAtas.setBounds(120, 85, 250, 25);
-        add(txtJariJariAtas);
+        this.add(txtJariJariAtas);
 
         JLabel lblTinggi = new JLabel("Tinggi Terpancung");
         lblTinggi.setBounds(10, 120, 150, 20);
-        add(lblTinggi);
+        this.add(lblTinggi);
 
         txtTinggi = new JTextField();
         txtTinggi.setBounds(120, 120, 250, 25);
-        add(txtTinggi);
+        this.add(txtTinggi);
 
         btnHitung = new JButton("Hitung");
         btnHitung.setBounds(140, 160, 120, 35);
         btnHitung.setBackground(new java.awt.Color(51, 102, 255));
         btnHitung.setForeground(new java.awt.Color(255, 255, 255));
         btnHitung.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        add(btnHitung);
+        this.add(btnHitung);
 
         lblLuasPermukaan = new JLabel("Luas Permukaan");
         lblLuasPermukaan.setBounds(10, 215, 170, 20);
         lblLuasPermukaan.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        add(lblLuasPermukaan);
+        this.add(lblLuasPermukaan);
 
         txtLuasPermukaan = new JTextField();
         txtLuasPermukaan.setBounds(10, 240, 170, 25);
         txtLuasPermukaan.setEditable(false);
-        add(txtLuasPermukaan);
+        this.add(txtLuasPermukaan);
 
         lblVolume = new JLabel("Volume");
         lblVolume.setBounds(200, 215, 170, 20);
         lblVolume.setFont(new java.awt.Font("Segoe UI", 1, 12));
-        add(lblVolume);
+        this.add(lblVolume);
 
         txtVolume = new JTextField();
         txtVolume.setBounds(200, 240, 170, 25);
         txtVolume.setEditable(false);
-        add(txtVolume);
+        this.add(txtVolume);
 
         btnHitung.addActionListener(new ActionListener() {
             @Override

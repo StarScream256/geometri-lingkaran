@@ -6,44 +6,44 @@ import geometri3d.Bola;
 
 public class BolaFrame extends JFrame {
 
-    private JTextField txtJari;
-    private JButton btnHitung;
-    private JLabel lblLuasPermukaan, lblVolume;
+    public JTextField txtJari;
+    public JButton btnHitung;
+    public JLabel lblLuasPermukaan, lblVolume;
 
     public BolaFrame() {
 
-        setTitle("Hitung Volume dan Luas Permukaan Bola");
-        setSize(400, 250);
-        setLayout(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setTitle("Hitung Volume dan Luas Permukaan Bola");
+        this.setSize(400, 250);
+        this.setLayout(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JLabel l1 = new JLabel("Jari-jari:");
         l1.setBounds(10, 10, 100, 20);
-        add(l1);
+        this.add(l1);
 
         txtJari = new JTextField();
         txtJari.setBounds(120, 10, 150, 20);
-        add(txtJari);
+        this.add(txtJari);
 
         btnHitung = new JButton("Hitung");
         btnHitung.setBounds(130, 50, 120, 30);
-        add(btnHitung);
+        this.add(btnHitung);
 
         JLabel l2 = new JLabel("Luas Permukaan:");
         l2.setBounds(10, 100, 100, 20);
-        add(l2);
+        this.add(l2);
 
         lblLuasPermukaan = new JLabel("0.00");
         lblLuasPermukaan.setBounds(120, 100, 150, 20);
-        add(lblLuasPermukaan);
+        this.add(lblLuasPermukaan);
 
         JLabel l3 = new JLabel("Volume:");
         l3.setBounds(10, 140, 100, 20);
-        add(l3);
+        this.add(l3);
 
         lblVolume = new JLabel("0.00");
         lblVolume.setBounds(120, 140, 150, 20);
-        add(lblVolume);
+        this.add(lblVolume);
 
         btnHitung.addActionListener(new ActionListener() {
             @Override

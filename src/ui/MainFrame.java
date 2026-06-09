@@ -4,12 +4,12 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
 
-    private JButton lingkaranButton, juringLingkaranButton, temberengLingkaranButton;
-    private JButton kerucutButton, kerucutTerpancungButton, tabungButton;
-    private JButton bolaButton, juringBolaButton, temberengBolaButton, cincinBolaButton;
+    public JButton lingkaranButton, juringLingkaranButton, temberengLingkaranButton;
+    public JButton kerucutButton, kerucutTerpancungButton, tabungButton;
+    public JButton bolaButton, juringBolaButton, temberengBolaButton, cincinBolaButton;
 
     public MainFrame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         lingkaranButton = new JButton();
         juringLingkaranButton = new JButton();
