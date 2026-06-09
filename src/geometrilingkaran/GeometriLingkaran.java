@@ -16,6 +16,49 @@ public class GeometriLingkaran {
     public static Scanner scanner;
     public static int jumlahThread;
     
+    public static Lingkaran lingkaran;
+    public static JuringLingkaran juringLingkaran;
+    public static TemberengLingkaran temberengLingkaran;
+    public static Kerucut kerucut;
+    public static Kerucut kerucutTerpancung;
+    public static Tabung tabung;
+    public static Bola bola;
+    public static Bola juringBola;
+    public static Bola temberengBola;
+    public static Bola cincinBola;
+    
+    public static double jariJari;
+    public static double jariJariBawah; // untuk kerucutTerpancung
+    public static double jariJariAtas; // untuk kerucutTerpancung
+    public static double tinggi;
+    public static double sudut; // untuk juringLingkaran, temberengLingkarang
+    
+    public static double luas;
+    public static double keliling;
+    public static double luasPermukaan;
+    public static double volume;
+    
+    public static int delay = 1000;
+    public static String[] tableColumns;
+    public static Object[][] tableData;
+    public static DefaultTableModel tableModel;
+    public static JTable table;
+    public static JFrame frame;
+    
+    public static Thread lingkaranThread;
+    public static Thread juringLingkaranThread;
+    public static Thread temberengLingkaranThread;
+    public static Thread kerucutThread;
+    public static Thread kerucutTerpancungThread;
+    public static Thread tabungThread;
+    public static Thread bolaThread;
+    public static Thread juringBolaThread;
+    public static Thread tembrengBolaThread;
+    public static Thread cincinBolaThread;
+    public static Thread[] threads;
+    public static Thread randomInterrupt;
+    
+    
     public static double inputDouble(String label) {
         try {
             System.out.print(label);
@@ -72,46 +115,45 @@ public class GeometriLingkaran {
     
     public static void jalankanMultithread() {
         jumlahThread = jumlahThread / 10;
-        int delay = 1000;
         
-        String[] columns = {
+        tableColumns = new String[] {
             "Iterasi data", "(0) Lingkaran", "(1) Juring Lingkaran", "(2) Tembereng Lingkaran", "(3) Kerucut",
             "(4) Kerucut Terpancung", "(5) Tabung", "(6) Bola", "(7) Juring Bola", "(8) Tembereng Bola", "(9) Cincin Bola"
         };
         
-        Object[][] data = new Object[jumlahThread][columns.length];
+        tableData = new Object[jumlahThread][tableColumns.length];
         for (int i = 0; i < jumlahThread; i++) {
-            data[i][0] = (i + 1);
+            tableData[i][0] = (i + 1);
         }
         
-        DefaultTableModel model = new DefaultTableModel(data, columns);
-        JTable table = new JTable(model);
+        tableModel = new DefaultTableModel(tableData, tableColumns);
+        table = new JTable(tableModel);
         
-        JFrame frame = new JFrame("Thread Status Monitor");
+        frame = new JFrame("Thread Status Monitor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 300);
         frame.add(new JScrollPane(table));
         frame.setVisible(true);
         
-        Thread lingkaranThread = new Thread(new LingkaranThread(jumlahThread, delay, model, 1));
-        Thread juringLingkaranThread = new Thread(new JuringLingkaranThread(jumlahThread, delay, model, 2));
-        Thread temberengLingkaranThread = new Thread(new TemberengLingkaranThread(jumlahThread, delay, model, 3));
-        Thread kerucutThread = new Thread(new KerucutThread(jumlahThread, delay, model, 4));
-        Thread kerucutTerpancungThread = new Thread(new KerucutTerpancungThread(jumlahThread, delay, model, 5));
-        Thread tabungThread = new Thread(new TabungThread(jumlahThread, delay, model, 6));
-        Thread bolaThread = new Thread(new BolaThread(jumlahThread, delay, model, 7));
-        Thread juringBolaThread = new Thread(new JuringBolaThread(jumlahThread, delay, model, 8));
-        Thread tembrengBolaThread = new Thread(new TemberengBolaThread(jumlahThread, delay, model, 9));
-        Thread cincinBolaThread = new Thread(new CincinBolaThread(jumlahThread, delay, model, 10));
+        lingkaranThread = new Thread(new LingkaranThread(jumlahThread, delay, tableModel, 1));
+        juringLingkaranThread = new Thread(new JuringLingkaranThread(jumlahThread, delay, tableModel, 2));
+        temberengLingkaranThread = new Thread(new TemberengLingkaranThread(jumlahThread, delay, tableModel, 3));
+        kerucutThread = new Thread(new KerucutThread(jumlahThread, delay, tableModel, 4));
+        kerucutTerpancungThread = new Thread(new KerucutTerpancungThread(jumlahThread, delay, tableModel, 5));
+        tabungThread = new Thread(new TabungThread(jumlahThread, delay, tableModel, 6));
+        bolaThread = new Thread(new BolaThread(jumlahThread, delay, tableModel, 7));
+        juringBolaThread = new Thread(new JuringBolaThread(jumlahThread, delay, tableModel, 8));
+        tembrengBolaThread = new Thread(new TemberengBolaThread(jumlahThread, delay, tableModel, 9));
+        cincinBolaThread = new Thread(new CincinBolaThread(jumlahThread, delay, tableModel, 10));
 
-        Thread[] threads = {
+        threads = new Thread[] {
             lingkaranThread, juringLingkaranThread, temberengLingkaranThread, kerucutThread,
             kerucutTerpancungThread, tabungThread, bolaThread, juringBolaThread, 
             tembrengBolaThread, cincinBolaThread
         };
         
         // interrupt random BERULANG (3 kali)
-        Thread randomInterrupt = new Thread(() -> {
+        randomInterrupt = new Thread(() -> {
             try {
                 // Interrupt ke-1 setelah 3 detik
                 Thread.sleep(3000);
@@ -178,101 +220,101 @@ public class GeometriLingkaran {
         switch (pilihanBangun) {
             case 1 -> { // Lingkaran
                 System.out.print("\n --- Lingkaran (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
                 
-                Lingkaran lingkaran = new Lingkaran(jariJari);
-                double luas = lingkaran.hitungLuas();
-                double keliling = lingkaran.hitungKeliling();
+                lingkaran = new Lingkaran(jariJari);
+                luas = lingkaran.hitungLuas();
+                keliling = lingkaran.hitungKeliling();
                 System.out.println(format2DOutput(luas, keliling));
             }
             case 2 -> { // Kerucut
                 System.out.print("\n --- Kerucut (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
-                double tinggi = inputDouble("Tinggi\t\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
+                tinggi = inputDouble("Tinggi\t\t: ");
                 
-                Kerucut kerucut = new Kerucut(jariJari, tinggi);
-                double luasPermukaan = kerucut.hitungLuasPermukaan();
-                double volume = kerucut.hitungVolume();
+                kerucut = new Kerucut(jariJari, tinggi);
+                luasPermukaan = kerucut.hitungLuasPermukaan();
+                volume = kerucut.hitungVolume();
                 System.out.print(format3DOutput(luasPermukaan, volume));
             }
             case 3 -> { // Kerucut Terpancung
                 System.out.print("\n --- Kerucut Terpancung (Single-thread) ---\n");
-                double jariJariBawah = inputDouble("Jari-jari Bawah\t: ");
-                double jariJariAtas = inputDouble("Jari-jari Atas\t: ");
-                double tinggi = inputDouble("Tinggi\t\t: ");
+                jariJariBawah = inputDouble("Jari-jari Bawah\t: ");
+                jariJariAtas = inputDouble("Jari-jari Atas\t: ");
+                tinggi = inputDouble("Tinggi\t\t: ");
 
-                Kerucut kt = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
-                double luasPermukaan = kt.hitungLuasPermukaan();
-                double volume = kt.hitungVolume();
+                kerucutTerpancung = new KerucutTerpancung(jariJariBawah, tinggi, jariJariAtas);
+                luasPermukaan = kerucutTerpancung.hitungLuasPermukaan();
+                volume = kerucutTerpancung.hitungVolume();
                 System.out.println(format3DOutput(luasPermukaan, volume));
             }
             case 4 -> { // Tabung
                 System.out.print("\n --- Tabung (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
-                double tinggi = inputDouble("Tinggi\t\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
+                tinggi = inputDouble("Tinggi\t\t: ");
 
-                Tabung tabung = new Tabung(jariJari, tinggi);
-                double luasPermukaan = tabung.hitungLuasPermukaan();
-                double volume = tabung.hitungVolume();
+                tabung = new Tabung(jariJari, tinggi);
+                luasPermukaan = tabung.hitungLuasPermukaan();
+                volume = tabung.hitungVolume();
                 System.out.println(format3DOutput(luasPermukaan, volume));
             }
             case 5 -> { // Bola
                 System.out.print("\n --- Bola (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
 
-                Bola bola = new Bola(jariJari);
-                double luasPermukaan = bola.hitungLuasPermukaan();
-                double volume = bola.hitungVolume();
+                bola = new Bola(jariJari);
+                luasPermukaan = bola.hitungLuasPermukaan();
+                volume = bola.hitungVolume();
                 System.out.println(format3DOutput(luasPermukaan, volume));
             }
             case 6 -> { // Juring Bola
                 System.out.print("\n --- Juring Bola (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
-                double tinggi = inputDouble("Tinggi\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
+                tinggi = inputDouble("Tinggi\t: ");
 
-                Bola juringBola = new JuringBola(jariJari, tinggi);
-                double luasPermukaan = juringBola.hitungLuasPermukaan();
-                double volume = juringBola.hitungVolume();
+                juringBola = new JuringBola(jariJari, tinggi);
+                luasPermukaan = juringBola.hitungLuasPermukaan();
+                volume = juringBola.hitungVolume();
                 System.out.println(format3DOutput(luasPermukaan, volume));
             }
             case 7 -> { // Tembereng Bola
                 System.out.print("\n --- Tembereng Bola (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
-                double tinggi = inputDouble("Tinggi\t\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
+                tinggi = inputDouble("Tinggi\t\t: ");
                 
-                Bola tembereng = new TemberengBola(jariJari, tinggi);
-                double luasPermukaan = tembereng.hitungLuasPermukaan();
-                double volume = tembereng.hitungVolume();
+                temberengBola = new TemberengBola(jariJari, tinggi);
+                luasPermukaan = temberengBola.hitungLuasPermukaan();
+                volume = temberengBola.hitungVolume();
                 System.out.println(format3DOutput(luasPermukaan, volume));
             }
             case 8 -> { // Cincin Bola
                 System.out.print("\n --- Cincin Bola (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
-                double tinggi = inputDouble("Tinggi\t\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
+                tinggi = inputDouble("Tinggi\t\t: ");
                 
-                Bola cincinBola = new CincinBola(jariJari, tinggi);
-                double luasPermukaan = cincinBola.hitungLuasPermukaan();
-                double volume = cincinBola.hitungVolume();
+                cincinBola = new CincinBola(jariJari, tinggi);
+                luasPermukaan = cincinBola.hitungLuasPermukaan();
+                volume = cincinBola.hitungVolume();
                 System.out.println(format3DOutput(luasPermukaan, volume));
             }
             case 9 -> { // Juring Lingkaran
                 System.out.print("\n --- Juring Lingkaran (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
-                double sudut = inputDouble("Sudut (Derajat)\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
+                sudut = inputDouble("Sudut (Derajat)\t: ");
 
-                JuringLingkaran juringLingkaran = new JuringLingkaran(jariJari, sudut);
-                double luas = juringLingkaran.hitungLuas();
-                double keliling = juringLingkaran.hitungKeliling();
+                juringLingkaran = new JuringLingkaran(jariJari, sudut);
+                luas = juringLingkaran.hitungLuas();
+                keliling = juringLingkaran.hitungKeliling();
                 System.out.println(format2DOutput(luas, keliling));
             }
             case 10 -> { // Tembereng Lingkaran
                 System.out.print("\n --- Tembereng Lingkaran (Single-thread) ---\n");
-                double jariJari = inputDouble("Jari-jari\t: ");
-                double sudut = inputDouble("Sudut (Derajat)\t: ");
+                jariJari = inputDouble("Jari-jari\t: ");
+                sudut = inputDouble("Sudut (Derajat)\t: ");
 
-                TemberengLingkaran temberengLingkaran = new TemberengLingkaran(jariJari, sudut);
-                double luas = temberengLingkaran.hitungLuas();
-                double keliling = temberengLingkaran.hitungKeliling();
+                temberengLingkaran = new TemberengLingkaran(jariJari, sudut);
+                luas = temberengLingkaran.hitungLuas();
+                keliling = temberengLingkaran.hitungKeliling();
                 System.out.println(format2DOutput(luas, keliling));
             }
             default -> System.out.println("Pilihan anda tidak valid");
