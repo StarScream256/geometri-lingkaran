@@ -18,33 +18,33 @@ public class TemberengLingkaran extends JuringLingkaran implements Geometri2D {
 
     @Override
     public double hitungLuas() {
-        double luasJuring = super.luasJuringLingkaran; 
-        double luasSegitiga = 0.5 * this.jariJari * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng));
-        luasTemberengLingkaran = luasJuring - luasSegitiga;
+        luasTemberengLingkaran = super.luasJuringLingkaran
+                                 -
+                                 (0.5 * this.jariJari * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng)));
         return luasTemberengLingkaran;
     }
 
     @Override
     public double hitungLuas(double jariJari, double sudut) {
-        double luasJuring = super.hitungLuas(jariJari, sudut);
-        double luasSegitiga = 0.5 * Math.pow(jariJari, 2) * Math.sin(Math.toRadians(sudut));
-        luasTemberengLingkaran = luasJuring - luasSegitiga;
+        luasTemberengLingkaran = super.hitungLuas(jariJari, sudut)
+                                 -
+                                 (0.5 * Math.pow(jariJari, 2) * Math.sin(Math.toRadians(sudut)));
         return luasTemberengLingkaran;
     }
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = super.kelilingJuringLingkaran - (2 * this.jariJari);
-        double panjangTaliBusur = 2 * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng / 2.0));
-        kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
+        kelilingTemberengLingkaran = super.kelilingJuringLingkaran - (2 * this.jariJari)
+                                     +
+                                     (2 * this.jariJari * Math.sin(Math.toRadians(this.sudutTembereng / 2.0)));
         return kelilingTemberengLingkaran;
     }
 
     @Override
     public double hitungKeliling(double jariJari, double sudut) {
-        double panjangBusur = super.hitungKeliling(jariJari, sudut) - (2 * jariJari);
-        double panjangTaliBusur = 2 * jariJari * Math.sin(Math.toRadians(sudut / 2.0));
-        kelilingTemberengLingkaran = panjangBusur + panjangTaliBusur;
+        kelilingTemberengLingkaran = super.hitungKeliling(jariJari, sudut) - (2 * jariJari)
+                                     +
+                                     (2 * jariJari * Math.sin(Math.toRadians(sudut / 2.0)));
         return kelilingTemberengLingkaran;
     }
 }

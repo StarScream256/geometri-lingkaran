@@ -16,31 +16,23 @@ public class TemberengBola extends Bola implements Geometri3D {
         super.hitungVolume(this.jariJari);
     }
 
-    public double hitungJariJariAlas(double jariJari, double tinggi) {
-        return Math.sqrt(Math.pow(jariJari, 2) - Math.pow(jariJari - tinggi, 2));
-    }
-
     @Override
-    public double hitungLuasPermukaan() {
-        double jariJariAlas = hitungJariJariAlas(this.jariJari, this.tinggiTembereng);
-        double luasAlasTembereng = super.hitungLuas(jariJariAlas);
-        double luasKubahMelengkung = super.kelilingLingkaran * this.tinggiTembereng;   
-        luasPermukaanTemberengBola = luasAlasTembereng + luasKubahMelengkung;
+    public double hitungLuasPermukaan() { 
+        luasPermukaanTemberengBola = super.PI * (4 * this.jariJari * this.tinggiTembereng 
+                                     - 
+                                     this.tinggiTembereng * this.tinggiTembereng);
         return luasPermukaanTemberengBola;
     }
 
     public double hitungLuasPermukaan(double jariJari, double tinggi) {
-        double jariJariAlas = hitungJariJariAlas(jariJari, tinggi);
-        double luasAlasTembereng = super.hitungLuas(jariJariAlas);
-        double luasKubahMelengkung = super.hitungKeliling(jariJari) * tinggi;
-        this.luasPermukaanTemberengBola = luasAlasTembereng + luasKubahMelengkung;
+        this.luasPermukaanTemberengBola = super.PI * (4 * jariJari * tinggi - tinggi * tinggi);
         return this.luasPermukaanTemberengBola;
     }
 
     @Override
     public double hitungVolume() {
-        volumeTemberengBola = (1.0 / 3.0) * this.pi * Math.pow(this.tinggiTembereng, 2) * 
-                ((3 * this.jariJari) - this.tinggiTembereng);
+        volumeTemberengBola = (1.0 / 3.0) * this.pi * Math.pow(this.tinggiTembereng, 2) 
+                               * ((3 * this.jariJari) - this.tinggiTembereng);
         return volumeTemberengBola;
     }
 

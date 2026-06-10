@@ -17,25 +17,23 @@ public class Kerucut extends Lingkaran implements Geometri3D {
         super.hitungLuas(this.jariJari);
         super.hitungKeliling(this.jariJari);
     }
-
-    public double hitungGarisPelukis(double jariJari, double tinggi) {
-        return Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggi, 2));
-    }
-
+    
     @Override
     public double hitungLuasPermukaan() {
-        double selimutKerucut = hitungGarisPelukis(this.jariJari, this.tinggiKerucut);
-        double luasAlas = super.luasLingkaran; 
-        double luasSelimut =  this.pi * this.jariJari * selimutKerucut;
-        luasPermukaanKerucut = luasAlas + luasSelimut;
+        luasPermukaanKerucut = super.luasLingkaran
+                               +
+                               super.PI * this.jariJari 
+                               * 
+                               Math.sqrt(Math.pow(this.jariJari, 2) + Math.pow(this.tinggiKerucut, 2));
         return luasPermukaanKerucut;
     }
 
     public double hitungLuasPermukaan(double jariJari, double tinggi) {
-        double selimutKerucut = hitungGarisPelukis(jariJari, tinggi);
-        double luasAlas = super.hitungLuas(jariJari); 
-        double luasSelimut =  super.PI * jariJari * selimutKerucut;
-        luasPermukaanKerucut = luasAlas + luasSelimut;
+        luasPermukaanKerucut = super.hitungLuas(jariJari)
+                               +
+                               super.PI * jariJari 
+                               * 
+                               Math.sqrt(Math.pow(jariJari, 2) + Math.pow(tinggi, 2));;
         return luasPermukaanKerucut;
     }
 

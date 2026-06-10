@@ -20,16 +20,16 @@ public class Tabung extends Lingkaran implements Geometri3D {
 
     @Override
     public double hitungLuasPermukaan() {
-        double luasAlas = super.luasLingkaran; 
-        double luasSelimut = 2 * this.pi * this.jariJari * this.tinggi;
-        luasPermukaanTabung = (2 * luasAlas) + luasSelimut;
+        luasPermukaanTabung = (2 * super.luasLingkaran)
+                               +
+                              (2 * super.PI * this.jariJari * this.tinggi);
         return luasPermukaanTabung;
     }
 
     public double hitungLuasPermukaan(double jariJari, double tinggi) {
-        double luasAlas = super.hitungLuas(jariJari); 
-        double luasSelimut = 2 * super.PI * jariJari * tinggi;
-        luasPermukaanTabung = (2 * luasAlas) + luasSelimut;
+        luasPermukaanTabung = (2 * super.hitungLuas(jariJari))
+                               +
+                              (2 * super.PI * jariJari * tinggi);
         return luasPermukaanTabung;
     }
 

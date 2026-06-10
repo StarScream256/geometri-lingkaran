@@ -18,7 +18,7 @@ public class Bola extends Lingkaran implements Geometri3D {
     
     @Override
     public double hitungVolume() {
-        volumeBola = (4.0 / 3.0) * this.pi * Math.pow(this.jariJari, 3);
+        volumeBola = (4.0 / 3.0) * super.PI * Math.pow(this.jariJari, 3);
         return volumeBola;
     }
     

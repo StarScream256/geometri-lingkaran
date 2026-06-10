@@ -18,7 +18,7 @@ public class CincinBola extends Bola implements Geometri3D {
 
     @Override
     public double hitungLuasPermukaan() {
-        luasPermukaanCincinBola = 2 * this.pi * this.jariJari * this.tinggi;
+        luasPermukaanCincinBola = 2 * super.PI * this.jariJari * this.tinggi;
         return luasPermukaanCincinBola;
     }
 
@@ -29,7 +29,7 @@ public class CincinBola extends Bola implements Geometri3D {
 
     @Override
     public double hitungVolume() {
-        volumeCincinBola = (1.0 / 6.0) * this.pi * Math.pow(this.tinggi, 3); 
+        volumeCincinBola = (1.0 / 6.0) * super.PI * Math.pow(this.tinggi, 3); 
         return volumeCincinBola;
     }
 

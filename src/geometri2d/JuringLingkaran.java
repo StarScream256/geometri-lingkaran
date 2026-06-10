@@ -29,14 +29,12 @@ public class JuringLingkaran extends Lingkaran implements Geometri2D {
 
     @Override
     public double hitungKeliling() {
-        double panjangBusur = (this.sudutJuring / 360.0) * super.kelilingLingkaran;
-        kelilingJuringLingkaran = panjangBusur + (2 * this.jariJari);
+        kelilingJuringLingkaran = (this.sudutJuring / 360.0) * super.kelilingLingkaran + (2 * this.jariJari);
         return kelilingJuringLingkaran;
     }
 
     public double hitungKeliling(double jariJari, double sudut) {
-        double panjangBusur = (sudut / 360.0) * super.hitungKeliling(jariJari);
-        kelilingJuringLingkaran = panjangBusur + (2 * jariJari);
+        kelilingJuringLingkaran = (sudut / 360.0) * super.hitungKeliling(jariJari) + (2 * jariJari);
         return kelilingJuringLingkaran;
     }
 }

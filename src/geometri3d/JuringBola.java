@@ -16,24 +16,18 @@ public class JuringBola extends Bola implements Geometri3D {
         super.hitungVolume(this.jariJari);
     }
     
-    public double hitungJariJariAlas(double jariJari, double tinggi) {
-        return Math.sqrt(Math.pow(jariJari, 2) - Math.pow(jariJari - tinggi, 2));
-    }
-    
     @Override
     public double hitungLuasPermukaan(){
-        double jariJariAlas = hitungJariJariAlas(this.jariJari, this.tinggiJuring);
-        double luasAlasJuring = super.hitungLuas(jariJariAlas);
-        double luasSelimutKubah = super.kelilingLingkaran * this.tinggiJuring;
-        luasPermukaanJuringBola = luasAlasJuring + luasSelimutKubah;
+        luasPermukaanJuringBola = (2 * super.PI * this.jariJari * this.tinggiJuring)
+                                  +
+                                  (super.PI * this.jariJari * Math.sqrt(2 * this.jariJari * this.tinggiJuring - Math.pow(this.tinggiJuring, 2)));   
         return luasPermukaanJuringBola;
     }
     
     public double hitungLuasPermukaan(double jariJari, double tinggi) {
-        double jariJariAlas = hitungJariJariAlas(jariJari, tinggi);
-        double luasAlasJuring = super.hitungLuas(jariJariAlas);
-        double luasSelimutKubah = super.hitungKeliling(jariJari) * tinggi;
-        luasPermukaanJuringBola = luasSelimutKubah + luasAlasJuring;
+        luasPermukaanJuringBola = (2 * super.PI * jariJari * tinggi)
+                                  +
+                                  (super.PI * jariJari * Math.sqrt(2 * jariJari * tinggi - Math.pow(tinggi, 2))); 
         return luasPermukaanJuringBola;
     }
 
