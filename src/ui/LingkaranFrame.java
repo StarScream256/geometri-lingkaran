@@ -1,6 +1,8 @@
 package ui;
 
 import geometri2d.Lingkaran;
+import geometrilingkaran.GeometriLingkaran;
+import geometrilingkaran.NegativeNumberException;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -69,18 +71,14 @@ public class LingkaranFrame extends JFrame {
                         return;
                     }
 
-                    double jariJariValue = Double.parseDouble(txtJariJari.getText().replace(",", "."));
-
-                    if (jariJariValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-
+                    double jariJariValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJari.getText().replace(",", ".")));
                     Lingkaran lingkaran = new Lingkaran(jariJariValue);
                     txtLuas.setText(String.format("%.2f", lingkaran.hitungLuas()));
                     txtKeliling.setText(String.format("%.2f", lingkaran.hitungKeliling()));
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

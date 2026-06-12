@@ -1,6 +1,8 @@
 package ui;
 
 import geometri2d.JuringLingkaran;
+import geometrilingkaran.GeometriLingkaran;
+import geometrilingkaran.NegativeNumberException;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -79,25 +81,21 @@ public class JuringLingkaranFrame extends JFrame {
                         return;
                     }
 
-                    double jariJariValue = Double.parseDouble(txtJariJari.getText().replace(",", "."));
-                    double sudutValue = Double.parseDouble(txtSudut.getText().replace(",", "."));
-
-                    if (jariJariValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
+                    double jariJariValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJari.getText().replace(",", ".")));
+                    double sudutValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtSudut.getText().replace(",", ".")));
+                    
                     if (sudutValue <= 0 || sudutValue > 360) {
                         JOptionPane.showMessageDialog(null, "Sudut harus berada di antara 0 sampai 360 derajat!", "Warning", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
                     JuringLingkaran juring = new JuringLingkaran(jariJariValue, sudutValue);
- 
                     txtLuas.setText(String.format("%.2f", juring.hitungLuas()));
                     txtKeliling.setText(String.format("%.2f", juring.hitungKeliling()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

@@ -1,6 +1,7 @@
 package ui;
 
 import geometri3d.CincinBola;
+import geometrilingkaran.*;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -68,25 +69,20 @@ public class CincinBolaFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-
                     if (txtJariJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Semua input harus diisi!");
                         return;
                     }
 
-                    double jariJariValue = Double.parseDouble(txtJariJari.getText().replace(",", "."));
-                    double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
-
-                    if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari atau tinggi silinder harus lebih besar dari 0.", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-
+                    double jariJariValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJari.getText().replace(",", ".")));
+                    double tinggiValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtTinggi.getText().replace(",", ".")));
                     CincinBola cincinBola = new CincinBola(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", cincinBola.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", cincinBola.hitungVolume()));
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

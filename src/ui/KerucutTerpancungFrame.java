@@ -1,6 +1,8 @@
 package ui;
 
 import geometri3d.KerucutTerpancung;
+import geometrilingkaran.GeometriLingkaran;
+import geometrilingkaran.NegativeNumberException;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -82,15 +84,10 @@ public class KerucutTerpancungFrame extends JFrame {
                         JOptionPane.showMessageDialog(null, "Semua input harus diisi!");
                         return;
                     }
-
-                    double jariJariBawahValue = Double.parseDouble(txtJariJariBawah.getText().replace(",", "."));
-                    double jariJariAtasValue = Double.parseDouble(txtJariJariAtas.getText().replace(",", "."));
-                    double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
-
-                    if (jariJariBawahValue <= 0 || jariJariAtasValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Semua nilai harus lebih besar dari 0!", "Input Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
+                    
+                    double jariJariAtasValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJariAtas.getText().replace(",", ".")));
+                    double jariJariBawahValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJariBawah.getText().replace(",", ".")));
+                    double tinggiValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtTinggi.getText().replace(",", ".")));
 
                     if (jariJariBawahValue <= jariJariAtasValue) {
                         JOptionPane.showMessageDialog(null, "Jari-jari bawah harus lebih besar dari jari-jari atas!", "Logika Salah", JOptionPane.WARNING_MESSAGE);
@@ -102,6 +99,8 @@ public class KerucutTerpancungFrame extends JFrame {
                     txtVolume.setText(String.format("%.2f", kt.hitungVolume()));
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

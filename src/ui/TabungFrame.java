@@ -1,12 +1,14 @@
 package ui;
 
 import geometri3d.Tabung;
+import geometrilingkaran.GeometriLingkaran;
+import geometrilingkaran.NegativeNumberException;
 import javax.swing.*;
 import java.awt.event.*;
 
 public class TabungFrame extends JFrame {
 
-    public JTextField txtR;
+    public JTextField txtJariJari;
     public JTextField txtTinggi;
     public JButton btnHitung;
     public JLabel labelLuasPermukaan, labelVolume;
@@ -22,9 +24,9 @@ public class TabungFrame extends JFrame {
         lblR.setBounds(20, 20, 100, 20);
         this.add(lblR);
 
-        txtR = new JTextField();
-        txtR.setBounds(120, 20, 150, 25);
-        this.add(txtR);
+        txtJariJari = new JTextField();
+        txtJariJari.setBounds(120, 20, 150, 25);
+        this.add(txtJariJari);
 
         JLabel lblTinggi = new JLabel("Tinggi:");
         lblTinggi.setBounds(20, 60, 100, 20);
@@ -50,20 +52,20 @@ public class TabungFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (txtR.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
+                    if (txtJariJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Input tidak boleh kosong!");
                         return;
                     }
 
-                    double r = Double.parseDouble(txtR.getText().replace(",", "."));
-                    double t = Double.parseDouble(txtTinggi.getText().replace(",", "."));
-
-                    Tabung tabung = new Tabung(r, t);
+                    double jariJariValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJari.getText().replace(",", ".")));
+                    double tinggiValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtTinggi.getText().replace(",", ".")));
+                    Tabung tabung = new Tabung(jariJariValue, tinggiValue);
                     labelLuasPermukaan.setText("Luas Permukaan : " + String.format("%.2f", tabung.hitungLuasPermukaan()));
                     labelVolume.setText("Volume : " + String.format("%.2f", tabung.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

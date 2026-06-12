@@ -13,84 +13,102 @@ import javax.swing.table.DefaultTableModel;
 import ui.MainFrame;
 
 public class GeometriLingkaran {
-    public static Scanner scanner;
-    public static int jumlahThread;
+    public Scanner scanner;
+    public int jumlahThread;
     
-    public static Lingkaran lingkaran;
-    public static JuringLingkaran juringLingkaran;
-    public static TemberengLingkaran temberengLingkaran;
-    public static Kerucut kerucut;
-    public static Kerucut kerucutTerpancung;
-    public static Tabung tabung;
-    public static Bola bola;
-    public static Bola juringBola;
-    public static Bola temberengBola;
-    public static Bola cincinBola;
+    public Lingkaran lingkaran;
+    public JuringLingkaran juringLingkaran;
+    public TemberengLingkaran temberengLingkaran;
+    public Kerucut kerucut;
+    public Kerucut kerucutTerpancung;
+    public Tabung tabung;
+    public Bola bola;
+    public Bola juringBola;
+    public Bola temberengBola;
+    public Bola cincinBola;
     
-    public static double jariJari;
-    public static double jariJariAtas;
-    public static double tinggi;
-    public static double sudut;
+    public double jariJari;
+    public double jariJariAtas;
+    public double tinggi;
+    public double sudut;
     
-    public static double luas;
-    public static double keliling;
-    public static double luasPermukaan;
-    public static double volume;
+    public double luas;
+    public double keliling;
+    public double luasPermukaan;
+    public double volume;
     
-    public static int delay = 1000;
-    public static String[] tableColumns;
-    public static Object[][] tableData;
-    public static DefaultTableModel tableModel;
-    public static JTable table;
-    public static JFrame frame;
+    public int delay = 1000;
+    public String[] tableColumns;
+    public Object[][] tableData;
+    public DefaultTableModel tableModel;
+    public JTable table;
+    public JFrame frame;
     
-    public static Thread lingkaranThread;
-    public static Thread juringLingkaranThread;
-    public static Thread temberengLingkaranThread;
-    public static Thread kerucutThread;
-    public static Thread kerucutTerpancungThread;
-    public static Thread tabungThread;
-    public static Thread bolaThread;
-    public static Thread juringBolaThread;
-    public static Thread tembrengBolaThread;
-    public static Thread cincinBolaThread;
-    public static Thread[] threads;
-    public static Thread randomInterrupt;
+    public Thread lingkaranThread;
+    public Thread juringLingkaranThread;
+    public Thread temberengLingkaranThread;
+    public Thread kerucutThread;
+    public Thread kerucutTerpancungThread;
+    public Thread tabungThread;
+    public Thread bolaThread;
+    public Thread juringBolaThread;
+    public Thread tembrengBolaThread;
+    public Thread cincinBolaThread;
+    public Thread[] threads;
+    public Thread randomInterrupt;
     
-    public static String output;
+    public double inputDouble;
+    public int inputInt;
+    public String output;
     
     
-    public static double inputDouble(String label) {
-        try {
-            System.out.print(label);
-            double inputValue = scanner.nextDouble();
-            if (inputValue <= 0) {
-                System.out.println("Input angka harus lebih besar dari 0");
-            }
-            return inputValue;
-        } catch (InputMismatchException e) {
-            System.out.println("Input harus angka!");
-            scanner.next();
+    public GeometriLingkaran() {}
+    
+    public static double isValidPositive(double value) throws NegativeNumberException {
+        if (value <= 0) {
+            throw new NegativeNumberException("Input angka harus lebih besar dari 0");
         }
-        return 0;
+        return value;
     }
     
-    public static int inputInt(String label) {
-        try {
-            System.out.print(label);
-            int inputValue = scanner.nextInt();
-            if (inputValue <= 0) {
-                System.out.println("Input angka harus lebih besar dari 0");
-            }
-            return inputValue;
-        } catch (InputMismatchException e) {
-            System.out.println("Input harus angka!");
-            scanner.next();
+    public static int isValidPositive(int value) throws NegativeNumberException {
+        if (value <= 0) {
+            throw new NegativeNumberException("Input angka harus lebih besar dari 0");
         }
-        return 0;
+        return value;
     }
     
-    public static String format2DOutput(double luas, double keliling) {
+    public double inputDouble(String label) {
+        while(true) {
+            try {
+                System.out.print(label);
+                inputDouble = isValidPositive(scanner.nextDouble());
+                return inputDouble;
+            } catch (InputMismatchException e) {
+                System.out.println("Input harus angka!");
+                scanner.next();
+            } catch (NegativeNumberException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public int inputInt(String label) {
+        while(true) {
+            try {
+                System.out.print(label);
+                inputInt = isValidPositive(scanner.nextInt());
+                return inputInt;
+            } catch (InputMismatchException e) {
+                System.out.println("Input harus angka!");
+                scanner.next();
+            } catch (NegativeNumberException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public String format2DOutput(double luas, double keliling) {
         output = String.format(
             """
             Luas Lingkaran  : %.2f 
@@ -102,7 +120,7 @@ public class GeometriLingkaran {
         return output;
     }
     
-    public static String format3DOutput(double luasPermukaan, double volume) {
+    public String format3DOutput(double luasPermukaan, double volume) {
         output = String.format(
             """
             Luas Permukaan  : %.2f 
@@ -114,7 +132,7 @@ public class GeometriLingkaran {
         return output;
     }
     
-    public static void jalankanMultithread() {
+    public void runMultithread() {
         jumlahThread = jumlahThread / 10;
         
         tableColumns = new String[] {
@@ -187,7 +205,7 @@ public class GeometriLingkaran {
         }
     }
 
-    public static void main(String[] args) {
+    public void start() {
         new MainFrame().setVisible(true);
         scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
@@ -200,7 +218,7 @@ public class GeometriLingkaran {
         if (pilihanMetode == 2) {
             jumlahThread = inputInt("Input jumlah thread : ");
             if (jumlahThread > 0) {
-                jalankanMultithread();
+                runMultithread();
             }
             return;
         }
@@ -320,5 +338,10 @@ public class GeometriLingkaran {
             }
             default -> System.out.println("Pilihan anda tidak valid");
         }
+    }
+    
+    public static void main(String[] args) {
+        GeometriLingkaran main = new GeometriLingkaran();
+        main.start();
     }
 }

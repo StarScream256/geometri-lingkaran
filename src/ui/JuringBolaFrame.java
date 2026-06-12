@@ -3,10 +3,11 @@ package ui;
 import geometri3d.JuringBola;
 import javax.swing.*;
 import java.awt.event.*;
+import geometrilingkaran.*;
 
 public class JuringBolaFrame extends JFrame {
 
-    public JTextField txtJari, txtTinggi;
+    public JTextField txtJariJari, txtTinggi;
     public JButton btnHitung;
     public JLabel lblLuasPermukaan, lblVolume;
     public JTextField txtLuasPermukaan, txtVolume;
@@ -26,9 +27,9 @@ public class JuringBolaFrame extends JFrame {
         lblJari.setBounds(10, 50, 100, 20);
         this.add(lblJari);
 
-        txtJari = new JTextField();
-        txtJari.setBounds(120, 50, 250, 25);
-        this.add(txtJari);
+        txtJariJari = new JTextField();
+        txtJariJari.setBounds(120, 50, 250, 25);
+        this.add(txtJariJari);
 
         JLabel lblTinggi = new JLabel("Tinggi");
         lblTinggi.setBounds(10, 85, 100, 20);
@@ -67,24 +68,20 @@ public class JuringBolaFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (txtJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
+                    if (txtJariJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Semua input harus diisi!");
                         return;
                     }
 
-                    double jariJariValue = Double.parseDouble(txtJari.getText().replace(",", "."));
-                    double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
-
-                    if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari dan tinggi harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-
+                    double jariJariValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJari.getText().replace(",", ".")));
+                    double tinggiValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtTinggi.getText().replace(",", ".")));
                     JuringBola juringBola = new JuringBola(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", juringBola.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", juringBola.hitungVolume()));
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Input harus angka!");
+                    JOptionPane.showMessageDialog(null, "Input harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

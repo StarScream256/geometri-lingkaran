@@ -3,9 +3,11 @@ package ui;
 import javax.swing.*;
 import java.awt.event.*;
 import geometri3d.TemberengBola;
+import geometrilingkaran.GeometriLingkaran;
+import geometrilingkaran.NegativeNumberException;
 
 public class TemberengBolaFrame extends JFrame {
-    public JTextField txtR;
+    public JTextField txtJariJari;
     public JTextField txtTinggi;
     public JButton btnHitung;
     public JLabel labelLuasPermukaan, labelVolume;
@@ -21,9 +23,9 @@ public class TemberengBolaFrame extends JFrame {
         lblR.setBounds(20, 20, 100, 20);
         this.add(lblR);
 
-        txtR = new JTextField();
-        txtR.setBounds(120, 20, 150, 25);
-        this.add(txtR);
+        txtJariJari = new JTextField();
+        txtJariJari.setBounds(120, 20, 150, 25);
+        this.add(txtJariJari);
 
         JLabel lblTinggi = new JLabel("Tinggi:");
         lblTinggi.setBounds(20, 60, 100, 20);
@@ -49,20 +51,20 @@ public class TemberengBolaFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if (txtR.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
+                    if (txtJariJari.getText().isEmpty() || txtTinggi.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(null, "Input tidak boleh kosong!");
                         return;
                     }
 
-                    double r = Double.parseDouble(txtR.getText().replace(",", "."));
-                    double t = Double.parseDouble(txtTinggi.getText().replace(",", "."));
-
-                    TemberengBola temberengBola = new TemberengBola(r, t);
+                    double jariJariValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJari.getText().replace(",", ".")));
+                    double tinggiValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtTinggi.getText().replace(",", ".")));
+                    TemberengBola temberengBola = new TemberengBola(jariJariValue, tinggiValue);
                     labelLuasPermukaan.setText("Luas Permukaan : " + String.format("%.2f", temberengBola.hitungLuasPermukaan()));
                     labelVolume.setText("Volume : " + String.format("%.2f", temberengBola.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

@@ -3,6 +3,7 @@ package ui;
 import javax.swing.*;
 import java.awt.event.*;
 import geometri3d.Bola;
+import geometrilingkaran.*;
 
 public class BolaFrame extends JFrame {
 
@@ -54,20 +55,14 @@ public class BolaFrame extends JFrame {
                         return;
                     }
 
-                    double r = Double.parseDouble(txtJari.getText().replace(",", "."));
-
-                    if (r <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari harus lebih dari 0!");
-                        return;
-                    }
-
-                    Bola bola = new Bola(r);
-
+                    double jariJari = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJari.getText().replace(",", ".")));
+                    Bola bola = new Bola(jariJari);
                     lblLuasPermukaan.setText(String.format("%.2f", bola.hitungLuasPermukaan()));
                     lblVolume.setText(String.format("%.2f", bola.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Input harus angka!");
+                    JOptionPane.showMessageDialog(null, "Input harus angka!", "Warning", JOptionPane.WARNING_MESSAGE);
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

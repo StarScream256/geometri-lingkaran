@@ -1,6 +1,8 @@
 package ui;
 
 import geometri3d.Kerucut;
+import geometrilingkaran.GeometriLingkaran;
+import geometrilingkaran.NegativeNumberException;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -75,20 +77,15 @@ public class KerucutFrame extends JFrame {
                         return;
                     }
 
-                    double jariJariValue = Double.parseDouble(txtJariJari.getText().replace(",", "."));
-                    double tinggiValue = Double.parseDouble(txtTinggi.getText().replace(",", "."));
-
-                    if (jariJariValue <= 0 || tinggiValue <= 0) {
-                        JOptionPane.showMessageDialog(null, "Jari-jari dan Tinggi harus lebih dari 0!", "Warning", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-
+                    double jariJariValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtJariJari.getText().replace(",", ".")));
+                    double tinggiValue = GeometriLingkaran.isValidPositive(Double.parseDouble(txtTinggi.getText().replace(",", ".")));
                     Kerucut kerucut = new Kerucut(jariJariValue, tinggiValue);
                     txtLuasPermukaan.setText(String.format("%.2f", kerucut.hitungLuasPermukaan()));
                     txtVolume.setText(String.format("%.2f", kerucut.hitungVolume()));
-
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Input harus angka!");
+                } catch (NegativeNumberException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
